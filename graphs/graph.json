@@ -1,0 +1,49 @@
+{
+    "inports": {},
+    "outports": {},
+    "groups": [],
+    "processes": {
+      "ProvideNumber": {
+        "component": "provideNumber"
+      },
+      "ProcessNumber": {
+        "component": "square"
+      },
+      "ShowResult":{
+       "component":"showconsole"
+      },
+      "Display": {
+        "component": "core/Output"
+      }
+    },
+    "connections": [
+      {
+        "src": {
+          "process": "ProvideNumber",
+          "port": "out"
+        },
+        "tgt": {
+          "process": "ProcessNumber",
+          "port": "in"
+        }
+      },
+      {
+        "src": {
+          "process": "ProcessNumber",
+          "port": "out"
+        },
+        "tgt": {
+          "process": "Display",
+          "port": "in"
+        }
+      },
+      {
+        "data":4,
+        "tgt":{
+          "process":"ProvideNumber",
+          "port":"in"
+        }
+      }
+    ],
+    "caseSensitive": false
+  }
