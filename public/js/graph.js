@@ -1,8 +1,9 @@
 /* eslint-disable no-console */
 const vis = require('vis');
 
+
 const nodes = new vis.DataSet([
-  { id: 1, label: 'Node 1' },
+  { id: 1, label: 'Node 1', title: 'mensagem x' },
   { id: 2, label: 'Node 2' },
   { id: 3, label: 'Node 3' },
   { id: 4, label: 'Node 4' },
@@ -29,4 +30,10 @@ const options = {};
 
 // initialize your network!
 const network = new vis.Network(container, data, options);
-console.log(network);
+network.on('click', (properties) => {
+  const updated = nodes.get(properties[0]);
+  updated.title = 'cocó';
+  nodes.update(nodes.get(updated.id));
+  network.setData(data);
+  console.log(nodes);
+});
