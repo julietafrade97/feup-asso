@@ -1,3 +1,8 @@
+# Running
+1. `npm install`
+2. `browserify public/js/graph.js -o public/js/bundle.js`
+3. `nodemon`
+
 # Goals
 To develop an application that supports the creation and execution of Information Security Recipes. The base unit of computation in this application is a Task. 
 Tasks are comprised of:
