@@ -1,35 +1,8 @@
-const noflo = require('noflo');
+const express = require('express');
+const path = require('path');
+const app = express();
 
-exports.getComponent = () => {
+app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'views/index.html')));
 
-  const c = new noflo.Component();
-
-  c.description = 'multiply a number';
-  c.icon = 'file';
-
-  c.inPorts.add('in', {
-    datatype: 'int'
-  });
-  c.outPorts.add('out', {
-    datatype: 'int'
-  });
-  c.outPorts.add('error', {
-    datatype: 'object'
-  });
-  c.process((input, output) => {
-
-    if (!input.hasData('in')) {
-      return;
-    }
-
-    const number = input.getData('in');
-
-      output.send({
-        out: number*number
-      });
-      output.done();
-  });
-
-  return c;
-}
-
+app.use(express.static(path.join(__dirname, '/public')));
+app.listen(process.env.PORT || 3000, () => console.log(`Server running at port ${process.env.PORT || 3000}.`));
