@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "concurrently \"nodemon\" \"watchify public/js/graph.js -d -o public/js/bundle.js -v\""
+    "dev": "concurrently \"nodemon\" \"watchify public/js/graph.js -d -o public/js/graph-bundle.js -v\" \"watchify public/js/renderer.js -d -o public/js/renderer-bundle.js -v\""
   },
   "repository": {
     "type": "git",
@@ -19,6 +19,7 @@
   "homepage": "https://github.com/julietafrade97/feup-asso#readme",
   "dependencies": {
     "express": "^4.16.4",
+    "material-components-web": "^2.2.0",
     "vis": "^4.21.0"
   },
   "devDependencies": {

@@ -29,3 +29,5 @@ const network = new vis.Network(container, data, options);
 network.on('click', (properties) => {
   nodes.update({ id: properties.nodes[0], title: 'I got clicked.' });
 });
+
+module.exports = { nodes, edges };
