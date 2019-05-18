@@ -1,7 +1,7 @@
-# Running
+# Development steps
 1. `npm install`
-2. `browserify public/js/graph.js -o public/js/bundle.js`
-3. `nodemon`
+2. `npm run dev`
+3. `Open http://localhost:3000/`
 
 # Goals
 To develop an application that supports the creation and execution of Information Security Recipes. The base unit of computation in this application is a Task. 
