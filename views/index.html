@@ -3,10 +3,39 @@
     <link href="css/vis.css" rel="stylesheet" type="text/css" />
     <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
     <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 <body>
-
+    <div id="add-node-dialog" class="mdc-dialog" role="alertdialog" aria-modal="true" aria-labelledby="my-dialog-title" aria-describedby="my-dialog-content">
+        <div class="mdc-dialog__container">
+            <div class="mdc-dialog__surface">
+                <!-- Title cannot contain leading whitespace due to mdc-typography-baseline-top() -->
+                <h2 class="mdc-dialog__title" id="my-dialog-title">Add Node</h2>
+                <div class="mdc-dialog__content" id="my-dialog-content">Fill the required parameters below.</div>
+                <div class="mdc-select">
+                    <i class="mdc-select__dropdown-icon"></i>
+                    <select class="mdc-select__native-control">
+                      <option value="" disabled selected></option>
+                      <option value="grains">Bread, Cereal, Rice, and Pasta</option>
+                      <option value="vegetables">Vegetables</option>
+                      <option value="fruit">Fruit</option>
+                    </select>
+                    <label class="mdc-floating-label">Task</label>
+                    <div class="mdc-line-ripple"></div>
+                  </div>
+                <footer class="mdc-dialog__actions">
+                    <button type="button" class="mdc-button mdc-dialog__button" data-mdc-dialog-action="no">
+                        <span class="mdc-button__label">Cancel</span>
+                    </button>
+                    <button type="button" class="mdc-button mdc-dialog__button" data-mdc-dialog-action="yes">
+                        <span class="mdc-button__label">Create</span>
+                    </button>
+                </footer>
+            </div>
+        </div>
+        <div class="mdc-dialog__scrim"></div>
+    </div>
 
     <button class="foo-button mdc-button" id="add-node">New Node</button>
     <button class="foo-button mdc-button" id="add-edge">New Edge</button>

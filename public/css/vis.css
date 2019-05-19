@@ -15,6 +15,10 @@
 
 /* override some bootstrap styles screwing up the timelines css */
 
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
 .vis [class*="span"] {
   min-height: 0;
   width: auto;
