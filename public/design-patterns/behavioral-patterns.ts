@@ -7,15 +7,12 @@ export abstract class State {
 
 export class Active extends State {
     public execute(data: Message): void {
-        this.task.execute(data);
+        this.task.next(this.task.modifyData(data))
     }
-
 }
 
 export class Idle extends State {
     public execute(data: Message): void {
-        this.task.filters.forEach(filter => {
-            filter.execute(data)
-        });
+        this.task.next(data);
     }
 }
