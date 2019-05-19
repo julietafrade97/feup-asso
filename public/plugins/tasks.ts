@@ -1,8 +1,8 @@
 import { State, Active, Idle } from "../design-patterns/behavioral-patterns";
 
 export class Message {
-    constructor(public value: any) { }
-    static none = new Message(null)
+    constructor(public value: any, public from: string, public to: string) { }
+    static none = new Message(null, "", "")
 }
 
 export class Task {

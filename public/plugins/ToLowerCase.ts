@@ -3,32 +3,32 @@ import { State } from "../design-patterns/behavioral-patterns";
 import { Creator } from "../design-patterns/creational-patterns";
 
 /**
- * Creator of Task ToUpperCase
+ * Creator of Task ToLowerCase
  */
-class CreatorToUpperCase extends Creator{
+class CreatorToLowerCase extends Creator{
 
     createTask(): Task{
-        return new ToUpperCase();
+        return new ToLowerCase();
     }
 
     public static getSingleton(): Creator{
-        if (CreatorToUpperCase.singleton == null) {
-            CreatorToUpperCase.singleton = new CreatorToUpperCase();
+        if (CreatorToLowerCase.singleton == null) {
+            CreatorToLowerCase.singleton = new CreatorToLowerCase();
         }
      
-        return CreatorToUpperCase.singleton;
+        return CreatorToLowerCase.singleton;
     }
 }
 
 /**
  * Task to convert strings to uppercase
  */
-class ToUpperCase extends Task {
+class ToLowerCase extends Task {
     
     state: State;
     filters: Task[];
 
     modifyData(data: Message): Message {
-        return data.value.toUpperCase();
+        return data.value.toLowerCase();
     }
 }
