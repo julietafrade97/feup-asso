@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "concurrently \"nodemon\" \"watchify public/js/graph.js -d -o public/js/graph-bundle.js -v\" \"watchify public/js/renderer.js -d -o public/js/renderer-bundle.js -v\""
+    "dev": "concurrently \"nodemon\" \"watchify public/js/graph.js -d -o public/js/graph-bundle.js -v\" \"watchify public/js/renderer.js -d -o public/js/renderer-bundle.js -v\" \"tsc --watch\""
   },
   "repository": {
     "type": "git",
