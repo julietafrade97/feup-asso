@@ -1,0 +1,8 @@
+{
+    "compilerOptions": {
+        "target": "es6",
+        "outDir": "./public/js/compiled"
+    },
+    "include": ["./public/design-patterns/**/*", "./public/plugins/**/*"],
+    "exclude": ["node_modules"]
+}

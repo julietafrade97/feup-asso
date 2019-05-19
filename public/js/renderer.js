@@ -1,9 +1,14 @@
 /* eslint-disable no-new */
 const mdc = require('material-components-web');
+const plugins = require('../../models/plugins.json');
 const graph = require('./graph.js');
 
 let node1;
 let node2;
+
+plugins.installed.forEach((plugin) => {
+  console.log(plugin);
+});
 
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('button').forEach((btn) => { new mdc.ripple.MDCRipple(btn); });

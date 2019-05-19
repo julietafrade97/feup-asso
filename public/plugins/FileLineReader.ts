@@ -1,12 +1,12 @@
 import { Task, Message } from "./tasks";
 import { State } from "../design-patterns/behavioral-patterns";
 import { Creator } from "../design-patterns/creational-patterns";
-import { readFileSync } from "fs";	
+import { readFileSync } from "fs";
 
 const fs = require('fs');
 
 /**
- * Creator of Task FileLineReader 
+ * Creator of Task FileLineReader
  */
 class CreatorFileLineReader extends Creator{
 
@@ -18,7 +18,7 @@ class CreatorFileLineReader extends Creator{
         if (CreatorFileLineReader.singleton == null) {
             CreatorFileLineReader.singleton = new CreatorFileLineReader();
         }
-     
+
         return CreatorFileLineReader.singleton;
     }
 }
@@ -26,7 +26,7 @@ class CreatorFileLineReader extends Creator{
 /**
  * Task to read from a file, line by line
  */
-class FileLineReader extends Task {
+export class FileLineReader  extends Task {
     state: State;
     filters: Task[];
     lines: string[];
@@ -42,3 +42,5 @@ class FileLineReader extends Task {
         }
     }
 }
+
+export { FileLineReader as Task/*, FileLineReadorCreator as Creator*/ }
