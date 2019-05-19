@@ -1,11 +1,13 @@
 import { Task, Message } from "./tasks";
 import { State } from "./behavioral-patterns";
 
-export class TaskDecorator implements Task {
+export class TaskDecorator extends Task {
     state: State;
     filters: Task[];
 
-    constructor(public wrappee: Task) { }
+    constructor(public wrappee: Task) {
+        super();
+     }
 
     addFilter(filter: Task): void {
         this.wrappee.addFilter(filter);
