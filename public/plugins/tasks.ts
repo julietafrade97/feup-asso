@@ -16,12 +16,15 @@ export class Task {
     changeState(): void {
         if(this.state instanceof Active) {
             this.state = new Idle(this);
+        } else {
+            this.state = new Active(this);
         }
     }
 
     addFilter(filter: Task): void {
         this.filters.push(filter);
     }
+    
     modifyData(data: Message): Message {
         return Message.none;
     }

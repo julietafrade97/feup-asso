@@ -21,22 +21,30 @@ export class Creator {
 /**
  * Design pattern used to implement the concept of software modules
  */
-export interface Module {
+export class Module {
     /**
      * Singleton instance that represents a task factory
      */
     factory: Creator;
+
+    constructor(public taskType: string) {}
     /**
      * Install a plugin (write in a file of loaded plugins)
      */
-    install(): void;
+    install(): void {
+
+    }
     /**
      * Creates the factory 
      */
-    execute(): Creator;
+    execute(): Creator {
+        return this.factory;
+    }
     /**
      * Uninstall a plugin (deleted from the file of loaded plugins)
      */
-    uninstall(): void;
+    uninstall(): void {
+        
+    }
 }
 
