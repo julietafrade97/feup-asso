@@ -17,11 +17,11 @@ One can composse tasks by arbitrarily connecting their inputs and outputs to for
 
 # Functionalities
 ### Sources
-Open File 
+Open File and runtime input.
 ### Sinks
-Send to file
+Send to file or none. User can always see the current state of a task and so the message it bears
 ### Handlers
-Text - Uppercase, Lowercase, Encoding
+Text - Uppercase, Lowercase, Encoding, Read file, Write to a file
 
 # Architecture Details
 
@@ -42,8 +42,13 @@ Text - Uppercase, Lowercase, Encoding
 ## Design Patterns
 
 •	Factory Method - Usado para as "fábricas" de tasks, sendo que cada uma "produz"/cria task de um tipo específico.
+
 •	Module - Usado para a instalar, desinstalar e carregar plugins, isto é, tipos de tasks.
+
 •	Strategy - Usado para implementar diferentes algoritmos para os diferentes comportamentos de um nó. Um nó é um ponto no grafo da interface gráfica podendo ser configurado de formas diferentes e mostrar informação distinta consoante o tipo de task que representa (baseando-se na origem do input e destino do output). A estratégia de um nó pode ser alterada com o decorrer do programa com as ligações que são feitas a esse nó.
+
 •	State - Usado para alterar o comportamento de uma task com a alteração do seu estado: se está ativa ou se está em pausa.
+
 •	Decorator - Usado para acrescentar ações extra a uma task. No caso de "debug", após a execução normal da task, será apresentado o estado da task. Já no caso de "change output", será possível alterar o conteudo da mensagem dessa task e depois prosseguir com a sua execução normal.
+
 •	Pipes & Filters - Os filters são task e os pipes mensagens. Uma task tem a(s) próxima(s) task(s) a quem passam a mensagem alterada para que possam executar a sua ação com essa mesma mensagem e dar prosseguimento à cadeia de tasks.
