@@ -24,6 +24,9 @@ Send to file
 Text - Uppercase, Lowercase, Encoding
 
 # Architecture Details
+
+[architecture](https://i.imgur.com/wjrKmFu.png)
+
 •	The senders initiate the flow.
 
 •	The tempopary information lives in the queues while waiting to be processed.
