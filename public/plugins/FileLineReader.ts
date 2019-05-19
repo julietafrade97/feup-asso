@@ -4,7 +4,7 @@ import { State } from "../design-patterns/behavioral-patterns";
 /**
  * Task to read from a file, line by line
  */
-class FileLineReader  extends Task {
+export class FileLineReader  extends Task {
     state: State;
     filters: Task[];
     lines: string[];
