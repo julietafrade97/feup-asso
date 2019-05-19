@@ -1,4 +1,4 @@
-import { Task, Message } from "./tasks";
+import { Task, Message } from "../plugins/tasks";
 
 export abstract class State {
     constructor(public task: Task) {}

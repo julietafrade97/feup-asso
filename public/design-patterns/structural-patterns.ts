@@ -1,4 +1,4 @@
-import { Task, Message } from "./tasks";
+import { Task, Message } from "../plugins/tasks";
 import { State } from "./behavioral-patterns";
 
 export class TaskDecorator extends Task {

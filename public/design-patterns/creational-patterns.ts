@@ -1,4 +1,4 @@
-import { Task } from "./tasks";
+import { Task } from "../plugins/tasks";
 
 export class Creator {
     public static singleton: Creator = null;
