@@ -13,3 +13,5 @@ class ToUpperCase extends Task {
         return data.value.toUpperCase();
     }
 }
+
+export { ToUpperCase as Task };

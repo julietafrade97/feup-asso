@@ -19,3 +19,5 @@ export class FileLineReader  extends Task {
         }
     }
 }
+
+export { FileLineReader as Task/*, FileLineReadorCreator as Creator*/ }

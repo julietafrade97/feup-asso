@@ -22,3 +22,5 @@ class Writer  extends Task {
 
    
 }
+
+export { Writer as Task };
