@@ -41,14 +41,26 @@ Text - Uppercase, Lowercase, Encoding, Read file, Write to a file
 
 ## Design Patterns
 
-•	Factory Method - Usado para as "fábricas" de tasks, sendo que cada uma "produz"/cria task de um tipo específico.
+### Factory Method
+Usado para as "fábricas" de tasks, sendo que cada uma "produz"/cria task de um tipo específico.
 
-•	Module - Usado para a instalar, desinstalar e carregar plugins, isto é, tipos de tasks.
+### Module
+Usado para a instalar, desinstalar e carregar plugins, isto é, tipos de tasks.
 
-•	Strategy - Usado para implementar diferentes algoritmos para os diferentes comportamentos de um nó. Um nó é um ponto no grafo da interface gráfica podendo ser configurado de formas diferentes e mostrar informação distinta consoante o tipo de task que representa (baseando-se na origem do input e destino do output). A estratégia de um nó pode ser alterada com o decorrer do programa com as ligações que são feitas a esse nó.
+### Strategy
+Usado para implementar diferentes algoritmos para os diferentes comportamentos de um nó. Um nó é um ponto no grafo da interface gráfica podendo ser configurado de formas diferentes e mostrar informação distinta consoante o tipo de task que representa (baseando-se na origem do input e destino do output). A estratégia de um nó pode ser alterada com o decorrer do programa com as ligações que são feitas a esse nó.
 
-•	State - Usado para alterar o comportamento de uma task com a alteração do seu estado: se está ativa ou se está em pausa.
+### State
+Usado para alterar o comportamento de uma task com a alteração do seu estado: se está ativa ou se está em pausa.
 
-•	Decorator - Usado para acrescentar ações extra a uma task. No caso de "debug", após a execução normal da task, será apresentado o estado da task. Já no caso de "change output", será possível alterar o conteudo da mensagem dessa task e depois prosseguir com a sua execução normal.
+### Decorator
+Usado para acrescentar ações extra a uma task. No caso de "debug", após a execução normal da task, será apresentado o estado da task. Já no caso de "change output", será possível alterar o conteudo da mensagem dessa task e depois prosseguir com a sua execução normal.
 
-•	Pipes & Filters - Os filters são task e os pipes mensagens. Uma task tem a(s) próxima(s) task(s) a quem passam a mensagem alterada para que possam executar a sua ação com essa mesma mensagem e dar prosseguimento à cadeia de tasks.
+### Pipes & Filters
+Os filters são task e os pipes mensagens. Uma task tem a(s) próxima(s) task(s) a quem passam a mensagem alterada para que possam executar a sua ação com essa mesma mensagem e dar prosseguimento à cadeia de tasks.
+
+### Null Object
+Representa o comportamento neutro de uma mensagem, ou seja, uma mensagem sem conteudo.
+
+### Singleton
+Usado para termos uma instancia única de cada fábrica e da classe central (Main).
