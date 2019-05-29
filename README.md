@@ -25,7 +25,7 @@ Text - Uppercase, Lowercase, Encoding, Read file, Write to a file
 
 # Architecture Details
 
-[UML Architecture](https://i.imgur.com/wjrKmFu.png)
+[UML Architecture](https://i.imgur.com/t1iefWu.jpg)
 
 •	The senders initiate the flow.
 
