@@ -5,18 +5,18 @@ import { Creator } from "../design-patterns/creational-patterns";
 /**
  * Creator of Task ToLowerCase
  */
-class CreatorToLowerCase extends Creator{
+class ToLowerCaseCreator extends Creator{
 
     createTask(): Task{
         return new ToLowerCase();
     }
 
     public static getSingleton(): Creator{
-        if (CreatorToLowerCase.singleton == null) {
-            CreatorToLowerCase.singleton = new CreatorToLowerCase();
+        if (ToLowerCaseCreator.singleton == null) {
+            ToLowerCaseCreator.singleton = new ToLowerCaseCreator();
         }
      
-        return CreatorToLowerCase.singleton;
+        return ToLowerCaseCreator.singleton;
     }
 }
 
@@ -32,3 +32,5 @@ class ToLowerCase extends Task {
         return data.value.toLowerCase();
     }
 }
+
+export { ToLowerCase as Task, ToLowerCaseCreator as Creator }

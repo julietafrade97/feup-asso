@@ -5,18 +5,18 @@ import { Creator } from "../design-patterns/creational-patterns";
 /**
  * Creator of Task ToUpperCase
  */
-class CreatorToUpperCase extends Creator{
+class ToUpperCaseCreator extends Creator{
 
     createTask(): Task{
         return new ToUpperCase();
     }
 
     public static getSingleton(): Creator{
-        if (CreatorToUpperCase.singleton == null) {
-            CreatorToUpperCase.singleton = new CreatorToUpperCase();
+        if (ToUpperCaseCreator.singleton == null) {
+            ToUpperCaseCreator.singleton = new ToUpperCaseCreator();
         }
      
-        return CreatorToUpperCase.singleton;
+        return ToUpperCaseCreator.singleton;
     }
 }
 
@@ -33,4 +33,4 @@ class ToUpperCase extends Task {
     }
 }
 
-export { ToUpperCase as Task };
+export { ToUpperCase as Task, ToUpperCaseCreator as Creator };

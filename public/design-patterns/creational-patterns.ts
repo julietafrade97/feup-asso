@@ -1,5 +1,5 @@
 import { Task } from "../plugins/tasks";
-
+import { AllPlugins } from "../plugins/require-list";
 export class Creator {
     public static singleton: Creator = null;
 
@@ -30,23 +30,20 @@ export class Module {
 
     constructor(public name: string) {}
     /**
-     * Install a plugin (write in a file of loaded plugins)
+     * Install a plugin (get the correspondent class Creator a.k.a factory)
      */
     install(): void {
-        //get file of new task installed:
-        //const lib = require("../../plugins/" + this.name)
-        //
-        //write in the json file the installed plugin name (this.name)
+        this.lib = AllPlugins[name];
+        this. factory = this.lib.Creator.getInstance();
     }
     /**
-     * Creates the factory 
+     * Asks the factory to execute, create a new task instance 
      */
-    execute(): Creator {
-        //this. factory = lib.Creator.getInstance();
-        return this.factory;
+    execute(): Task {
+        return this.factory.createTask();
     }
     /**
-     * Uninstall a plugin (deleted from the file of loaded plugins)
+     * Uninstall a plugin (deleted the unique factory instance)
      */
     uninstall(): void {
         this.lib = null;

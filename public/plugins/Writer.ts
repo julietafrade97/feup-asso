@@ -7,18 +7,18 @@ const fs = require('fs');
 /**
  * Creator of Task Writer
  */
-class CreatorWriter extends Creator{
+class WriterCreator extends Creator{
 
     createTask(): Task{
         return new Writer();
     }
 
     public static getSingleton(): Creator{
-        if (CreatorWriter.singleton == null) {
-            CreatorWriter.singleton = new CreatorWriter();
+        if (WriterCreator.singleton == null) {
+            WriterCreator.singleton = new WriterCreator();
         }
      
-        return CreatorWriter.singleton;
+        return WriterCreator.singleton;
     }
 }
 
@@ -41,4 +41,4 @@ class Writer extends Task {
    
 }
 
-export { Writer as Task };
+export { Writer as Task, WriterCreator as Creator };

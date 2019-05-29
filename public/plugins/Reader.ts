@@ -7,25 +7,25 @@ const fs = require('fs');
 /**
  * Creator of Task Reader 
  */
-class CreatorReader extends Creator{
+class ReaderCreator extends Creator{
 
     createTask(): Task{
         return new Reader();
     }
 
     public static getSingleton(): Creator{
-        if (CreatorReader.singleton == null) {
-            CreatorReader.singleton = new CreatorReader();
+        if (ReaderCreator.singleton == null) {
+            ReaderCreator.singleton = new ReaderCreator();
         }
      
-        return CreatorReader.singleton;
+        return ReaderCreator.singleton;
     }
 }
 
 /**
  * Task to read from a file, line by line
  */
-class Reader extends Task {
+export class Reader extends Task {
     state: State;
     filters: Task[];
     text: string;
@@ -39,3 +39,5 @@ class Reader extends Task {
         super.execute(data);
     }
 }
+
+export { Reader as Task, ReaderCreator as Creator }

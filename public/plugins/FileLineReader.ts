@@ -8,18 +8,18 @@ const fs = require('fs');
 /**
  * Creator of Task FileLineReader
  */
-class CreatorFileLineReader extends Creator{
+class FileLineReaderCreator extends Creator{
 
     createTask(): Task{
         return new FileLineReader();
     }
 
     public static getSingleton(): Creator{
-        if (CreatorFileLineReader.singleton == null) {
-            CreatorFileLineReader.singleton = new CreatorFileLineReader();
+        if (FileLineReaderCreator.singleton == null) {
+            FileLineReaderCreator.singleton = new FileLineReaderCreator();
         }
 
-        return CreatorFileLineReader.singleton;
+        return FileLineReaderCreator.singleton;
     }
 }
 
@@ -43,4 +43,4 @@ export class FileLineReader  extends Task {
     }
 }
 
-export { FileLineReader as Task/*, FileLineReadorCreator as Creator*/ }
+export { FileLineReader as Task, FileLineReaderCreator as Creator }
