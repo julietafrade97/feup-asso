@@ -1,5 +1,6 @@
-import { Task } from "../plugins/tasks";
-import { AllPlugins } from "../plugins/require-list";
+import { Task } from "./tasks";
+import { AllPlugins } from "./plugins/require-list";
+
 export class Creator {
     public static singleton: Creator = null;
 
@@ -50,4 +51,3 @@ export class Module {
         this.factory = null;
     }
 }
-

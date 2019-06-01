@@ -1,76 +1,8 @@
-import { Task, Message, Recipe, Node } from "../plugins/tasks";
-import { State } from "./behavioral-patterns";
-import { Module } from "./creational-patterns";
-import { LoadedPlugins, AllPlugins } from "../plugins/require-list";
+import { Registry } from "./registry";
+import { Recipe, Task } from "./tasks";
+import { LoadedPlugins, AllPlugins } from "./plugins/require-list";
+import { Module } from "./creational";
 
-export class TaskDecorator extends Task {
-    state: State;
-    filters: Task[];
-
-    constructor(public wrappee: Task) {
-        super();
-     }
-
-    addFilter(filter: Task): void {
-        this.wrappee.addFilter(filter);
-    }
-
-    execute(data: Message): Message {
-        return this.wrappee.execute(data);
-    }
-}
-
-export class DebugDecorator extends TaskDecorator {
-    execute(data: Message): Message {
-        const receivedMsg: Message = super.execute(data);
-        // [TODO] show task current state/info
-        this.content = new Message(this.currentState(receivedMsg.value), receivedMsg.from, receivedMsg.to);
-        return this.content;
-    }
-
-    /**
-     * Info we want to return for the debug mode
-     */
-    currentState(data: string): string {
-        // [TODO]: tentar arranjar mais informacao para mostrar
-        return "The message sent to the next task was " + data;
-    }
-}
-
-export class ChangeOutputDecorator extends TaskDecorator {
-    newData: string;
-
-    setNewData(data: string) {
-        this.newData = data;
-    }
-    
-    execute(data: Message): Message {
-        // change data
-        data.value = this.newData;
-        this.content = super.execute(data);
-        return this.content;
-    }
-}
-
-/**
- * Map to get the existing modules
- */
-class Registry {
-    public modules: {[key: string]: Module} = {};
-
-    public getModule(key: string): Module {
-        return this.modules.key;
-    }
-
-    public addModule(key: string, m: Module) {
-        this.modules.key = m;
-    }
-
-    public removeFactory(key: string) {
-        this.modules.key.uninstall();
-        delete this.modules.key;
-    }
-}
 
 export class Facade {
     public nodeIdCount: number = 0;
@@ -81,7 +13,6 @@ export class Facade {
 
     constructor() {
         LoadedPlugins.forEach(pluginName => this.loadPlugin(pluginName));
-
     }
 
     /**

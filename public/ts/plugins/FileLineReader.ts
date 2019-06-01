@@ -1,9 +1,6 @@
-import { Task, Message } from "./tasks";
-import { State } from "../design-patterns/behavioral-patterns";
-import { Creator } from "../design-patterns/creational-patterns";
 import { readFileSync } from "fs";
-
-const fs = require('fs');
+import { Creator } from "../creational";
+import { Task, State, Message } from "../tasks";
 
 /**
  * Creator of Task FileLineReader
@@ -35,11 +32,14 @@ export class FileLineReader  extends Task {
         return new Message(this.lines.shift(), data.from, data.to);
     }
 
-    execute(data: Message): void {
+    execute(data: Message): Message {
         this.lines = readFileSync(data.from, 'utf-8').split('\n');
+        const result = this.lines;
         while(this.lines.length > 0) {
             super.execute(data);
         }
+
+        return new Message(result, "", "");
     }
 }
 

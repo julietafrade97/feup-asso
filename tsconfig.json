@@ -3,6 +3,6 @@
         "target": "es6",
         "outDir": "./public/js/compiled"
     },
-    "include": ["./public/design-patterns/**/*", "./public/plugins/**/*"],
+    "include": ["./public/ts/**/*"],
     "exclude": ["node_modules"]
 }

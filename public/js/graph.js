@@ -1,5 +1,9 @@
 /* eslint-disable no-console */
 const vis = require('vis');
+const FacadeLib = require('./compiled/facade').Facade;
+
+const facade = new FacadeLib();
+console.log(facade);
 
 const nodes = new vis.DataSet([
   { id: 1, label: 'Node 1', title: 'One' },
@@ -30,4 +34,4 @@ network.on('click', (properties) => {
   nodes.update({ id: properties.nodes[0], title: 'I got clicked.' });
 });
 
-module.exports = { network, nodes, edges };
+module.exports = { network, nodes, edges, facade };

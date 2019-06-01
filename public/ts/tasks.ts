@@ -1,9 +1,33 @@
-import { State, Active, Idle } from "../design-patterns/behavioral-patterns";
-import { ChangeOutputDecorator, DebugDecorator } from "../design-patterns/structural-patterns";
-
 export class Message {
     constructor(public value: any, public from: string, public to: string) { }
     static none = new Message(null, "", "")
+}
+
+export abstract class State {
+    constructor(public task: Task) {}
+    /**
+     * Executes the task action
+     * @param data message to process
+     * @returns the data sent to the next task
+     */
+    public abstract execute(data: Message) : Message;
+}
+
+class Active extends State {
+    public execute(data: Message): Message {
+        const modified: Message = this.task.modifyData(data);
+        const send: Message = new Message(modified.value, modified.from, modified.to);
+        this.task.next(send);
+        return modified;
+    }
+}
+
+class Idle extends State {
+    public execute(data: Message): Message {
+        const send: Message = new Message(data.value, data.from, data.to);
+        this.task.next(send);
+        return data;
+    }
 }
 
 export class Task {
@@ -103,7 +127,10 @@ export class Node {
                 (<ChangeOutputDecorator>(<DebugDecorator>this.task).wrappee).setNewData(newData);
             }
         } else {
-            this.task = new ChangeOutputDecorator(this.task);
+            let newTask = new ChangeOutputDecorator();
+            newTask.setWrappee(this.task);
+            this.task = newTask;
+
             (<ChangeOutputDecorator>this.task).setNewData(newData);
             this.changeOutputMode = true;
         }
@@ -166,3 +193,60 @@ export class Recipe {
         this.startingNode.task.execute(Message.none);
     }
 }
+
+export class TaskDecorator extends Task {
+    state: State;
+    filters: Task[];
+    public wrappee: Task = null;
+    content: Message = Message.none;
+
+    constructor() {
+        super();
+    }
+
+    setWrappee(wrappee: Task) {
+        this.wrappee = wrappee;
+    }
+
+    addFilter(filter: Task): void {
+        this.wrappee.addFilter(filter);
+    }
+
+    execute(data: Message): Message {
+        return this.wrappee.execute(data);
+    }
+}
+
+export class DebugDecorator extends TaskDecorator {
+    execute(data: Message): Message {
+        const receivedMsg: Message = super.execute(data);
+        // [TODO] show task current state/info
+        this.content = new Message(this.currentState(receivedMsg.value), receivedMsg.from, receivedMsg.to);
+        return this.content;
+    }
+
+    /**
+     * Info we want to return for the debug mode
+     */
+    currentState(data: string): string {
+        // [TODO]: tentar arranjar mais informacao para mostrar
+        return "The message sent to the next task was " + data;
+    }
+}
+
+export class ChangeOutputDecorator extends TaskDecorator {
+    newData: string;
+
+    setNewData(data: string) {
+        this.newData = data;
+    }
+    
+    execute(data: Message): Message {
+        // change data
+        data.value = this.newData;
+        this.content = super.execute(data);
+        return this.content;
+    }
+}
+
+

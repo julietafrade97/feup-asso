@@ -1,6 +1,5 @@
-import { Task, Message } from "./tasks";
-import { State } from "../design-patterns/behavioral-patterns";
-import { Creator } from "../design-patterns/creational-patterns";
+import { Creator } from "../creational";
+import { Task, State, Message } from "../tasks";
 import { readFileSync } from "fs";	
 
 const fs = require('fs');
@@ -34,9 +33,11 @@ export class Reader extends Task {
         return new Message(this.text, data.from, data.to);
     }
 
-    execute(data: Message): void {
-        this.text = readFileSync(data.from, 'utf-8')
-        super.execute(data);
+    execute(data: Message): Message {
+        this.text = readFileSync(data.from, 'utf-8');
+        const msg: Message = new Message(this.text, "", "");
+        super.execute(msg);
+        return msg;
     }
 }
 

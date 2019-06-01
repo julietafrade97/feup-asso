@@ -1,7 +1,5 @@
-import { Task, Message } from "./tasks";
-import { State } from "../design-patterns/behavioral-patterns";
-import { Creator } from "../design-patterns/creational-patterns";
-
+import { Creator } from "../creational";
+import { Task, State, Message } from "../tasks";
 const fs = require('fs');
 
 /**

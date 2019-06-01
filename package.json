@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "concurrently \"nodemon\" \"browserify public/js/compiled/design-patterns/main.js -p esmify > public/js/compiled/design-patterns/main-bundle.js\" \"watchify public/js/graph.js -d -o public/js/graph-bundle.js -v\" \"watchify public/js/renderer.js -d -o public/js/renderer-bundle.js -v\" \"tsc --watch\""
+    "dev": "concurrently \"nodemon\" \"webpack --mode development --watch\" \"tsc --watch\""
   },
   "repository": {
     "type": "git",
@@ -24,13 +24,13 @@
     "vis": "^4.21.0"
   },
   "devDependencies": {
-    "browserify": "^16.2.3",
     "concurrently": "^4.1.0",
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.17.2",
     "esmify": "^2.1.1",
     "nodemon": "^1.19.0",
-    "watchify": "^3.11.1"
+    "webpack": "^4.32.2",
+    "webpack-cli": "^3.3.2"
   }
 }
