@@ -11,7 +11,7 @@ class WriterCreator extends Creator{
         return new Writer();
     }
 
-    public static getSingleton(): Creator{
+    public static getInstance(): Creator{
         if (WriterCreator.singleton == null) {
             WriterCreator.singleton = new WriterCreator();
         }

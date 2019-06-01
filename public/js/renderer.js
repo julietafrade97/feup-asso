@@ -11,16 +11,16 @@ plugins.installed.forEach((plugin) => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-  const selectNode = document.querySelector('#add-node-dialog > select');
-  /*
-  graph.facade.modulesRegistry.keys().forEach((key) => {
+  const selectNode = document.querySelector('#add-node-dialog select');
+  
+  Object.keys(graph.facade.modulesRegistry.modules).forEach((key) => {
     const node = document.createElement('option');
     node.value = key;
     node.textContent = key;
 
     selectNode.appendChild(node);
   });
-  */
+  
   
   document.querySelectorAll('button').forEach((btn) => { new mdc.ripple.MDCRipple(btn); });
 });

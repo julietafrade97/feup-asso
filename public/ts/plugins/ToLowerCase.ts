@@ -9,7 +9,7 @@ class ToLowerCaseCreator extends Creator{
         return new ToLowerCase();
     }
 
-    public static getSingleton(): Creator{
+    public static getInstance(): Creator{
         if (ToLowerCaseCreator.singleton == null) {
             ToLowerCaseCreator.singleton = new ToLowerCaseCreator();
         }

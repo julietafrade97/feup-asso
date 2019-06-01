@@ -12,7 +12,7 @@ class ReaderCreator extends Creator{
         return new Reader();
     }
 
-    public static getSingleton(): Creator{
+    public static getInstance(): Creator{
         if (ReaderCreator.singleton == null) {
             ReaderCreator.singleton = new ReaderCreator();
         }

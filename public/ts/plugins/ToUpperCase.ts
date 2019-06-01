@@ -9,7 +9,7 @@ class ToUpperCaseCreator extends Creator{
         return new ToUpperCase();
     }
 
-    public static getSingleton(): Creator{
+    public static getInstance(): Creator{
         if (ToUpperCaseCreator.singleton == null) {
             ToUpperCaseCreator.singleton = new ToUpperCaseCreator();
         }

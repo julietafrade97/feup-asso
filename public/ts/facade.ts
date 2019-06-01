@@ -6,13 +6,14 @@ import { Module } from "./creational";
 
 export class Facade {
     public nodeIdCount: number = 0;
-    public modulesRegistry: Registry;
+    public modulesRegistry: Registry = new Registry();
 
-    public currentRecipe: Recipe;
-    public storedRecipes: Recipe[];
+    public currentRecipe: Recipe = null;
+    public storedRecipes: Recipe[] = [];
 
     constructor() {
         LoadedPlugins.forEach(pluginName => this.loadPlugin(pluginName));
+        console.log(LoadedPlugins);
     }
 
     /**

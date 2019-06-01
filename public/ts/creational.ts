@@ -10,7 +10,7 @@ export class Creator {
         return null;
     }
 
-    public static getSingleton(): Creator{
+    public static getInstance(): Creator{
         if (Creator.singleton == null) {
             Creator.singleton = new Creator();
         }
@@ -34,8 +34,8 @@ export class Module {
      * Install a plugin (get the correspondent class Creator a.k.a factory)
      */
     install(): void {
-        this.lib = AllPlugins[name];
-        this. factory = this.lib.Creator.getInstance();
+        this.lib = AllPlugins[this.name];
+        this.factory = this.lib.Creator.getInstance();
     }
     /**
      * Asks the factory to execute, create a new task instance 

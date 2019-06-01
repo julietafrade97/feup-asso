@@ -11,7 +11,7 @@ class FileLineReaderCreator extends Creator{
         return new FileLineReader();
     }
 
-    public static getSingleton(): Creator{
+    public static getInstance(): Creator{
         if (FileLineReaderCreator.singleton == null) {
             FileLineReaderCreator.singleton = new FileLineReaderCreator();
         }
