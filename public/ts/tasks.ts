@@ -100,13 +100,15 @@ export class Task {
 export class Node {
     public task: Task;
     public id: number;
+    public label: string;
     public pause: boolean;
     public debugMode: boolean;
     public changeOutputMode: boolean;
 
-    constructor(id: number, task: Task) {
+    constructor(id: number, task: Task, label: string) {
         this.task = task;
         this.id = id;
+        this.label =  label;
     }
 
     public getOptions() {
@@ -180,8 +182,6 @@ export class Node {
 
         this.debugMode = false;
     }
-
-
 }
 
 export class Recipe {
@@ -196,9 +196,10 @@ export class Recipe {
         this.startingNode = node;
     }
 
-    public addNode(id: number, task: Task) {
-        const node: Node = new Node(id, task);
+    public addNode(id: number, task: Task, label: string) {
+        const node: Node = new Node(id, task, label);
         this.nodes.push(node);
+        return node;
     }
 
     public connectNodes(src: number, dest: number) {

@@ -8,12 +8,12 @@ export class Facade {
     public nodeIdCount: number = 0;
     public modulesRegistry: Registry = new Registry();
 
-    public currentRecipe: Recipe = null;
+    public currentRecipe: Recipe = new Recipe();
     public storedRecipes: Recipe[] = [];
 
     constructor() {
         LoadedPlugins.forEach(pluginName => this.loadPlugin(pluginName));
-        console.log(LoadedPlugins);
+        this.addNode("FileLineReader")
     }
 
     /**
@@ -59,7 +59,7 @@ export class Facade {
         this.nodeIdCount++;
         const m: Module = this.modulesRegistry.getModule(taskType);
         const t:Task = m.factory.createTask();
-        this.currentRecipe.addNode(this.nodeIdCount, t);
+        return this.currentRecipe.addNode(this.nodeIdCount, t, taskType);
     }
 
     public emptyRecipe() {
@@ -86,7 +86,7 @@ export class Facade {
     public loadRecipe(recipeName: string) {
         const recipe: Recipe = this.storedRecipes.find(r => r.name === recipeName);
         recipe.nodes.forEach(n => {
-            this.currentRecipe.addNode(this.nodeIdCount + n.id, n.task);// [TODO]: usar o design pattern Prototype para uma Task ter um método clone
+            this.currentRecipe.addNode(this.nodeIdCount + n.id, n.task, n.label);// [TODO]: usar o design pattern Prototype para uma Task ter um método clone
         });
         recipe.edges.forEach(e => {
             this.currentRecipe.edges.push([e[0] + this.nodeIdCount, e[1] + this.nodeIdCount])
