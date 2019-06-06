@@ -1,3 +1,5 @@
+import { resolve } from "url";
+
 export class Message {
     constructor(public value: any, public from: string, public to: string) { }
     static none = new Message(null, "", "")
@@ -17,16 +19,28 @@ class Active extends State {
     public execute(data: Message): Message {
         const modified: Message = this.task.modifyData(data);
         const send: Message = new Message(modified.value, modified.from, modified.to);
-        this.task.next(send);
-        return modified;
+        
+        let promise = new Promise(function(){
+            this.task.next(send);
+        }).then(function (){
+            return modified;
+        })
+
+        return null;
     }
 }
 
 class Idle extends State {
     public execute(data: Message): Message {
         const send: Message = new Message(data.value, data.from, data.to);
-        this.task.next(send);
-        return data;
+
+        let promise = new Promise(function(){
+            this.task.next(send);
+        }).then(function (){
+            return data;
+        })
+
+        return null;
     }
 }
 
@@ -39,7 +53,6 @@ export class Task {
         this.state = new Active(this);
     }
     
-
     changeState(): void {
         if(this.state instanceof Active) {
             this.state = new Idle(this);
@@ -56,9 +69,19 @@ export class Task {
         return Message.none;
     }
     next(data: Message): void {
+        
+        var promisesArray =[]
         this.filters.forEach(filter => {
-            filter.execute(data)
+            promisesArray.push(
+                new Promise(function(){
+                    filter.execute(data);
+                })
+            )
         });
+
+        let promises = Promise.all(promisesArray).then(function(){
+            return;
+        })
     }
     /**
      * Method directly called for each task
