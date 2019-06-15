@@ -46,8 +46,8 @@ class Idle extends State {
 
 export class Task {
     state: State;
-    filters: Task[];
-    content: Message;
+    filters: Task[] = [];
+    content: Message = Message.none;
 
     constructor() {
         this.state = new Active(this);
@@ -187,7 +187,7 @@ export class Node {
 export class Recipe {
     public name: string;
     public nodes: Node[] = [];
-    public edges: number[][] = [];
+    public edges: Array<{from: number, to: number}> = [];
     public startingNode: Node = null;
 
     constructor() {}
@@ -207,7 +207,7 @@ export class Recipe {
         const destNode: Node = this.nodes.find(node => node.id === dest);
         srcNode.connectTask(destNode.task);
 
-        this.edges.push([src, dest]);
+        this.edges.push({from: src, to: dest});
     }
 
     //[TODO]: se calhar podiamos usar strategy aqui para o run poder ter dois comportamentos diferentes:

@@ -62,6 +62,10 @@ export class Facade {
         return this.currentRecipe.addNode(this.nodeIdCount, t, taskType);
     }
 
+    public connectNodes(node1: number, node2: number) {
+        this.currentRecipe.connectNodes(node1, node2);
+    }
+
     public emptyRecipe() {
         this.currentRecipe.nodes.forEach(node => this.deleteNode(node.id));
     }
