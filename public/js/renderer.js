@@ -88,6 +88,18 @@ installTaskDialog.listen('MDCDialog:closing', (evt) => {
   }
 });
 
+document.querySelector('#toggle-execution-button').addEventListener('click', (evt) => {
+  const button = document.querySelector('#toggle-execution-button');
+
+  if (button.innerHTML === 'Execute') {
+    button.innerHTML = 'Pause';
+    // TODO: Execute logic here.
+  } else if (button.innerHTML === 'Pause') {
+    button.innerHTML = 'Execute';
+    // TODO: Pause logic here.
+  }
+
+});
 
 document.querySelector('#add-node').addEventListener('click', () => addNodeDialog.open());
 document.querySelector('#add-edge').addEventListener('click', () => {
@@ -110,5 +122,4 @@ graph.network.on('click', (properties) => {
 
     console.log(node1);
   }
-
 });
