@@ -51,7 +51,33 @@
                         <span class="mdc-button__label">Cancel</span>
                     </button>
                     <button type="button" class="mdc-button mdc-dialog__button" data-mdc-dialog-action="yes">
-                        <span class="mdc-button__label">Create</span>
+                        <span class="mdc-button__label">Install</span>
+                    </button>
+                </footer>
+            </div>
+        </div>
+        <div class="mdc-dialog__scrim"></div>
+    </div>
+
+    <div id="uninstall-task-dialog" class="mdc-dialog" role="alertdialog" aria-modal="true" aria-labelledby="my-dialog-title" aria-describedby="my-dialog-content">
+        <div class="mdc-dialog__container">
+            <div class="mdc-dialog__surface">
+                <!-- Title cannot contain leading whitespace due to mdc-typography-baseline-top() -->
+                <h2 class="mdc-dialog__title" id="my-dialog-title">Uninstall Task</h2>
+                <div class="mdc-dialog__content" id="my-dialog-content">Fill the required parameters below.</div>
+                <div class="mdc-select">
+                    <i class="mdc-select__dropdown-icon"></i>
+                    <select class="mdc-select__native-control">
+                    </select>
+                    <label class="mdc-floating-label"></label>
+                    <div class="mdc-line-ripple"></div>
+                  </div>
+                <footer class="mdc-dialog__actions">
+                    <button type="button" class="mdc-button mdc-dialog__button" data-mdc-dialog-action="no">
+                        <span class="mdc-button__label">Cancel</span>
+                    </button>
+                    <button type="button" class="mdc-button mdc-dialog__button" data-mdc-dialog-action="yes">
+                        <span class="mdc-button__label">Uninstall</span>
                     </button>
                 </footer>
             </div>
@@ -64,10 +90,13 @@
     <button id="toggle-execution-button" class="foo-button mdc-button">Execute</button>
     <div id="mynetwork"></div>
     <button id="install-task" class="foo-button mdc-button">Install Task</button>
-    <button class="foo-button mdc-button">Uninstall Task</button>
-    <button class="foo-button mdc-button">Save Recipe</button>
-    <button class="foo-button mdc-button">Load Recipe</button>
-    <input type="file" id="file-read">
+    <button id="uninstall-task" class="foo-button mdc-button">Uninstall Task</button>
+    <button id="save-recipe" class="foo-button mdc-button">Save Recipe</button>
+    <button id="load-recipe" class="foo-button mdc-button">Load Recipe</button>
+    
+    <button id="file-read-button" class="foo-button mdc-button">Load File</button>
+    <input type="file" id="file-read-input" style="display:none">
+
     <script src="js/graph-bundle.js" type="text/javascript"></script>
     <script src="js/renderer-bundle.js" type="text/javascript"></script>
 </body>
