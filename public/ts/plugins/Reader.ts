@@ -30,12 +30,12 @@ export class Reader extends Task {
     text: string;
 
     modifyData(data: Message): Message {
-        return new Message(this.text, data.from, data.to);
+        return new Message(this.text);
     }
 
     execute(data: Message): Message {
-        this.text = readFileSync(data.from, 'utf-8');
-        const msg: Message = new Message(this.text, "", "");
+        this.text = readFileSync("../../../read-file.txt", 'utf-8');
+        const msg: Message = new Message(this.text);
         super.execute(msg);
         return msg;
     }

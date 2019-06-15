@@ -93,8 +93,12 @@ export class Facade {
             this.currentRecipe.addNode(this.nodeIdCount + n.id, n.task, n.label);// [TODO]: usar o design pattern Prototype para uma Task ter um método clone
         });
         recipe.edges.forEach(e => {
-            this.currentRecipe.edges.push([e[0] + this.nodeIdCount, e[1] + this.nodeIdCount])
+            this.currentRecipe.edges.push({ from: e.from + this.nodeIdCount, to: e.to + this.nodeIdCount})
         });
         this.nodeIdCount += recipe.nodes.length;
+    }
+
+    public execute(text: string) {
+        this.currentRecipe.run(text);
     }
 }

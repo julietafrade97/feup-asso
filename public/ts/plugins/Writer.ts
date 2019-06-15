@@ -28,7 +28,7 @@ class Writer extends Task {
     filters: Task[];
 
     modifyData(data: Message): Message {
-        fs.appendFile(data.to, data.value, function (err) {
+        fs.appendFile("../../../write-file.txt", data.value, function (err) {
             if (err) throw err;
             console.log('Saved!');
         });
