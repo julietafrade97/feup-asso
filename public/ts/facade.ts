@@ -43,10 +43,13 @@ export class Facade {
      * @param name plugin's name
      */
     public uninstallPlugin(name: string) {
-        if(LoadedPlugins.indexOf(name) == -1) {
+        if (LoadedPlugins.indexOf(name) == -1) {
             console.log("Invalid plugin name.");
             return;
         }
+
+        // Remove the plugin from the LoadedPlugins list.
+        LoadedPlugins.splice(LoadedPlugins.indexOf(name), 1);
         this.modulesRegistry.removeFactory(name);
     }
 

@@ -9,11 +9,6 @@ let node1;
 let node2;
 let file = '';
 
-/* plugins.installed.forEach((plugin) => {
-  console.log(plugin);
-}); */
-
-
 /**
  * Add "Add Node" dropdown options
  */
@@ -37,16 +32,15 @@ function setSelectNodeOptions() {
   });
 }
 
-const updateInterface = () => {
-  setSelectNodeOptions();
+const getInstallablePlugins = () => {
+  return Object.keys(plugins.AllPlugins).filter(key => !plugins.LoadedPlugins.includes(key));
 };
 
-
 /**
- * Add "Install Task" and "Uninstall Task" dropdown options.
+ * Add "Install Task" dropdown options.
  */
-function setTaskOptions(dialogId) {
-  const selectInstallTask = document.querySelector(`#${dialogId} select`);
+function setTaskOptions(isInstalling) {
+  const selectInstallTask = document.querySelector(`#${isInstalling ? '' : 'un'}install-task-dialog select`);
   selectInstallTask.innerHTML = '';
 
   const emptyOption = document.createElement('option');
@@ -56,20 +50,26 @@ function setTaskOptions(dialogId) {
   emptyOption.disabled = true;
   selectInstallTask.appendChild(emptyOption);
 
-  Object.keys(plugins.AllPlugins).forEach((key) => {
+  (isInstalling ? getInstallablePlugins() : plugins.LoadedPlugins).forEach((plugin) => {
     const node = document.createElement('option');
-    node.value = key;
-    node.textContent = key;
+    node.value = plugin;
+    node.textContent = plugin;
 
     selectInstallTask.appendChild(node);
   });
 }
 
+const updateInterface = () => {
+  setTaskOptions(true);
+  setTaskOptions(false);
+  setSelectNodeOptions();
+};
+
 document.addEventListener('DOMContentLoaded', () => {
   setSelectNodeOptions();
 
-  setTaskOptions('install-task-dialog');
-  setTaskOptions('uninstall-task-dialog');
+  setTaskOptions(true);
+  setTaskOptions(false);
 });
 
 const addNodeDialog = new mdc.dialog.MDCDialog(document.querySelector('#add-node-dialog'));
@@ -95,7 +95,7 @@ installTaskDialog.listen('MDCDialog:closing', (evt) => {
 
 uninstallTaskDialog.listen('MDCDialog:closing', (evt) => {
   if (evt.detail.action === 'yes') {
-    const installed = document.querySelectorAll('#install-task-dialog option:checked')[0].innerText;
+    const installed = document.querySelectorAll('#uninstall-task-dialog option:checked')[0].innerText;
     graph.facade.uninstallPlugin(installed);
     updateInterface();
   }

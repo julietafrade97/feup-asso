@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 const vis = require('vis');
+const mdc = require('material-components-web');
 const FacadeLib = require('./compiled/facade').Facade;
 
 const facade = new FacadeLib();
@@ -37,8 +38,12 @@ const options = {
 
 // initialize your network!
 const network = new vis.Network(container, data, options);
+
 network.on('click', (properties) => {
-  //nodes.update({ id: properties.nodes[0], title: 'I got clicked.' });
+  console.log(properties.nodes[0]);
+  const addNodeDialog = new mdc.dialog.MDCDialog(document.querySelector('#node-info-dialog'));
+  addNodeDialog.open();
+  // nodes.update({ id: properties.nodes[0], title: 'I got clicked.' });
 });
 
 const update = () => {
