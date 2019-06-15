@@ -19,14 +19,8 @@ class Active extends State {
     public execute(data: Message): Message {
         const modified: Message = this.task.modifyData(data);
         const send: Message = new Message(modified.value);
-        
-        let promise = new Promise(function(){
-            this.task.next(send);
-        }).then(function (){
-            return modified;
-        })
-
-        return null;
+        this.task.next(send);
+        return modified;
     }
 }
 
@@ -34,13 +28,8 @@ class Idle extends State {
     public execute(data: Message): Message {
         const send: Message = new Message(data.value);
 
-        let promise = new Promise(function(){
-            this.task.next(send);
-        }).then(function (){
-            return data;
-        })
-
-        return null;
+        this.task.next(send);
+        return data;
     }
 }
 
@@ -68,20 +57,15 @@ export class Task {
     modifyData(data: Message): Message {
         return Message.none;
     }
+
     next(data: Message): void {
-        
-        var promisesArray =[]
+        let result;
         this.filters.forEach(filter => {
-            promisesArray.push(
-                new Promise(function(){
-                    filter.execute(data);
-                })
-            )
+            result = filter.execute(data);
         });
 
-        let promises = Promise.all(promisesArray).then(function(){
-            return;
-        })
+        console.log("fim da recipe. Data = " + data.value);
+        console.log(this);
     }
     /**
      * Method directly called for each task
@@ -89,8 +73,7 @@ export class Task {
      * @returns The message that was passed to the next task
      */
     execute(data: Message): Message {
-        this.content = this.state.execute(data);
-        return this.content;
+        return this.state.execute(data)
     }
 }
 
@@ -199,6 +182,10 @@ export class Recipe {
     public addNode(id: number, task: Task, label: string) {
         const node: Node = new Node(id, task, label);
         this.nodes.push(node);
+        
+        if(this.startingNode === null) {
+            this.startingNode = node;
+        }
         return node;
     }
 
@@ -207,14 +194,18 @@ export class Recipe {
         const destNode: Node = this.nodes.find(node => node.id === dest);
         srcNode.connectTask(destNode.task);
 
+        if(this.startingNode == destNode) {
+            this.startingNode = srcNode;
+        }
+
         this.edges.push({from: src, to: dest});
     }
 
     //[TODO]: se calhar podiamos usar strategy aqui para o run poder ter dois comportamentos diferentes:
     // ou começava com a mensagem a nulo (Message.none)
     // ou pediamos input ao utilizador e punhamos na mensagem (new Message(value, from, to))
-    public run() {
-        this.startingNode.task.execute(Message.none);
+    public run(text: string) {
+        this.startingNode.task.execute(new Message(text));
     }
 }
 

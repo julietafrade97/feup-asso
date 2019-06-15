@@ -7,6 +7,7 @@ const plugins = require('./compiled/plugins/require-list.js');
 
 let node1;
 let node2;
+let file = "";
 
 /*plugins.installed.forEach((plugin) => {
   console.log(plugin);
@@ -94,6 +95,13 @@ document.querySelector('#toggle-execution-button').addEventListener('click', (ev
   if (button.innerHTML === 'Execute') {
     button.innerHTML = 'Pause';
     // TODO: Execute logic here.
+    const read = new FileReader();
+
+    read.readAsBinaryString(file);
+    read.onloadend = function () {
+      graph.facade.execute(read.result);
+    };
+    
   } else if (button.innerHTML === 'Pause') {
     button.innerHTML = 'Execute';
     // TODO: Pause logic here.
@@ -113,6 +121,12 @@ document.querySelector('#add-edge').addEventListener('click', () => {
 
 document.querySelector('#install-task').addEventListener('click', () => installTaskDialog.open());
 
+const inputElement = document.getElementById("file-read");
+inputElement.addEventListener("change", importFile, false);
+function importFile() {
+  file = this.files[0];
+}
+
 graph.network.on('click', (properties) => {
   if (properties.nodes !== undefined) {
     if (node2) [node1] = properties.nodes; node2 = undefined;
@@ -120,6 +134,5 @@ graph.network.on('click', (properties) => {
     if (!node1) [node1] = properties.nodes;
     else [node2] = properties.nodes;
 
-    console.log(node1);
   }
 });

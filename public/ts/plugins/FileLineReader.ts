@@ -1,4 +1,3 @@
-import { readFileSync } from "fs";
 import { Creator } from "../creational";
 import { Task, State, Message } from "../tasks";
 
@@ -24,17 +23,23 @@ class FileLineReaderCreator extends Creator{
  * Task to read from a file, line by line
  */
 export class FileLineReader  extends Task {
-    state: State;
     filters: Task[];
     lines: string[];
+
+    constructor() {
+        super();
+    }
 
     modifyData(data: Message): Message {
         return new Message(this.lines.shift());
     }
 
     execute(data: Message): Message {
-        this.lines = readFileSync("../../../read-file.txt", 'utf-8').split('\n');
+        
+        this.lines = data.value.split('\n');
+        
         const result = this.lines;
+        console.log(result);
         while(this.lines.length > 0) {
             super.execute(data);
         }

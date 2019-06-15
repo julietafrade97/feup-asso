@@ -43,8 +43,6 @@ const update = () => {
   if (edges.length !== facade.currentRecipe.edges.length) {
     edges.update(facade.currentRecipe.edges);
   }
-  console.log(nodes);
-  console.log(edges);
 }
 
 module.exports = {

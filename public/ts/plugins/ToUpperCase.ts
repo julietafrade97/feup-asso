@@ -27,7 +27,7 @@ class ToUpperCase extends Task {
     filters: Task[];
 
     modifyData(data: Message): Message {
-        return data.value.toUpperCase();
+        return new Message(data.value.toUpperCase());
     }
 }
 
