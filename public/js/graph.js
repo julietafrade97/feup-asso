@@ -27,12 +27,18 @@ const container = document.getElementById('mynetwork');
 
 // provide the data in the vis format
 const data = { nodes, edges };
-const options = {};
+const options = {
+  edges: {
+    arrows: {
+      to: { enabled: true, scaleFactor: 1, type: 'arrow' },
+    },
+  },
+};
 
 // initialize your network!
 const network = new vis.Network(container, data, options);
 network.on('click', (properties) => {
-  nodes.update({ id: properties.nodes[0], title: 'I got clicked.' });
+  //nodes.update({ id: properties.nodes[0], title: 'I got clicked.' });
 });
 
 const update = () => {
