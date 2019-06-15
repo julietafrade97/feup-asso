@@ -27,7 +27,7 @@ class ToLowerCase extends Task {
     filters: Task[];
 
     modifyData(data: Message): Message {
-        return data.value.toLowerCase();
+        return new Message(data.value.toLowerCase());
     }
 }
 

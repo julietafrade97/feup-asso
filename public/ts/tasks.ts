@@ -6,13 +6,13 @@ export class Message {
 }
 
 export abstract class State {
-    constructor(public task: Task) {}
+    constructor(public task: Task) { }
     /**
      * Executes the task action
      * @param data message to process
      * @returns the data sent to the next task
      */
-    public abstract execute(data: Message) : Message;
+    public abstract execute(data: Message): Message;
 }
 
 class Active extends State {
@@ -41,9 +41,9 @@ export class Task {
     constructor() {
         this.state = new Active(this);
     }
-    
+
     changeState(): void {
-        if(this.state instanceof Active) {
+        if (this.state instanceof Active) {
             this.state = new Idle(this);
         } else {
             this.state = new Active(this);
@@ -53,15 +53,14 @@ export class Task {
     addFilter(filter: Task): void {
         this.filters.push(filter);
     }
-    
+
     modifyData(data: Message): Message {
         return Message.none;
     }
 
-    next(data: Message): void {
-        let result;
+    next(data: Message) {
         this.filters.forEach(filter => {
-            result = filter.execute(data);
+            filter.execute(data);
         });
 
         console.log("fim da recipe. Data = " + data.value);
@@ -72,8 +71,8 @@ export class Task {
      * @param data message to pass through the chain of tasks
      * @returns The message that was passed to the next task
      */
-    execute(data: Message): Message {
-        return this.state.execute(data)
+    execute(data: Message) {
+        return this.state.execute(data);
     }
 }
 
@@ -91,24 +90,24 @@ export class Node {
     constructor(id: number, task: Task, label: string) {
         this.task = task;
         this.id = id;
-        this.label =  label;
+        this.label = label;
     }
 
     public getOptions() {
         let options: string[] = [];
-        if(this.pause) {
+        if (this.pause) {
             options.push("Reactivate");
         } else {
             options.push("Pause");
         }
 
-        if(this.debugMode) {
+        if (this.debugMode) {
             options.push("Stop debugging");
         } else {
             options.push("Debug");
         }
 
-        if(this.changeOutputMode) {
+        if (this.changeOutputMode) {
             options.push("New value");
             options.push("Remove changes on the output");
         }
@@ -128,8 +127,8 @@ export class Node {
     }
 
     public changeOutput(newData: string) {
-        if(this.changeOutputMode) { 
-            if(this.task instanceof ChangeOutputDecorator) { // ChangeOutputDecorator wrapping another task
+        if (this.changeOutputMode) {
+            if (this.task instanceof ChangeOutputDecorator) { // ChangeOutputDecorator wrapping another task
                 (<ChangeOutputDecorator>this.task).setNewData(newData);
             } else { // DebugDecorator wrapping ChangeOutputDecorator
                 (<ChangeOutputDecorator>(<DebugDecorator>this.task).wrappee).setNewData(newData);
@@ -170,10 +169,10 @@ export class Node {
 export class Recipe {
     public name: string;
     public nodes: Node[] = [];
-    public edges: Array<{from: number, to: number}> = [];
+    public edges: Array<{ from: number, to: number }> = [];
     public startingNode: Node = null;
 
-    constructor() {}
+    constructor() { }
 
     public setStartingNode(node: Node) {
         this.startingNode = node;
@@ -182,8 +181,8 @@ export class Recipe {
     public addNode(id: number, task: Task, label: string) {
         const node: Node = new Node(id, task, label);
         this.nodes.push(node);
-        
-        if(this.startingNode === null) {
+
+        if (this.startingNode === null) {
             this.startingNode = node;
         }
         return node;
@@ -194,11 +193,11 @@ export class Recipe {
         const destNode: Node = this.nodes.find(node => node.id === dest);
         srcNode.connectTask(destNode.task);
 
-        if(this.startingNode == destNode) {
+        if (this.startingNode == destNode) {
             this.startingNode = srcNode;
         }
 
-        this.edges.push({from: src, to: dest});
+        this.edges.push({ from: src, to: dest });
     }
 
     //[TODO]: se calhar podiamos usar strategy aqui para o run poder ter dois comportamentos diferentes:
@@ -255,7 +254,7 @@ export class ChangeOutputDecorator extends TaskDecorator {
     setNewData(data: string) {
         this.newData = data;
     }
-    
+
     execute(data: Message): Message {
         // change data
         data.value = this.newData;
