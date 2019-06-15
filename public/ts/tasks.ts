@@ -1,8 +1,8 @@
 import { resolve } from "url";
 
 export class Message {
-    constructor(public value: any, public from: string, public to: string) { }
-    static none = new Message(null, "", "")
+    constructor(public value: any) { }
+    static none = new Message(null)
 }
 
 export abstract class State {
@@ -18,7 +18,7 @@ export abstract class State {
 class Active extends State {
     public execute(data: Message): Message {
         const modified: Message = this.task.modifyData(data);
-        const send: Message = new Message(modified.value, modified.from, modified.to);
+        const send: Message = new Message(modified.value);
         
         let promise = new Promise(function(){
             this.task.next(send);
@@ -32,7 +32,7 @@ class Active extends State {
 
 class Idle extends State {
     public execute(data: Message): Message {
-        const send: Message = new Message(data.value, data.from, data.to);
+        const send: Message = new Message(data.value);
 
         let promise = new Promise(function(){
             this.task.next(send);
@@ -245,7 +245,7 @@ export class DebugDecorator extends TaskDecorator {
     execute(data: Message): Message {
         const receivedMsg: Message = super.execute(data);
         // [TODO] show task current state/info
-        this.content = new Message(this.currentState(receivedMsg.value), receivedMsg.from, receivedMsg.to);
+        this.content = new Message(this.currentState(receivedMsg.value));
         return this.content;
     }
 

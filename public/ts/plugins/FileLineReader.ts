@@ -29,17 +29,17 @@ export class FileLineReader  extends Task {
     lines: string[];
 
     modifyData(data: Message): Message {
-        return new Message(this.lines.shift(), data.from, data.to);
+        return new Message(this.lines.shift());
     }
 
     execute(data: Message): Message {
-        this.lines = readFileSync(data.from, 'utf-8').split('\n');
+        this.lines = readFileSync("../../../read-file.txt", 'utf-8').split('\n');
         const result = this.lines;
         while(this.lines.length > 0) {
             super.execute(data);
         }
 
-        return new Message(result, "", "");
+        return new Message(result);
     }
 }
 
