@@ -34,7 +34,12 @@ function setSelectNodeOptions() {
   });
 }
 
-const getInstallablePlugins = () => Object.keys(plugins.AllPlugins).filter(key => !plugins.LoadedPlugins.includes(key));
+/**
+ * Get list of installed plugins.
+ */
+const getInstallablePlugins = () => {
+  return Object.keys(plugins.AllPlugins).filter(key => !plugins.LoadedPlugins.includes(key));
+};
 
 /**
  * Add "Install Task" dropdown options.
@@ -197,7 +202,7 @@ document.getElementById('file-read-input').oninput = () => {
 };
 
 graph.network.on('click', (properties) => {
-  if (properties.nodes !== undefined) {
+  if (properties.nodes.length !== 0) {
     if (node1 && node2) {
       graph.nodes.update({ id: node1, font: { size: 14 } });
       node1 = node2;
