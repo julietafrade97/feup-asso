@@ -116,6 +116,25 @@ export class Facade {
         return node.isActive === 0;
     }
 
+    /**
+     * Add decorator to node to change his output value
+     * @param nodeId The node which to we will add decorator
+     * @param newOutput The new ouput value that the node will send to the next node
+     */
+    public changeNodeOutput(nodeId: number, newOutput: string) {
+        const node = this.currentRecipe.getNode(nodeId);
+        node.changeOutput(newOutput);
+    }
+
+    /**
+     * Removes node decorator that was changing its output value
+     * @param nodeId The node from which we will remove the decorator
+     */
+    public disableChangeNodeOutput(nodeId: number) {
+        const node = this.currentRecipe.getNode(nodeId);
+        node.disableChangeOutput();
+    }
+
     public execute(fileInput: string, userInput: string): string {
         return this.currentRecipe.run(fileInput, userInput);
     }
