@@ -137,8 +137,8 @@ export class Facade {
     }
 
     /**
-     * Add decorator to node to change his output value
-     * @param nodeId The node which to we will add decorator
+     * Add decorator to node to change its output value
+     * @param nodeId The node to which we will add decorator
      * @param newOutput The new ouput value that the node will send to the next node
      */
     public changeNodeOutput(nodeId: number, newOutput: string) {
@@ -161,6 +161,15 @@ export class Facade {
      */
     public getTraceLog(nodeId: number): string {
         return this.currentRecipe.getNode(nodeId).getTraceLog();
+    }
+    
+    /**
+     * Add decorator to node to enable debug mode
+     * @param nodeId The node to which we will add decorator
+     */
+    public enableDebug(nodeId: number) {
+        const node = this.currentRecipe.getNode(nodeId);
+        node.enableDebug();
     }
 
     public execute(fileInput: string, userInput: string): string {

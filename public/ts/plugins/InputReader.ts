@@ -1,5 +1,5 @@
 import { Creator } from "../creational";
-import { Task, State, Message, Prototype } from "../tasks";
+import { Task, State, Message, Prototype, Node } from "../tasks";
 import { readFileSync } from "fs";	
 
 const fs = require('fs');
@@ -26,7 +26,7 @@ class ReaderCreator extends Creator{
  */
 export class InputReader extends Task {
     state: State;
-    filters: Task[];
+    filters: Node[];
     text: string;
 
     constructor(prototype: InputReader) {

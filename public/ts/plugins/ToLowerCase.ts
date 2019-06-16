@@ -1,5 +1,5 @@
 import { Creator } from "../creational";
-import { Task, State, Message, Prototype } from "../tasks";
+import { Task, State, Message, Prototype, Node } from "../tasks";
 /**
  * Creator of Task ToLowerCase
  */
@@ -24,7 +24,7 @@ class ToLowerCaseCreator extends Creator{
 class ToLowerCase extends Task {
     
     state: State;
-    filters: Task[];
+    filters: Node[];
 
     constructor(prototype: ToLowerCase) {
         super(prototype);

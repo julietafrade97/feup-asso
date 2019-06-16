@@ -1,5 +1,5 @@
 import { Creator } from "../creational";
-import { Task, State, Message, Prototype } from "../tasks";
+import { Task, State, Message, Prototype, Node } from "../tasks";
 
 /**
  * Creator of Task FileLineReader
@@ -23,7 +23,7 @@ class FileLineReaderCreator extends Creator{
  * Task to read from a file, line by line
  */
 export class FileLineReader  extends Task {
-    filters: Task[];
+    filters: Node[];
     lines: string[] = [];
 
     constructor(prototype: FileLineReader) {

@@ -1,5 +1,5 @@
 import { Creator } from "../creational";
-import { Task, State, Message, Prototype } from "../tasks";
+import { Task, State, Message, Prototype, Node } from "../tasks";
 const fs = require('fs');
 
 /**
@@ -25,7 +25,7 @@ class WriterCreator extends Creator{
  */
 class Writer extends Task {
     state: State;
-    filters: Task[];
+    filters: Node[];
 
     constructor(prototype: Writer) {
         super(prototype);
