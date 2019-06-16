@@ -187,6 +187,27 @@ export class Recipe implements Prototype {
         return node;
     }
 
+    public addMissingEdges(id: number) {
+        const leftEdges = this.edges.filter(edge => edge.to === id);
+        const rightEdges = this.edges.filter(edge => edge.from === id);
+
+        leftEdges.forEach(leftEdge => rightEdges.forEach(rightEdge => {
+            this.connectNodes(leftEdge.from, rightEdge.to);
+        }));
+    }
+
+    public deleteEdgesConnectedTo(id: number) {
+        this.edges = this.edges.filter(edge => edge.from !== id && edge.to !== id);
+    }
+
+    public deleteEdge(from: number, to: number) {
+        this.edges = this.edges.filter(edge => edge.from !== from && edge.to !== to);
+    }
+
+    public deleteNode(id: number) {
+        this.nodes.splice(this.nodes.findIndex(node => node.id === id), 1);
+    }
+
     public connectNodes(src: number, dest: number): void {
         const srcNode: Node = this.nodes.find(node => node.id === src);
         const destNode: Node = this.nodes.find(node => node.id === dest);

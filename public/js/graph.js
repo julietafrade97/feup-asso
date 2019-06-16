@@ -43,10 +43,19 @@ const update = () => {
     edges.clear();
     return;
   }
+
+  if (nodes.length > facade.currentRecipe.nodes.length) {
+    nodes.clear();
+  }
+
+  if (edges.length > facade.currentRecipe.edges.length) {
+    edges.clear();
+  }
+
   if (nodes.length !== facade.currentRecipe.nodes.length) {
     nodes.update(facade.currentRecipe.nodes);
   }
-  console.log(nodes);
+
   if (edges.length !== facade.currentRecipe.edges.length) {
     edges.update(facade.currentRecipe.edges);
   }

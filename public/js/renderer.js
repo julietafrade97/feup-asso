@@ -148,6 +148,13 @@ loadRecipeDialog.listen('MDCDialog:closing', (evt) => {
   }
 });
 
+nodeInfoDialog.listen('MDCDialog:closing', (evt) => {
+  if (evt.detail.action === 'delete') {
+    graph.facade.deleteNode(nodeShowingInfo);
+    graph.update();
+  }
+});
+
 nodeInfoDialog.listen('MDCDialog:opening', () => {
   if (nodeShowingInfo) {
     isDisabledCheckbox.checked = graph.facade.isNodeIdle(nodeShowingInfo);
@@ -213,10 +220,19 @@ document.querySelector('#install-task').addEventListener('click', () => installT
 document.querySelector('#uninstall-task').addEventListener('click', () => uninstallTaskDialog.open());
 document.querySelector('#save-recipe').addEventListener('click', () => saveRecipeDialog.open());
 document.querySelector('#load-recipe').addEventListener('click', () => loadRecipeDialog.open());
+
 graph.network.on('doubleClick', (evt) => {
-  const [node] = evt.nodes;
-  nodeShowingInfo = node;
-  nodeInfoDialog.open();
+  if (evt.edges.length > 0) {
+    const edge = graph.edges.get(evt.edges[0]);
+    graph.facade.deleteEdge(edge.from, edge.to);
+    graph.update();
+  }
+
+  if (evt.nodes.length > 0) {
+    const [node] = evt.nodes;
+    nodeShowingInfo = node;
+    nodeInfoDialog.open();
+  }
 });
 
 isDisabledCheckbox.listen('change', () => {
