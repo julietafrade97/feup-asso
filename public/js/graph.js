@@ -1,6 +1,4 @@
-/* eslint-disable no-console */
 const vis = require('vis');
-const mdc = require('material-components-web');
 const FacadeLib = require('./compiled/facade').Facade;
 
 const facade = new FacadeLib();
@@ -52,7 +50,7 @@ const update = () => {
   if (edges.length !== facade.currentRecipe.edges.length) {
     edges.update(facade.currentRecipe.edges);
   }
-}
+};
 
 module.exports = {
   network, nodes, edges, facade, update,
