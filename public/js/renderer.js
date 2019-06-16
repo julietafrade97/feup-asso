@@ -75,6 +75,7 @@ const installTaskDialog = new mdc.dialog.MDCDialog(document.querySelector('#inst
 const uninstallTaskDialog = new mdc.dialog.MDCDialog(document.querySelector('#uninstall-task-dialog'));
 const saveRecipeDialog = new mdc.dialog.MDCDialog(document.querySelector('#save-recipe-dialog'));
 const loadRecipeDialog = new mdc.dialog.MDCDialog(document.querySelector('#load-recipe-dialog'));
+const nodeInfoDialog = new mdc.dialog.MDCDialog(document.querySelector('#node-info-dialog'));
 
 addNodeDialog.listen('MDCDialog:closing', (evt) => {
   if (evt.detail.action === 'yes') {
@@ -126,6 +127,16 @@ document.querySelector('#install-task').addEventListener('click', () => installT
 document.querySelector('#uninstall-task').addEventListener('click', () => uninstallTaskDialog.open());
 document.querySelector('#save-recipe').addEventListener('click', () => saveRecipeDialog.open());
 document.querySelector('#load-recipe').addEventListener('click', () => loadRecipeDialog.open());
+graph.network.on('doubleClick', () => nodeInfoDialog.open());
+
+
+// Listeners for node information checkboxes.
+const isEnabledCheckbox = new mdc.checkbox.MDCCheckbox(document.querySelector('#enabled-checkbox'));
+const isDebugModeCheckbox = new mdc.checkbox.MDCCheckbox(document.querySelector('#debug-checkbox'));
+
+nodeInfoDialog.listen('MDCDialog:closed', () => {
+  console.log(isEnabledCheckbox.checked, isDebugModeCheckbox.checked);
+});
 
 // File read handling.
 document.querySelector('#file-read-button').addEventListener('click', () => {
