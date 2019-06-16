@@ -8,7 +8,7 @@ const fs = require('fs');
 class WriterCreator extends Creator{
 
     createTask(): Task{
-        return new Writer();
+        return new Writer(null);
     }
 
     public static getInstance(): Creator{
@@ -29,6 +29,7 @@ class Writer extends Task {
 
     constructor(prototype: Writer) {
         super(prototype);
+        super.output = true;
     }
 
     public clone(): Prototype {
@@ -36,11 +37,11 @@ class Writer extends Task {
     }
 
     modifyData(data: Message): Message {
-        fs.appendFile("../../../write-file.txt", data.value, function (err) {
-            if (err) throw err;
-            console.log('Saved!');
-        });
-
+        if(this.content.value === null) {
+            this.content.value = "";
+        }
+        const value: string = this.content.value + data.value + " ";
+        this.content = new Message(value);
         return data;
     }
 

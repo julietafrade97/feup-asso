@@ -1,13 +1,18 @@
 <html>
+
 <head>
     <link href="css/vis.css" rel="stylesheet" type="text/css" />
+    <link href="css/my-style.css" rel="stylesheet" type="text/css" />
     <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
     <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Roboto:500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
+
 <body>
-    <div id="add-node-dialog" class="mdc-dialog" role="alertdialog" aria-modal="true" aria-labelledby="my-dialog-title-add-node" aria-describedby="my-dialog-content">
+    <div>
+    <div id="add-node-dialog" class="mdc-dialog" role="alertdialog" aria-modal="true"
+        aria-labelledby="my-dialog-title-add-node" aria-describedby="my-dialog-content">
         <div class="mdc-dialog__container">
             <div class="mdc-dialog__surface">
                 <!-- Title cannot contain leading whitespace due to mdc-typography-baseline-top() -->
@@ -19,7 +24,7 @@
                     </select>
                     <label class="mdc-floating-label"></label>
                     <div class="mdc-line-ripple"></div>
-                  </div>
+                </div>
                 <footer class="mdc-dialog__actions">
                     <button type="button" class="mdc-button mdc-dialog__button" data-mdc-dialog-action="no">
                         <span class="mdc-button__label">Cancel</span>
@@ -33,7 +38,8 @@
         <div class="mdc-dialog__scrim"></div>
     </div>
 
-    <div id="install-task-dialog" class="mdc-dialog" role="alertdialog" aria-modal="true" aria-labelledby="my-dialog-title-install" aria-describedby="my-dialog-content">
+    <div id="install-task-dialog" class="mdc-dialog" role="alertdialog" aria-modal="true"
+        aria-labelledby="my-dialog-title-install" aria-describedby="my-dialog-content">
         <div class="mdc-dialog__container">
             <div class="mdc-dialog__surface">
                 <!-- Title cannot contain leading whitespace due to mdc-typography-baseline-top() -->
@@ -45,7 +51,7 @@
                     </select>
                     <label class="mdc-floating-label"></label>
                     <div class="mdc-line-ripple"></div>
-                  </div>
+                </div>
                 <footer class="mdc-dialog__actions">
                     <button type="button" class="mdc-button mdc-dialog__button" data-mdc-dialog-action="no">
                         <span class="mdc-button__label">Cancel</span>
@@ -59,7 +65,8 @@
         <div class="mdc-dialog__scrim"></div>
     </div>
 
-    <div id="uninstall-task-dialog" class="mdc-dialog" role="alertdialog" aria-modal="true" aria-labelledby="my-dialog-title-uninstall" aria-describedby="my-dialog-content">
+    <div id="uninstall-task-dialog" class="mdc-dialog" role="alertdialog" aria-modal="true"
+        aria-labelledby="my-dialog-title-uninstall" aria-describedby="my-dialog-content">
         <div class="mdc-dialog__container">
             <div class="mdc-dialog__surface">
                 <!-- Title cannot contain leading whitespace due to mdc-typography-baseline-top() -->
@@ -71,7 +78,7 @@
                     </select>
                     <label class="mdc-floating-label"></label>
                     <div class="mdc-line-ripple"></div>
-                  </div>
+                </div>
                 <footer class="mdc-dialog__actions">
                     <button type="button" class="mdc-button mdc-dialog__button" data-mdc-dialog-action="no">
                         <span class="mdc-button__label">Cancel</span>
@@ -85,7 +92,8 @@
         <div class="mdc-dialog__scrim"></div>
     </div>
 
-    <div id="node-info-dialog" class="mdc-dialog" role="alertdialog" aria-modal="true" aria-labelledby="my-dialog-title-save" aria-describedby="my-dialog-content">
+    <div id="node-info-dialog" class="mdc-dialog" role="alertdialog" aria-modal="true"
+        aria-labelledby="my-dialog-title-save" aria-describedby="my-dialog-content">
         <div class="mdc-dialog__container">
             <div class="mdc-dialog__surface">
                 <!-- Title cannot contain leading whitespace due to mdc-typography-baseline-top() -->
@@ -98,20 +106,22 @@
                 </div>
                 <div id="enabled-checkbox" class="mdc-checkbox">
                     <div class="mdc-typography--overline" id="my-dialog-title">Enabled</div>
-                    <input type="checkbox" class="mdc-checkbox__native-control" id="checkbox-1"/>
+                    <input type="checkbox" class="mdc-checkbox__native-control" id="checkbox-1" />
                     <div class="mdc-checkbox__background">
                         <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
-                            <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
+                            <path class="mdc-checkbox__checkmark-path" fill="none"
+                                d="M1.73,12.91 8.1,19.28 22.79,4.59" />
                         </svg>
                         <div class="mdc-checkbox__mixedmark"></div>
                     </div>
                 </div>
                 <div id="debug-checkbox" class="mdc-checkbox">
                     <div class="mdc-typography--overline" id="my-dialog-title">Debug mode</div>
-                    <input type="checkbox" class="mdc-checkbox__native-control" id="checkbox-1"/>
+                    <input type="checkbox" class="mdc-checkbox__native-control" id="checkbox-1" />
                     <div class="mdc-checkbox__background">
                         <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
-                            <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
+                            <path class="mdc-checkbox__checkmark-path" fill="none"
+                                d="M1.73,12.91 8.1,19.28 22.79,4.59" />
                         </svg>
                         <div class="mdc-checkbox__mixedmark"></div>
                     </div>
@@ -126,7 +136,8 @@
         <div class="mdc-dialog__scrim"></div>
     </div>
 
-    <div id="save-recipe-dialog" class="mdc-dialog" role="alertdialog" aria-modal="true" aria-labelledby="my-dialog-title-save" aria-describedby="my-dialog-content">
+    <div id="save-recipe-dialog" class="mdc-dialog" role="alertdialog" aria-modal="true"
+        aria-labelledby="my-dialog-title-save" aria-describedby="my-dialog-content">
         <div class="mdc-dialog__container">
             <div class="mdc-dialog__surface">
                 <!-- Title cannot contain leading whitespace due to mdc-typography-baseline-top() -->
@@ -147,7 +158,8 @@
         <div class="mdc-dialog__scrim"></div>
     </div>
 
-    <div id="load-recipe-dialog" class="mdc-dialog" role="alertdialog" aria-modal="true" aria-labelledby="my-dialog-title-node-info" aria-describedby="my-dialog-content">
+    <div id="load-recipe-dialog" class="mdc-dialog" role="alertdialog" aria-modal="true"
+        aria-labelledby="my-dialog-title-node-info" aria-describedby="my-dialog-content">
         <div class="mdc-dialog__container">
             <div class="mdc-dialog__surface">
                 <!-- Title cannot contain leading whitespace due to mdc-typography-baseline-top() -->
@@ -159,7 +171,7 @@
                     </select>
                     <label class="mdc-floating-label"></label>
                     <div class="mdc-line-ripple"></div>
-                  </div>
+                </div>
                 <footer class="mdc-dialog__actions">
                     <button type="button" class="mdc-button mdc-dialog__button" data-mdc-dialog-action="no">
                         <span class="mdc-button__label">Cancel</span>
@@ -172,21 +184,37 @@
         </div>
         <div class="mdc-dialog__scrim"></div>
     </div>
+    <div>
+        <div>
+            <button class="foo-button mdc-button" id="add-node">New Node</button>
+            <button class="foo-button mdc-button" id="add-edge">New Edge</button>
+            <button id="toggle-execution-button" class="foo-button mdc-button">Execute</button>
+            <button id="toggle-new-recipe-button" class="foo-button mdc-button">New Recipe</button>
+            <div id="mynetwork"></div>
+            <button id="install-task" class="foo-button mdc-button">Install Task</button>
+            <button id="uninstall-task" class="foo-button mdc-button">Uninstall Task</button>
+            <button id="save-recipe" class="foo-button mdc-button">Save Recipe</button>
+            <button id="load-recipe" class="foo-button mdc-button">Load Recipe</button>
 
-    <button class="foo-button mdc-button" id="add-node">New Node</button>
-    <button class="foo-button mdc-button" id="add-edge">New Edge</button>
-    <button id="toggle-execution-button" class="foo-button mdc-button">Execute</button>
-    <button id="toggle-new-recipe-button" class="foo-button mdc-button">New Recipe</button>
-    <div id="mynetwork"></div>
-    <button id="install-task" class="foo-button mdc-button">Install Task</button>
-    <button id="uninstall-task" class="foo-button mdc-button">Uninstall Task</button>
-    <button id="save-recipe" class="foo-button mdc-button">Save Recipe</button>
-    <button id="load-recipe" class="foo-button mdc-button">Load Recipe</button>
-    
-    <button id="file-read-button" class="foo-button mdc-button">Load File</button>
-    <input type="file" id="file-read-input" style="display:none">
+            <button id="file-read-button" class="foo-button mdc-button">Load File</button>
+            <input type="file" id="file-read-input" style="display:none">
+        </div>
+
+        <div id="user-input">
+            <h2 class="vis-title">Input</h2>
+            <input type="text">
+        </div>
+        <div id="result-output">
+            <h2 class="vis-title">Output</h2>
+            <!-- <input type="text" value="result..." readonly> -->
+            <div></div>
+        </div>
+        
+    </div>
+</div>
 
     <script src="js/graph-bundle.js" type="text/javascript"></script>
     <script src="js/renderer-bundle.js" type="text/javascript"></script>
 </body>
+
 </html>

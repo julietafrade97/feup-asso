@@ -38,6 +38,7 @@ export class Task implements Prototype {
     filters: Task[] = [];
     content: Message = Message.none;
     input: boolean = false;
+    output: boolean = false;
 
     constructor(prototype: Task) {
         if(prototype !== null) {
@@ -217,9 +218,15 @@ export class Recipe implements Prototype {
     //[TODO]: se calhar podiamos usar strategy aqui para o run poder ter dois comportamentos diferentes:
     // ou começava com a mensagem a nulo (Message.none)
     // ou pediamos input ao utilizador e punhamos na mensagem (new Message(value, from, to))
-    public run(text: string) {
+    public run(text: string): string {
         const startingNodes: Node[] = this.nodes.filter(node => node.task.input);
         startingNodes.forEach(node => node.task.execute(new Message(text)));
+        let result: string = "";
+        this.nodes.filter(node => node.task.output).forEach(node => {
+            result += node.task.content.value + '\n';
+            node.task.content.value = "";
+        });
+        return result;
     }
 }
 

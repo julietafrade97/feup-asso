@@ -1,0 +1,19 @@
+#user-input {
+    margin-top: 10px;
+}
+
+#user-input input {
+    width: 600px;
+}
+
+#result-output input {
+    width: 600px;
+    height: 200px;
+}
+
+#result-output div {
+    border-style: groove;
+    width: 600px;
+    height: 200px;
+    overflow: auto;
+}

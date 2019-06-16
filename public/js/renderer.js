@@ -151,7 +151,15 @@ document.querySelector('#toggle-execution-button').addEventListener('click', () 
     read.readAsBinaryString(file);
     // eslint-disable-next-line func-names
     read.onloadend = function () {
-      graph.facade.execute(read.result);
+      const output = graph.facade.execute(read.result);
+      output.trim();
+      const div = document.querySelector('#result-output div');
+      div.innerHTML = '';
+      output.split(' ').forEach((s) => {
+        const line = document.createElement('p');
+        line.innerHTML = s;
+        div.appendChild(line);
+      });
     };
     button.innerHTML = 'Execute';
   } else if (button.innerHTML === 'Pause') {
