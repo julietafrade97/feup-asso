@@ -32,9 +32,7 @@ function setSelectNodeOptions() {
   });
 }
 
-const getInstallablePlugins = () => {
-  return Object.keys(plugins.AllPlugins).filter(key => !plugins.LoadedPlugins.includes(key));
-};
+const getInstallablePlugins = () => Object.keys(plugins.AllPlugins).filter(key => !plugins.LoadedPlugins.includes(key));
 
 /**
  * Add "Install Task" dropdown options.
@@ -75,6 +73,8 @@ document.addEventListener('DOMContentLoaded', () => {
 const addNodeDialog = new mdc.dialog.MDCDialog(document.querySelector('#add-node-dialog'));
 const installTaskDialog = new mdc.dialog.MDCDialog(document.querySelector('#install-task-dialog'));
 const uninstallTaskDialog = new mdc.dialog.MDCDialog(document.querySelector('#uninstall-task-dialog'));
+const saveRecipeDialog = new mdc.dialog.MDCDialog(document.querySelector('#save-recipe-dialog'));
+const loadRecipeDialog = new mdc.dialog.MDCDialog(document.querySelector('#load-recipe-dialog'));
 
 addNodeDialog.listen('MDCDialog:closing', (evt) => {
   if (evt.detail.action === 'yes') {
@@ -120,18 +120,12 @@ document.querySelector('#toggle-execution-button').addEventListener('click', (ev
 });
 
 document.querySelector('#add-node').addEventListener('click', () => addNodeDialog.open());
-document.querySelector('#add-edge').addEventListener('click', () => {
-  if (node1 && node2) {
-    // graph.edges.add({ from: node1, to: node2 });
-    graph.facade.connectNodes(node1, node2);
-    graph.update();
-  }
-  node1 = undefined; node2 = undefined;
-});
 
 // Listeners for click events which open dialogs.
 document.querySelector('#install-task').addEventListener('click', () => installTaskDialog.open());
 document.querySelector('#uninstall-task').addEventListener('click', () => uninstallTaskDialog.open());
+document.querySelector('#save-recipe').addEventListener('click', () => saveRecipeDialog.open());
+document.querySelector('#load-recipe').addEventListener('click', () => loadRecipeDialog.open());
 
 // File read handling.
 document.querySelector('#file-read-button').addEventListener('click', () => {
@@ -144,9 +138,33 @@ document.getElementById('file-read-input').oninput = () => {
 
 graph.network.on('click', (properties) => {
   if (properties.nodes !== undefined) {
-    if (node2) [node1] = properties.nodes; node2 = undefined;
+    if (node1 && node2) {
+      graph.nodes.update({ id: node1, font: { size: 14 } });
+      node1 = node2;
+      [node2] = properties.nodes;
+      graph.nodes.update({ id: node1, font: { size: 18 } });
+      graph.nodes.update({ id: node2, font: { size: 18 } });
+    }
 
-    if (!node1) [node1] = properties.nodes;
-    else [node2] = properties.nodes;
+    if (node1 && !node2) {
+      [node2] = properties.nodes;
+      graph.nodes.update({ id: node2, font: { size: 18 } });
+    }
+
+    if (!node1 && !node2) {
+      [node1] = properties.nodes;
+      graph.nodes.update({ id: node1, font: { size: 18 } });
+    }
   }
+});
+
+document.querySelector('#add-edge').addEventListener('click', () => {
+  if (node1 && node2) {
+    // graph.edges.add({ from: node1, to: node2 });
+    graph.facade.connectNodes(node1, node2);
+    graph.nodes.update({ id: node1, font: { size: 14 } });
+    graph.nodes.update({ id: node2, font: { size: 14 } });
+    graph.update();
+  }
+  node1 = undefined; node2 = undefined;
 });

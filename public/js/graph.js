@@ -39,8 +39,7 @@ const options = {
 // initialize your network!
 const network = new vis.Network(container, data, options);
 
-network.on('click', (properties) => {
-  console.log(properties.nodes[0]);
+network.on('doubleClick', (properties) => {
   const addNodeDialog = new mdc.dialog.MDCDialog(document.querySelector('#node-info-dialog'));
   addNodeDialog.open();
   // nodes.update({ id: properties.nodes[0], title: 'I got clicked.' });
