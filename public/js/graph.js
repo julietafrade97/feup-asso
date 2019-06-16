@@ -46,7 +46,7 @@ const update = () => {
   if (nodes.length !== facade.currentRecipe.nodes.length) {
     nodes.update(facade.currentRecipe.nodes);
   }
-
+  console.log(nodes);
   if (edges.length !== facade.currentRecipe.edges.length) {
     edges.update(facade.currentRecipe.edges);
   }

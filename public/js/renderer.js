@@ -37,9 +37,8 @@ function setSelectNodeOptions() {
 /**
  * Get list of installed plugins.
  */
-const getInstallablePlugins = () => {
-  return Object.keys(plugins.AllPlugins).filter(key => !plugins.LoadedPlugins.includes(key));
-};
+// eslint-disable-next-line max-len
+const getInstallablePlugins = () => Object.keys(plugins.AllPlugins).filter(key => !plugins.LoadedPlugins.includes(key));
 
 /**
  * Add "Install Task" dropdown options.
@@ -104,6 +103,9 @@ const uninstallTaskDialog = new mdc.dialog.MDCDialog(document.querySelector('#un
 const saveRecipeDialog = new mdc.dialog.MDCDialog(document.querySelector('#save-recipe-dialog'));
 const loadRecipeDialog = new mdc.dialog.MDCDialog(document.querySelector('#load-recipe-dialog'));
 const nodeInfoDialog = new mdc.dialog.MDCDialog(document.querySelector('#node-info-dialog'));
+// Listeners for node information checkboxes.
+const isDisabledCheckbox = new mdc.checkbox.MDCCheckbox(document.querySelector('#disabled-checkbox'));
+const isDebugModeCheckbox = new mdc.checkbox.MDCCheckbox(document.querySelector('#debug-checkbox'));
 
 addNodeDialog.listen('MDCDialog:closing', (evt) => {
   if (evt.detail.action === 'yes') {
@@ -142,6 +144,12 @@ loadRecipeDialog.listen('MDCDialog:closing', (evt) => {
     const recipeName = document.querySelectorAll('#load-recipe-dialog option:checked')[0].innerHTML;
     graph.facade.loadRecipe(recipeName);
     graph.update();
+  }
+});
+
+nodeInfoDialog.listen('MDCDialog:opening', () => {
+  if (nodeShowingInfo) {
+    isDisabledCheckbox.checked = graph.facade.isNodeIdle(nodeShowingInfo);
   }
 });
 
@@ -198,11 +206,6 @@ graph.network.on('doubleClick', (evt) => {
   nodeShowingInfo = node;
   nodeInfoDialog.open();
 });
-
-
-// Listeners for node information checkboxes.
-const isDisabledCheckbox = new mdc.checkbox.MDCCheckbox(document.querySelector('#disabled-checkbox'));
-const isDebugModeCheckbox = new mdc.checkbox.MDCCheckbox(document.querySelector('#debug-checkbox'));
 
 isDisabledCheckbox.listen('change', () => {
   graph.facade.changeNodeState(nodeShowingInfo);

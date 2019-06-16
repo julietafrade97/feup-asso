@@ -94,6 +94,7 @@ export class Node {
     public task: Task;
     public id: number;
     public label: string;
+    public isActive: number = 1;
     public pause: boolean;
     public debugMode: boolean;
     public changeOutputMode: boolean;
@@ -127,6 +128,7 @@ export class Node {
 
     public changeState() {
         this.task.changeState();
+        this.isActive = this.isActive === 1 ? 0 : 1;
     }
 
     public connectTask(nextTask: Task) {
