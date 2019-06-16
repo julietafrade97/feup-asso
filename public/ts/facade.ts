@@ -155,6 +155,14 @@ export class Facade {
         node.disableChangeOutput();
     }
 
+    /**
+     * 
+     * @param nodeId The node from which we'll extract the trace message.
+     */
+    public getTraceLog(nodeId: number): string {
+        return this.currentRecipe.getNode(nodeId).getTraceLog();
+    }
+
     public execute(fileInput: string, userInput: string): string {
         return this.currentRecipe.run(fileInput, userInput);
     }

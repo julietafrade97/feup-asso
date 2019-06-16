@@ -278,7 +278,14 @@ isDisabledCheckbox.listen('change', () => {
 });
 
 isDebugModeCheckbox.listen('change', () => {
+  if (isDebugModeCheckbox.checked) {
+    document.getElementById('debug-mode-window').style.display = 'block';
 
+    const log = graph.facade.getTraceLog(nodeShowingInfo);
+    document.getElementById('trace-log-message').innerHTML = log;
+  } else {
+    document.getElementById('debug-mode-window').style.display = 'none';
+  }
 });
 
 // File read handling.
