@@ -31,6 +31,7 @@ export class FileLineReader  extends Task {
         if(prototype !== null) {
             this.lines = prototype.lines.slice(0);
         }
+        super.input = true;
     }
 
     public clone(): Prototype {

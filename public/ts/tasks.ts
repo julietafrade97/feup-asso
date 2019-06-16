@@ -37,6 +37,7 @@ export class Task implements Prototype {
     state: State;
     filters: Task[] = [];
     content: Message = Message.none;
+    input: boolean = false;
 
     constructor(prototype: Task) {
         if(prototype !== null) {
@@ -178,7 +179,6 @@ export class Recipe implements Prototype {
     public name: string = "";
     public nodes: Node[] = [];
     public edges: Array<{ from: number, to: number }> = [];
-    public startingNode: Node = null;
 
     constructor(prototype: Recipe) { 
         if(prototype !== null) {
@@ -188,11 +188,6 @@ export class Recipe implements Prototype {
                 this.nodes.push(copy);
             });
             this.edges = prototype.edges.slice(0);
-            if(prototype.startingNode === null) {
-                this.startingNode = null;
-            } else {
-                this.startingNode = this.nodes.find( node => node.id == prototype.startingNode.id);
-            }
         }
     }
 
@@ -200,28 +195,21 @@ export class Recipe implements Prototype {
         return new Recipe(this);
     }
 
-    public setStartingNode(node: Node) {
-        this.startingNode = node;
-    }
-
     public addNode(id: number, task: Task, label: string) {
         const node: Node = new Node(id, task, label);
         this.nodes.push(node);
 
-        if (this.startingNode === null) {
-            this.startingNode = node;
-        }
         return node;
     }
 
-    public connectNodes(src: number, dest: number) {
+    public connectNodes(src: number, dest: number): void {
         const srcNode: Node = this.nodes.find(node => node.id === src);
         const destNode: Node = this.nodes.find(node => node.id === dest);
-        srcNode.connectTask(destNode.task);
-
-        if (this.startingNode == destNode) {
-            this.startingNode = srcNode;
+        if(destNode.task.input) { // no task can connect to a read task
+            return;
         }
+
+        srcNode.connectTask(destNode.task);
 
         this.edges.push({ from: src, to: dest });
     }
@@ -230,7 +218,8 @@ export class Recipe implements Prototype {
     // ou começava com a mensagem a nulo (Message.none)
     // ou pediamos input ao utilizador e punhamos na mensagem (new Message(value, from, to))
     public run(text: string) {
-        this.startingNode.task.execute(new Message(text));
+        const startingNodes: Node[] = this.nodes.filter(node => node.task.input);
+        startingNodes.forEach(node => node.task.execute(new Message(text)));
     }
 }
 

@@ -34,6 +34,7 @@ export class Reader extends Task {
         if(prototype !== null) {
             this.text = prototype.text;
         }
+        super.input = true;
     }
 
     public clone(): Prototype {

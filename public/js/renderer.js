@@ -7,7 +7,7 @@ const plugins = require('./compiled/plugins/require-list.js');
 
 let node1;
 let node2;
-let file = '';
+let file = null;
 
 /**
  * Add "Add Node" dropdown options
@@ -139,14 +139,15 @@ loadRecipeDialog.listen('MDCDialog:closing', (evt) => {
 });
 
 
-document.querySelector('#toggle-execution-button').addEventListener('click', (evt) => {
+document.querySelector('#toggle-execution-button').addEventListener('click', () => {
   const button = document.querySelector('#toggle-execution-button');
 
   if (button.innerHTML === 'Execute') {
+    if (file === null) {
+      return;
+    }
     button.innerHTML = 'Pause';
-    // TODO: Execute logic here.
     const read = new FileReader();
-
     read.readAsBinaryString(file);
     // eslint-disable-next-line func-names
     read.onloadend = function () {
