@@ -40,6 +40,11 @@ const options = {
 const network = new vis.Network(container, data, options);
 
 const update = () => {
+  if (facade.currentRecipe.nodes.length === 0) {
+    nodes.clear();
+    edges.clear();
+    return;
+  }
   if (nodes.length !== facade.currentRecipe.nodes.length) {
     nodes.update(facade.currentRecipe.nodes);
   }

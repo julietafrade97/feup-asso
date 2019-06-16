@@ -13,7 +13,6 @@ export class Facade {
 
     constructor() {
         LoadedPlugins.forEach(pluginName => this.loadPlugin(pluginName));
-        this.addNode("FileLineReader")
     }
 
     /**

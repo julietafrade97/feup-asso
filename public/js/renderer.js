@@ -153,10 +153,16 @@ document.querySelector('#toggle-execution-button').addEventListener('click', () 
     read.onloadend = function () {
       graph.facade.execute(read.result);
     };
+    button.innerHTML = 'Execute';
   } else if (button.innerHTML === 'Pause') {
     button.innerHTML = 'Execute';
     // TODO: Pause logic here.
   }
+});
+
+document.querySelector('#toggle-new-recipe-button').addEventListener('click', () => {
+  graph.facade.newRecipe();
+  graph.update();
 });
 
 document.querySelector('#add-node').addEventListener('click', () => addNodeDialog.open());
