@@ -184,7 +184,12 @@ nodeInfoDialog.listen('MDCDialog:opening', () => {
 
 nodeInfoDialog.listen('MDCDialog:closing', (evt) => {
   if (evt.detail.action === 'yes') {
-    const newOutput = document.querySelectorAll('#change-output-tet-field input')[0].value;
+    const input = document.querySelectorAll('#change-output-tet-field input')[0];
+    if (graph.facade.isNodeIdle(nodeShowingInfo)) {
+      input.value = '';
+      return;
+    }
+    const newOutput = input.value;
     if (newOutput !== '') {
       graph.facade.changeNodeOutput(nodeShowingInfo, newOutput);
     } else {

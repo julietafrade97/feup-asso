@@ -138,6 +138,8 @@ export class Node {
     }
 
     public disableChangeOutput() {
+        if (!(this.task instanceof TaskDecorator)) return;
+        
         if (this.task instanceof ChangeOutputDecorator) { // ChangeOutputDecorator wrapping another task
             this.task = (<ChangeOutputDecorator>this.task).wrappee;
         } else { // DebugDecorator wrapping ChangeOutputDecorator
