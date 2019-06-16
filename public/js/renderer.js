@@ -106,6 +106,7 @@ const nodeInfoDialog = new mdc.dialog.MDCDialog(document.querySelector('#node-in
 // Listeners for node information checkboxes.
 const isDisabledCheckbox = new mdc.checkbox.MDCCheckbox(document.querySelector('#disabled-checkbox'));
 const isDebugModeCheckbox = new mdc.checkbox.MDCCheckbox(document.querySelector('#debug-checkbox'));
+// const changeOutputTextField = new mdc.checkbox.MDCTextField(document.querySelector('#change-output-tet-field'));
 
 addNodeDialog.listen('MDCDialog:closing', (evt) => {
   if (evt.detail.action === 'yes') {
@@ -157,6 +158,17 @@ nodeInfoDialog.listen('MDCDialog:closing', (evt) => {
 nodeInfoDialog.listen('MDCDialog:opening', () => {
   if (nodeShowingInfo) {
     isDisabledCheckbox.checked = graph.facade.isNodeIdle(nodeShowingInfo);
+  }
+});
+
+nodeInfoDialog.listen('MDCDialog:closing', (evt) => {
+  if (evt.detail.action === 'yes') {
+    const newOutput = document.querySelectorAll('#change-output-tet-field input')[0].value;
+    if (newOutput !== '') {
+      graph.facade.changeNodeOutput(nodeShowingInfo, newOutput);
+    } else {
+      graph.facade.disableChangeNodeOutput(nodeShowingInfo);
+    }
   }
 });
 

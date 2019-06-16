@@ -35,7 +35,7 @@ class Idle extends State {
 
 export class Task implements Prototype {
     state: State;
-    filters: Task[] = [];
+    filters: Node[] = [];
     content: Message = Message.none;
     file_input: boolean = false;
     user_input: boolean = false;
@@ -44,7 +44,7 @@ export class Task implements Prototype {
     constructor(prototype: Task) {
         if(prototype !== null) {
             this.content = new Message(prototype.content.value);
-            prototype.filters.forEach( filter => this.filters.push(<Task>filter.clone()));
+            prototype.filters.forEach( filter => this.filters.push(new Node(filter.id, <Task>filter.task.clone(), filter.label)));
         }
         this.state = new Active(this);
     }
@@ -61,7 +61,7 @@ export class Task implements Prototype {
         }
     }
 
-    addFilter(filter: Task): void {
+    addFilter(filter: Node): void {
         this.filters.push(filter);
     }
 
@@ -71,7 +71,7 @@ export class Task implements Prototype {
 
     next(data: Message) {
         this.filters.forEach(filter => {
-            filter.execute(data);
+            filter.task.execute(data);
         });
 
         console.log("fim da recipe. Data = " + data.value);
@@ -96,8 +96,8 @@ export class Node {
     public label: string;
     public isActive: number = 1;
     public pause: boolean;
-    public debugMode: boolean;
-    public changeOutputMode: boolean;
+    public debugMode: boolean = false;
+    public changeOutputMode: boolean = false;
 
     constructor(id: number, task: Task, label: string) {
         this.task = task;
@@ -105,34 +105,13 @@ export class Node {
         this.label = label;
     }
 
-    public getOptions() {
-        let options: string[] = [];
-        if (this.pause) {
-            options.push("Reactivate");
-        } else {
-            options.push("Pause");
-        }
-
-        if (this.debugMode) {
-            options.push("Stop debugging");
-        } else {
-            options.push("Debug");
-        }
-
-        if (this.changeOutputMode) {
-            options.push("New value");
-            options.push("Remove changes on the output");
-        }
-        options.push("New value");
-    }
-
     public changeState() {
         this.task.changeState();
         this.isActive = this.isActive === 1 ? 0 : 1;
     }
 
-    public connectTask(nextTask: Task) {
-        this.task.addFilter(nextTask);
+    public connectTask(nextNode: Node) {
+        this.task.addFilter(nextNode);
     }
 
     public getContent(): string {
@@ -140,6 +119,7 @@ export class Node {
     }
 
     public changeOutput(newData: string) {
+        console.log("no change output");
         if (this.changeOutputMode) {
             if (this.task instanceof ChangeOutputDecorator) { // ChangeOutputDecorator wrapping another task
                 (<ChangeOutputDecorator>this.task).setNewData(newData);
@@ -154,6 +134,7 @@ export class Node {
             (<ChangeOutputDecorator>this.task).setNewData(newData);
             this.changeOutputMode = true;
         }
+        console.log(this.task);
     }
 
     public disableChangeOutput() {
@@ -234,7 +215,7 @@ export class Recipe implements Prototype {
             return;
         }
 
-        srcNode.connectTask(destNode.task);
+        srcNode.connectTask(destNode);
 
         this.edges.push({ from: src, to: dest });
     }
@@ -269,7 +250,7 @@ export interface Prototype {
 
 export class TaskDecorator extends Task {
     state: State;
-    filters: Task[];
+    filters: Node[];
     public wrappee: Task = null;
     content: Message = Message.none;
 
@@ -288,7 +269,7 @@ export class TaskDecorator extends Task {
         this.wrappee = wrappee;
     }
 
-    addFilter(filter: Task): void {
+    addFilter(filter: Node): void {
         this.wrappee.addFilter(filter);
     }
 
@@ -324,6 +305,8 @@ export class ChangeOutputDecorator extends TaskDecorator {
     execute(data: Message): Message {
         // change data
         data.value = this.newData;
+        console.log("no execute do decorator");
+        console.log(this);
         this.content = super.execute(data);
         return this.content;
     }
