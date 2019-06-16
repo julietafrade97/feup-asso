@@ -127,6 +127,11 @@ export class Facade {
         console.log('Changed state!');
     }
 
+    public isNodeIdle(nodeId: number) {
+        const node = this.currentRecipe.getNode(nodeId);
+        return node.isActive === 0;
+    }
+
     public execute(fileInput: string, userInput: string): string {
         return this.currentRecipe.run(fileInput, userInput);
     }
