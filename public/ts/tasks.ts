@@ -121,41 +121,55 @@ export class Node {
     public changeOutput(newData: string) {
         console.log("no change output");
         if (this.changeOutputMode) {
-            if (this.task instanceof ChangeOutputDecorator) { // ChangeOutputDecorator wrapping another task
-                (<ChangeOutputDecorator>this.task).setNewData(newData);
-            } else { // DebugDecorator wrapping ChangeOutputDecorator
+            if(this.debugMode) { // DebugDecorator wrapping ChangeOutputDecorator
                 (<ChangeOutputDecorator>(<DebugDecorator>this.task).wrappee).setNewData(newData);
+            } else { // ChangeOutputDecorator wrapping another task
+                (<ChangeOutputDecorator>this.task).setNewData(newData);
             }
         } else {
-            let newTask = new ChangeOutputDecorator(null);
-            newTask.setWrappee(this.task);
-            this.task = newTask;
-
-            (<ChangeOutputDecorator>this.task).setNewData(newData);
+            if(this.debugMode) {
+                const mainTask = (<TaskDecorator>this.task).wrappee;
+                let newTask = new ChangeOutputDecorator(null);
+                newTask.setWrappee(mainTask);
+                newTask.setNewData(newData);
+                (<TaskDecorator>this.task).setWrappee(newTask);
+            } else {
+                let newTask = new ChangeOutputDecorator(null);
+                newTask.setWrappee(this.task);
+                newTask.setNewData(newData);
+                this.task = newTask;
+            }
+            
             this.changeOutputMode = true;
         }
         console.log(this.task);
     }
 
+    public enableDebug() {
+        let newTask = new DebugDecorator(null);
+        newTask.setWrappee(this.task);
+        this.task = newTask;
+
+        this.debugMode = true;
+    }
+
     public disableChangeOutput() {
-        if (!(this.task instanceof TaskDecorator)) return;
-        
-        if (this.task instanceof ChangeOutputDecorator) { // ChangeOutputDecorator wrapping another task
-            this.task = (<ChangeOutputDecorator>this.task).wrappee;
-        } else { // DebugDecorator wrapping ChangeOutputDecorator
-            const t: Task = (<ChangeOutputDecorator>(<DebugDecorator>this.task).wrappee).wrappee; //the main  task
-            (<DebugDecorator>this.task).wrappee = t;
+        if(this.changeOutputMode) {
+            if(this.debugMode) { // DebugDecorator wrapping ChangeOutputDecorator
+                const t: Task = (<ChangeOutputDecorator>(<DebugDecorator>this.task).wrappee).wrappee; //the main  task
+                (<DebugDecorator>this.task).wrappee = t;
+            } else { // ChangeOutputDecorator wrapping another task
+                this.task = (<ChangeOutputDecorator>this.task).wrappee;
+            }
         }
 
         this.changeOutputMode = false;
     }
 
     public disableDebug() {
-        if (this.task instanceof DebugDecorator) { // DebugDecorator wrapping another task
+        if (!(this.task instanceof TaskDecorator)) return;
+        if(this.debugMode) {
             this.task = (<DebugDecorator>this.task).wrappee;
-        } else { // ChangeOutputDecorator wrapping DebugDecorator
-            const t: Task = (<DebugDecorator>(<ChangeOutputDecorator>this.task).wrappee).wrappee; //the main  task
-            (<ChangeOutputDecorator>this.task).wrappee = t;
         }
 
         this.debugMode = false;
@@ -282,18 +296,12 @@ export class TaskDecorator extends Task {
 
 export class DebugDecorator extends TaskDecorator {
     execute(data: Message): Message {
+        let trace: string = "Task has received << " + data.value + " >> and is going to send ";
         const receivedMsg: Message = super.execute(data);
-        // [TODO] show task current state/info
-        this.content = new Message(this.currentState(receivedMsg.value));
+        trace += "<< " + receivedMsg.value + " >>";
+        this.content = new Message(receivedMsg.value);
+        // [TODO]: dar set a propriedade trace
         return this.content;
-    }
-
-    /**
-     * Info we want to return for the debug mode
-     */
-    currentState(data: string): string {
-        // [TODO]: tentar arranjar mais informacao para mostrar
-        return "The message sent to the next task was " + data;
     }
 }
 

@@ -1,5 +1,5 @@
 import { Creator } from "../creational";
-import { Task, State, Message, Prototype } from "../tasks";
+import { Task, State, Message, Prototype, Node } from "../tasks";
 /**
  * Creator of Task ToUpperCase
  */
@@ -24,7 +24,7 @@ class ToUpperCaseCreator extends Creator{
 class ToUpperCase extends Task {
     
     state: State;
-    filters: Task[];
+    filters: Node[];
 
     constructor(prototype: ToUpperCase) {
         super(prototype);
