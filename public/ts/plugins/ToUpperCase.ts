@@ -1,12 +1,12 @@
 import { Creator } from "../creational";
-import { Task, State, Message } from "../tasks";
+import { Task, State, Message, Prototype } from "../tasks";
 /**
  * Creator of Task ToUpperCase
  */
 class ToUpperCaseCreator extends Creator{
 
     createTask(): Task{
-        return new ToUpperCase();
+        return new ToUpperCase(null);
     }
 
     public static getInstance(): Creator{
@@ -25,6 +25,14 @@ class ToUpperCase extends Task {
     
     state: State;
     filters: Task[];
+
+    constructor(prototype: ToUpperCase) {
+        super(prototype);
+    }
+
+    public clone(): Prototype {
+        return new ToUpperCase(this);
+    }
 
     modifyData(data: Message): Message {
         return new Message(data.value.toUpperCase());

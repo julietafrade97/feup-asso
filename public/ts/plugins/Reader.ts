@@ -1,5 +1,5 @@
 import { Creator } from "../creational";
-import { Task, State, Message } from "../tasks";
+import { Task, State, Message, Prototype } from "../tasks";
 import { readFileSync } from "fs";	
 
 const fs = require('fs');
@@ -9,7 +9,7 @@ const fs = require('fs');
 class ReaderCreator extends Creator{
 
     createTask(): Task{
-        return new Reader();
+        return new Reader(null);
     }
 
     public static getInstance(): Creator{
@@ -28,6 +28,17 @@ export class Reader extends Task {
     state: State;
     filters: Task[];
     text: string;
+
+    constructor(prototype: Reader) {
+        super(prototype);
+        if(prototype !== null) {
+            this.text = prototype.text;
+        }
+    }
+
+    public clone(): Prototype {
+        return new Reader(this);
+    }
 
     modifyData(data: Message): Message {
         return new Message(this.text);

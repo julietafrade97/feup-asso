@@ -33,13 +33,21 @@ class Idle extends State {
     }
 }
 
-export class Task {
+export class Task implements Prototype {
     state: State;
     filters: Task[] = [];
     content: Message = Message.none;
 
-    constructor() {
+    constructor(prototype: Task) {
+        if(prototype !== null) {
+            this.content = new Message(prototype.content.value);
+            prototype.filters.forEach( filter => this.filters.push(<Task>filter.clone()));
+        }
         this.state = new Active(this);
+    }
+
+    public clone(): Prototype {
+        return new Task(this);
     }
 
     changeState(): void {
@@ -134,7 +142,7 @@ export class Node {
                 (<ChangeOutputDecorator>(<DebugDecorator>this.task).wrappee).setNewData(newData);
             }
         } else {
-            let newTask = new ChangeOutputDecorator();
+            let newTask = new ChangeOutputDecorator(null);
             newTask.setWrappee(this.task);
             this.task = newTask;
 
@@ -166,13 +174,31 @@ export class Node {
     }
 }
 
-export class Recipe {
-    public name: string;
+export class Recipe implements Prototype {
+    public name: string = "";
     public nodes: Node[] = [];
     public edges: Array<{ from: number, to: number }> = [];
     public startingNode: Node = null;
 
-    constructor() { }
+    constructor(prototype: Recipe) { 
+        if(prototype !== null) {
+            this.name = prototype.name;
+            prototype.nodes.forEach( node => {
+                const copy = new Node(node.id, <Task>node.task.clone(), node.label);
+                this.nodes.push(copy);
+            });
+            this.edges = prototype.edges.slice(0);
+            if(prototype.startingNode === null) {
+                this.startingNode = null;
+            } else {
+                this.startingNode = this.nodes.find( node => node.id == prototype.startingNode.id);
+            }
+        }
+    }
+
+    public clone(): Prototype {
+        return new Recipe(this);
+    }
 
     public setStartingNode(node: Node) {
         this.startingNode = node;
@@ -208,14 +234,25 @@ export class Recipe {
     }
 }
 
+export interface Prototype {
+    clone(): Prototype;
+}
+
 export class TaskDecorator extends Task {
     state: State;
     filters: Task[];
     public wrappee: Task = null;
     content: Message = Message.none;
 
-    constructor() {
-        super();
+    constructor(prototype: TaskDecorator) {
+        super(prototype);
+        if(prototype !== null) {
+            this.wrappee = <Task>prototype.wrappee.clone();
+        }
+    }
+
+    public clone(): Prototype {
+        return new TaskDecorator(this);
     }
 
     setWrappee(wrappee: Task) {

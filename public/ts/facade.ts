@@ -8,7 +8,7 @@ export class Facade {
     public nodeIdCount: number = 0;
     public modulesRegistry: Registry = new Registry();
 
-    public currentRecipe: Recipe = new Recipe();
+    public currentRecipe: Recipe = new Recipe(null);
     public storedRecipes: Recipe[] = [];
 
     constructor() {
@@ -54,7 +54,7 @@ export class Facade {
     }
 
     public newRecipe() {
-        this.currentRecipe = new Recipe();
+        this.currentRecipe = new Recipe(null);
         this.nodeIdCount = 0;
     }
 
@@ -82,8 +82,9 @@ export class Facade {
      * Put the currentRecipe in the storedRecipes array
      */
     public saveRecipe(name: string) {
-        this.currentRecipe.name = name;
-        this.storedRecipes.push(this.currentRecipe);
+        const copy: Recipe = <Recipe>this.currentRecipe.clone();
+        copy.name = name;
+        this.storedRecipes.push(copy);
     }
 
     /**

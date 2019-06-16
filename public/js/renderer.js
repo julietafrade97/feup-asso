@@ -126,8 +126,6 @@ saveRecipeDialog.listen('MDCDialog:closing', (evt) => {
   if (evt.detail.action === 'yes') {
     const recipeName = document.querySelectorAll('#save-recipe-dialog input')[0].value;
     graph.facade.saveRecipe(recipeName);
-    console.log(graph.facade.storedRecipes);
-
     setLoadRecipeOptions();
   }
 });

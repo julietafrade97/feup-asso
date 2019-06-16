@@ -1,5 +1,5 @@
 import { Creator } from "../creational";
-import { Task, State, Message } from "../tasks";
+import { Task, State, Message, Prototype } from "../tasks";
 const fs = require('fs');
 
 /**
@@ -26,6 +26,14 @@ class WriterCreator extends Creator{
 class Writer extends Task {
     state: State;
     filters: Task[];
+
+    constructor(prototype: Writer) {
+        super(prototype);
+    }
+
+    public clone(): Prototype {
+        return new Writer(this);
+    }
 
     modifyData(data: Message): Message {
         fs.appendFile("../../../write-file.txt", data.value, function (err) {

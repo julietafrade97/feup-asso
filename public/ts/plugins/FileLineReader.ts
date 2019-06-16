@@ -1,5 +1,5 @@
 import { Creator } from "../creational";
-import { Task, State, Message } from "../tasks";
+import { Task, State, Message, Prototype } from "../tasks";
 
 /**
  * Creator of Task FileLineReader
@@ -7,7 +7,7 @@ import { Task, State, Message } from "../tasks";
 class FileLineReaderCreator extends Creator{
 
     createTask(): Task{
-        return new FileLineReader();
+        return new FileLineReader(null);
     }
 
     public static getInstance(): Creator{
@@ -24,10 +24,17 @@ class FileLineReaderCreator extends Creator{
  */
 export class FileLineReader  extends Task {
     filters: Task[];
-    lines: string[];
+    lines: string[] = [];
 
-    constructor() {
-        super();
+    constructor(prototype: FileLineReader) {
+        super(prototype);
+        if(prototype !== null) {
+            this.lines = prototype.lines.slice(0);
+        }
+    }
+
+    public clone(): Prototype {
+        return new FileLineReader(this);
     }
 
     modifyData(data: Message): Message {
