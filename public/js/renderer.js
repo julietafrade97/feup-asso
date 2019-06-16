@@ -19,11 +19,13 @@ function setSelectNodeOptions() {
   selectNode.innerHTML = '';
 
   const emptyOption = document.createElement('option');// default option (null)
+  /*
   emptyOption.textContent = 'Task';
   emptyOption.value = '';
   emptyOption.selected = true;
   emptyOption.disabled = true;
   selectNode.appendChild(emptyOption);
+  */
 
   Object.keys(graph.facade.modulesRegistry.modules).forEach((key) => {
     const node = document.createElement('option');
@@ -48,11 +50,13 @@ function setTaskOptions(isInstalling) {
   selectInstallTask.innerHTML = '';
 
   const emptyOption = document.createElement('option');
+  /*
   emptyOption.textContent = 'Task';
   emptyOption.value = '';
   emptyOption.selected = true;
   emptyOption.disabled = true;
   selectInstallTask.appendChild(emptyOption);
+  */
 
   (isInstalling ? getInstallablePlugins() : plugins.LoadedPlugins).forEach((plugin) => {
     const node = document.createElement('option');
@@ -68,11 +72,13 @@ function setLoadRecipeOptions() {
   selectNode.innerHTML = '';
 
   const emptyOption = document.createElement('option');// default option (null)
+  /*
   emptyOption.textContent = 'Recipe';
   emptyOption.value = '';
   emptyOption.selected = true;
   emptyOption.disabled = true;
   selectNode.appendChild(emptyOption);
+  */
 
   graph.facade.storedRecipes.forEach((recipe) => {
     const option = document.createElement('option');
@@ -103,10 +109,25 @@ const uninstallTaskDialog = new mdc.dialog.MDCDialog(document.querySelector('#un
 const saveRecipeDialog = new mdc.dialog.MDCDialog(document.querySelector('#save-recipe-dialog'));
 const loadRecipeDialog = new mdc.dialog.MDCDialog(document.querySelector('#load-recipe-dialog'));
 const nodeInfoDialog = new mdc.dialog.MDCDialog(document.querySelector('#node-info-dialog'));
+
 // Listeners for node information checkboxes.
 const isDisabledCheckbox = new mdc.checkbox.MDCCheckbox(document.querySelector('#disabled-checkbox'));
 const isDebugModeCheckbox = new mdc.checkbox.MDCCheckbox(document.querySelector('#debug-checkbox'));
-// const changeOutputTextField = new mdc.checkbox.MDCTextField(document.querySelector('#change-output-tet-field'));
+
+// Floating label listeners on text fields.
+document.querySelectorAll('.mdc-text-field').forEach((elem) => {
+  const label = new mdc.textField.MDCTextField(elem);
+  const floatingLabel = new mdc.floatingLabel.MDCFloatingLabel(document.querySelector('.mdc-floating-label'));
+  label.listen('click', () => floatingLabel.float());
+});
+
+// Floating label listeners on text fields.
+document.querySelectorAll('.mdc-select').forEach((elem) => {
+  const label = new mdc.select.MDCSelect(elem);
+  const floatingLabel = new mdc.floatingLabel.MDCFloatingLabel(document.querySelector('.mdc-floating-label'));
+  label.listen('click', () => floatingLabel.float());
+});
+
 
 addNodeDialog.listen('MDCDialog:closing', (evt) => {
   if (evt.detail.action === 'yes') {

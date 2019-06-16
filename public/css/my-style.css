@@ -17,3 +17,11 @@
     height: 150px;
     overflow: auto;
 }
+
+.mdc-text-field {
+    margin: 1em;
+}
+
+.mdc-select {
+    margin: 1em;
+}
