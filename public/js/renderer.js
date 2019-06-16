@@ -210,7 +210,7 @@ document.querySelector('#save-recipe').addEventListener('click', () => saveRecip
 document.querySelector('#load-recipe').addEventListener('click', () => loadRecipeDialog.open());
 
 graph.network.on('doubleClick', (evt) => {
-  if (evt.edges.length > 0) {
+  if (evt.edges.length > 0 && evt.nodes.length === 0) {
     const edge = graph.edges.get(evt.edges[0]);
     graph.facade.deleteEdge(edge.from, edge.to);
     graph.update();
@@ -224,6 +224,18 @@ graph.network.on('doubleClick', (evt) => {
 });
 
 isDisabledCheckbox.listen('change', () => {
+  if (graph.facade.isNodeIdle(nodeShowingInfo)) {
+    graph.nodes.update({ id: nodeShowingInfo, color: { border: '#2B7CE9' } });
+    graph.nodes.update({ id: nodeShowingInfo, color: { background: '#D2E5FF' } });
+    graph.nodes.update({ id: nodeShowingInfo, color: { highlight: { border: '#2B7CE9' } } });
+    graph.nodes.update({ id: nodeShowingInfo, color: { highlight: { background: '#D2E5FF' } } });
+  } else {
+    graph.nodes.update({ id: nodeShowingInfo, color: { border: '#3e4147' } });
+    graph.nodes.update({ id: nodeShowingInfo, color: { background: '#c9cacc' } });
+    graph.nodes.update({ id: nodeShowingInfo, color: { highlight: { border: '#3e4147' } } });
+    graph.nodes.update({ id: nodeShowingInfo, color: { highlight: { background: '#c9cacc' } } });
+  }
+
   graph.facade.changeNodeState(nodeShowingInfo);
 });
 
