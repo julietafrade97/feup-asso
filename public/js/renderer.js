@@ -88,6 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   setTaskOptions(true);
   setTaskOptions(false);
+  setLoadRecipeOptions();
 });
 
 const addNodeDialog = new mdc.dialog.MDCDialog(document.querySelector('#add-node-dialog'));
@@ -100,8 +101,7 @@ const nodeInfoDialog = new mdc.dialog.MDCDialog(document.querySelector('#node-in
 addNodeDialog.listen('MDCDialog:closing', (evt) => {
   if (evt.detail.action === 'yes') {
     const newNodeTitle = document.querySelectorAll('#add-node-dialog option:checked')[0].innerText;
-    const node = graph.facade.addNode(newNodeTitle);
-    // graph.nodes.add(node);
+    graph.facade.addNode(newNodeTitle);
     graph.update();
   }
 });
@@ -130,6 +130,14 @@ saveRecipeDialog.listen('MDCDialog:closing', (evt) => {
   }
 });
 
+loadRecipeDialog.listen('MDCDialog:closing', (evt) => {
+  if (evt.detail.action === 'yes') {
+    const recipeName = document.querySelectorAll('#load-recipe-dialog option:checked')[0].innerHTML;
+    graph.facade.loadRecipe(recipeName);
+    graph.update();
+  }
+});
+
 
 document.querySelector('#toggle-execution-button').addEventListener('click', (evt) => {
   const button = document.querySelector('#toggle-execution-button');
@@ -140,6 +148,7 @@ document.querySelector('#toggle-execution-button').addEventListener('click', (ev
     const read = new FileReader();
 
     read.readAsBinaryString(file);
+    // eslint-disable-next-line func-names
     read.onloadend = function () {
       graph.facade.execute(read.result);
     };
