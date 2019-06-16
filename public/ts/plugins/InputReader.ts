@@ -9,7 +9,7 @@ const fs = require('fs');
 class ReaderCreator extends Creator{
 
     createTask(): Task{
-        return new Reader(null);
+        return new InputReader(null);
     }
 
     public static getInstance(): Creator{
@@ -24,21 +24,21 @@ class ReaderCreator extends Creator{
 /**
  * Task to read from a file, line by line
  */
-export class Reader extends Task {
+export class InputReader extends Task {
     state: State;
     filters: Task[];
     text: string;
 
-    constructor(prototype: Reader) {
+    constructor(prototype: InputReader) {
         super(prototype);
         if(prototype !== null) {
             this.text = prototype.text;
         }
-        super.input = true;
+        super.user_input = true;
     }
 
     public clone(): Prototype {
-        return new Reader(this);
+        return new InputReader(this);
     }
 
     modifyData(data: Message): Message {
@@ -46,11 +46,11 @@ export class Reader extends Task {
     }
 
     execute(data: Message): Message {
-        this.text = readFileSync("../../../read-file.txt", 'utf-8');
+        this.text = data.value;
         const msg: Message = new Message(this.text);
         super.execute(msg);
         return msg;
     }
 }
 
-export { Reader as Task, ReaderCreator as Creator }
+export { InputReader as Task, ReaderCreator as Creator }

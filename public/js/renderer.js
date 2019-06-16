@@ -138,29 +138,35 @@ loadRecipeDialog.listen('MDCDialog:closing', (evt) => {
   }
 });
 
+function execute(fileInput) {
+  const userInput = document.querySelector('#user-input input').value;
+  const output = graph.facade.execute(fileInput, userInput);
+  output.trim();
+  const div = document.querySelector('#result-output div');
+  div.innerHTML = '';
+  output.split(' ').forEach((s) => {
+    const line = document.createElement('p');
+    line.innerHTML = s;
+    div.appendChild(line);
+  });
+}
 
 document.querySelector('#toggle-execution-button').addEventListener('click', () => {
   const button = document.querySelector('#toggle-execution-button');
 
   if (button.innerHTML === 'Execute') {
-    if (file === null) {
-      return;
-    }
     button.innerHTML = 'Pause';
-    const read = new FileReader();
-    read.readAsBinaryString(file);
-    // eslint-disable-next-line func-names
-    read.onloadend = function () {
-      const output = graph.facade.execute(read.result);
-      output.trim();
-      const div = document.querySelector('#result-output div');
-      div.innerHTML = '';
-      output.split(' ').forEach((s) => {
-        const line = document.createElement('p');
-        line.innerHTML = s;
-        div.appendChild(line);
-      });
-    };
+    if (file === null) {
+      execute('');
+    } else {
+      const read = new FileReader();
+      read.readAsBinaryString(file);
+      // eslint-disable-next-line func-names
+      read.onloadend = function () {
+        execute(read.result);
+      };
+    }
+
     button.innerHTML = 'Execute';
   } else if (button.innerHTML === 'Pause') {
     button.innerHTML = 'Execute';

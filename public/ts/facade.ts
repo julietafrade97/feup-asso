@@ -101,7 +101,7 @@ export class Facade {
         this.nodeIdCount += recipe.nodes.length;
     }
 
-    public execute(text: string): string {
-        return this.currentRecipe.run(text);
+    public execute(fileInput: string, userInput: string): string {
+        return this.currentRecipe.run(fileInput, userInput);
     }
 }

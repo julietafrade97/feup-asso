@@ -37,7 +37,8 @@ export class Task implements Prototype {
     state: State;
     filters: Task[] = [];
     content: Message = Message.none;
-    input: boolean = false;
+    file_input: boolean = false;
+    user_input: boolean = false;
     output: boolean = false;
 
     constructor(prototype: Task) {
@@ -206,7 +207,7 @@ export class Recipe implements Prototype {
     public connectNodes(src: number, dest: number): void {
         const srcNode: Node = this.nodes.find(node => node.id === src);
         const destNode: Node = this.nodes.find(node => node.id === dest);
-        if(destNode.task.input) { // no task can connect to a read task
+        if(destNode.task.user_input || destNode.task.file_input) { // no task can connect to a read task
             return;
         }
 
@@ -218,10 +219,15 @@ export class Recipe implements Prototype {
     //[TODO]: se calhar podiamos usar strategy aqui para o run poder ter dois comportamentos diferentes:
     // ou começava com a mensagem a nulo (Message.none)
     // ou pediamos input ao utilizador e punhamos na mensagem (new Message(value, from, to))
-    public run(text: string): string {
-        const startingNodes: Node[] = this.nodes.filter(node => node.task.input);
-        startingNodes.forEach(node => node.task.execute(new Message(text)));
+    public run(fileInput: string, userInput: string): string {
         let result: string = "";
+
+        let startingNodes: Node[] = this.nodes.filter(node => node.task.file_input);
+        startingNodes.forEach(node => node.task.execute(new Message(fileInput)));
+
+        startingNodes = this.nodes.filter(node => node.task.user_input);
+        startingNodes.forEach(node => node.task.execute(new Message(userInput)));
+        
         this.nodes.filter(node => node.task.output).forEach(node => {
             result += node.task.content.value + '\n';
             node.task.content.value = "";

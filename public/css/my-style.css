@@ -3,7 +3,7 @@
 }
 
 #user-input input {
-    width: 600px;
+    width: 550px;
 }
 
 #result-output input {
@@ -13,7 +13,7 @@
 
 #result-output div {
     border-style: groove;
-    width: 600px;
-    height: 200px;
+    width: 550px;
+    height: 150px;
     overflow: auto;
 }
