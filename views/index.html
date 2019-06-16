@@ -7,12 +7,12 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 <body>
-    <div id="add-node-dialog" class="mdc-dialog" role="alertdialog" aria-modal="true" aria-labelledby="my-dialog-title" aria-describedby="my-dialog-content">
+    <div id="add-node-dialog" class="mdc-dialog" role="alertdialog" aria-modal="true" aria-labelledby="my-dialog-title-add-node" aria-describedby="my-dialog-content">
         <div class="mdc-dialog__container">
             <div class="mdc-dialog__surface">
                 <!-- Title cannot contain leading whitespace due to mdc-typography-baseline-top() -->
-                <h2 class="mdc-dialog__title" id="my-dialog-title">Add Node</h2>
-                <div class="mdc-dialog__content" id="my-dialog-content">Fill the required parameters below.</div>
+                <h2 class="mdc-dialog__title" id="my-dialog-title-add-node">Add Node</h2>
+                <!-- <div class="mdc-dialog__content" id="my-dialog-content">Fill the required parameters below.</div> -->
                 <div class="mdc-select">
                     <i class="mdc-select__dropdown-icon"></i>
                     <select class="mdc-select__native-control">
@@ -33,11 +33,11 @@
         <div class="mdc-dialog__scrim"></div>
     </div>
 
-    <div id="install-task-dialog" class="mdc-dialog" role="alertdialog" aria-modal="true" aria-labelledby="my-dialog-title" aria-describedby="my-dialog-content">
+    <div id="install-task-dialog" class="mdc-dialog" role="alertdialog" aria-modal="true" aria-labelledby="my-dialog-title-install" aria-describedby="my-dialog-content">
         <div class="mdc-dialog__container">
             <div class="mdc-dialog__surface">
                 <!-- Title cannot contain leading whitespace due to mdc-typography-baseline-top() -->
-                <h2 class="mdc-dialog__title" id="my-dialog-title">Install Task</h2>
+                <h2 class="mdc-dialog__title" id="my-dialog-title-install">Install Task</h2>
                 <div class="mdc-dialog__content" id="my-dialog-content">Fill the required parameters below.</div>
                 <div class="mdc-select">
                     <i class="mdc-select__dropdown-icon"></i>
@@ -59,11 +59,11 @@
         <div class="mdc-dialog__scrim"></div>
     </div>
 
-    <div id="uninstall-task-dialog" class="mdc-dialog" role="alertdialog" aria-modal="true" aria-labelledby="my-dialog-title" aria-describedby="my-dialog-content">
+    <div id="uninstall-task-dialog" class="mdc-dialog" role="alertdialog" aria-modal="true" aria-labelledby="my-dialog-title-uninstall" aria-describedby="my-dialog-content">
         <div class="mdc-dialog__container">
             <div class="mdc-dialog__surface">
                 <!-- Title cannot contain leading whitespace due to mdc-typography-baseline-top() -->
-                <h2 class="mdc-dialog__title" id="my-dialog-title">Uninstall Task</h2>
+                <h2 class="mdc-dialog__title" id="my-dialog-title-uninstall">Uninstall Task</h2>
                 <div class="mdc-dialog__content" id="my-dialog-content">Fill the required parameters below.</div>
                 <div class="mdc-select">
                     <i class="mdc-select__dropdown-icon"></i>
@@ -85,7 +85,7 @@
         <div class="mdc-dialog__scrim"></div>
     </div>
 
-    <div id="node-info-dialog" class="mdc-dialog" role="alertdialog" aria-modal="true" aria-labelledby="my-dialog-title" aria-describedby="my-dialog-content">
+    <div id="node-info-dialog" class="mdc-dialog" role="alertdialog" aria-modal="true" aria-labelledby="my-dialog-title-save" aria-describedby="my-dialog-content">
         <div class="mdc-dialog__container">
             <div class="mdc-dialog__surface">
                 <!-- Title cannot contain leading whitespace due to mdc-typography-baseline-top() -->
@@ -126,40 +126,20 @@
         <div class="mdc-dialog__scrim"></div>
     </div>
 
-    <div id="save-recipe-dialog" class="mdc-dialog" role="alertdialog" aria-modal="true" aria-labelledby="my-dialog-title" aria-describedby="my-dialog-content">
+    <div id="save-recipe-dialog" class="mdc-dialog" role="alertdialog" aria-modal="true" aria-labelledby="my-dialog-title-save" aria-describedby="my-dialog-content">
         <div class="mdc-dialog__container">
             <div class="mdc-dialog__surface">
                 <!-- Title cannot contain leading whitespace due to mdc-typography-baseline-top() -->
-                <h2 class="mdc-dialog__title" id="my-dialog-title">Node Information</h2>
+                <h2 class="mdc-dialog__title" id="my-dialog-title-save">Save Recipe</h2>
                 <!-- <div class="mdc-dialog__content" id="my-dialog-content">Fill the required parameters below.</div> -->
                 <div class="mdc-text-field">
                     <input type="text" id="my-text-field" class="mdc-text-field__input">
-                    <label class="mdc-floating-label" for="my-text-field">Output Text</label>
+                    <label class="mdc-floating-label" for="my-text-field">Recipe Name</label>
                     <div class="mdc-line-ripple"></div>
-                </div>
-                <div class="mdc-checkbox">
-                    <div class="mdc-typography--overline" id="my-dialog-title">Enabled</div>
-                    <input type="checkbox" class="mdc-checkbox__native-control" id="checkbox-1"/>
-                    <div class="mdc-checkbox__background">
-                        <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
-                            <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
-                        </svg>
-                        <div class="mdc-checkbox__mixedmark"></div>
-                    </div>
-                </div>
-                <div class="mdc-checkbox">
-                    <div class="mdc-typography--overline" id="my-dialog-title">Debug mode</div>
-                    <input type="checkbox" class="mdc-checkbox__native-control" id="checkbox-1"/>
-                    <div class="mdc-checkbox__background">
-                        <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
-                            <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
-                        </svg>
-                        <div class="mdc-checkbox__mixedmark"></div>
-                    </div>
                 </div>
                 <footer class="mdc-dialog__actions">
                     <button type="button" class="mdc-button mdc-dialog__button" data-mdc-dialog-action="yes">
-                        <span class="mdc-button__label">OK</span>
+                        <span class="mdc-button__label">Save</span>
                     </button>
                 </footer>
             </div>
@@ -167,30 +147,25 @@
         <div class="mdc-dialog__scrim"></div>
     </div>
 
-    <div id="load-recipe-dialog" class="mdc-dialog" role="alertdialog" aria-modal="true" aria-labelledby="my-dialog-title" aria-describedby="my-dialog-content">
+    <div id="load-recipe-dialog" class="mdc-dialog" role="alertdialog" aria-modal="true" aria-labelledby="my-dialog-title-node-info" aria-describedby="my-dialog-content">
         <div class="mdc-dialog__container">
             <div class="mdc-dialog__surface">
                 <!-- Title cannot contain leading whitespace due to mdc-typography-baseline-top() -->
-                <h2 class="mdc-dialog__title" id="my-dialog-title">Node Information</h2>
+                <h2 class="mdc-dialog__title" id="my-dialog-title-add-node">Load Recipe</h2>
                 <!-- <div class="mdc-dialog__content" id="my-dialog-content">Fill the required parameters below.</div> -->
-                <div class="mdc-text-field">
-                    <input type="text" id="my-text-field" class="mdc-text-field__input">
-                    <label class="mdc-floating-label" for="my-text-field">Output Text</label>
+                <div class="mdc-select">
+                    <i class="mdc-select__dropdown-icon"></i>
+                    <select class="mdc-select__native-control">
+                    </select>
+                    <label class="mdc-floating-label"></label>
                     <div class="mdc-line-ripple"></div>
-                </div>
-                <div class="mdc-checkbox">
-                    <div class="mdc-typography--overline" id="my-dialog-title">Is enabled?</div>
-                    <input type="checkbox" class="mdc-checkbox__native-control" id="checkbox-1"/>
-                    <div class="mdc-checkbox__background">
-                        <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
-                            <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
-                        </svg>
-                        <div class="mdc-checkbox__mixedmark"></div>
-                    </div>
-                </div>
+                  </div>
                 <footer class="mdc-dialog__actions">
+                    <button type="button" class="mdc-button mdc-dialog__button" data-mdc-dialog-action="no">
+                        <span class="mdc-button__label">Cancel</span>
+                    </button>
                     <button type="button" class="mdc-button mdc-dialog__button" data-mdc-dialog-action="yes">
-                        <span class="mdc-button__label">OK</span>
+                        <span class="mdc-button__label">Load</span>
                     </button>
                 </footer>
             </div>

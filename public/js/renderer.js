@@ -57,6 +57,26 @@ function setTaskOptions(isInstalling) {
   });
 }
 
+function setLoadRecipeOptions() {
+  const selectNode = document.querySelector('#load-recipe-dialog select'); // dropdown with available recipes
+  selectNode.innerHTML = '';
+
+  const emptyOption = document.createElement('option');// default option (null)
+  emptyOption.textContent = 'Recipe';
+  emptyOption.value = '';
+  emptyOption.selected = true;
+  emptyOption.disabled = true;
+  selectNode.appendChild(emptyOption);
+
+  graph.facade.storedRecipes.forEach((recipe) => {
+    const option = document.createElement('option');
+    option.value = recipe.name;
+    option.textContent = recipe.name;
+
+    selectNode.appendChild(option);
+  });
+}
+
 const updateInterface = () => {
   setTaskOptions(true);
   setTaskOptions(false);
@@ -101,6 +121,17 @@ uninstallTaskDialog.listen('MDCDialog:closing', (evt) => {
     updateInterface();
   }
 });
+
+saveRecipeDialog.listen('MDCDialog:closing', (evt) => {
+  if (evt.detail.action === 'yes') {
+    const recipeName = document.querySelectorAll('#save-recipe-dialog input')[0].value;
+    graph.facade.saveRecipe(recipeName);
+    console.log(graph.facade.storedRecipes);
+
+    setLoadRecipeOptions();
+  }
+});
+
 
 document.querySelector('#toggle-execution-button').addEventListener('click', (evt) => {
   const button = document.querySelector('#toggle-execution-button');
