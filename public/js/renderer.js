@@ -210,15 +210,17 @@ document.querySelector('#save-recipe').addEventListener('click', () => saveRecip
 document.querySelector('#load-recipe').addEventListener('click', () => loadRecipeDialog.open());
 
 graph.network.on('doubleClick', (evt) => {
-
-  // Don't open the node info dialog if the user hasn't clicked on a node.
-  if (evt.nodes.length === 0) {
-    return;
+  if (evt.edges.length > 0) {
+    const edge = graph.edges.get(evt.edges[0]);
+    graph.facade.deleteEdge(edge.from, edge.to);
+    graph.update();
   }
 
-  const [node] = evt.nodes;
-  nodeShowingInfo = node;
-  nodeInfoDialog.open();
+  if (evt.nodes.length > 0) {
+    const [node] = evt.nodes;
+    nodeShowingInfo = node;
+    nodeInfoDialog.open();
+  }
 });
 
 isDisabledCheckbox.listen('change', () => {

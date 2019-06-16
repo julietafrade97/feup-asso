@@ -75,6 +75,10 @@ export class Facade {
         this.currentRecipe.deleteNode(id);
     }
 
+    public deleteEdge(from: number, to: number) {
+        this.currentRecipe.deleteEdge(from, to);
+    }
+
     public connectNodes(node1: number, node2: number) {
         this.currentRecipe.connectNodes(node1, node2);
     }
