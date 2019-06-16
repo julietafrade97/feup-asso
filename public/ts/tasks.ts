@@ -214,6 +214,10 @@ export class Recipe implements Prototype {
         this.edges.push({ from: src, to: dest });
     }
 
+    public getNode(id: number): Node {
+        return this.nodes.find(node => node.id === id);
+    }
+
     //[TODO]: se calhar podiamos usar strategy aqui para o run poder ter dois comportamentos diferentes:
     // ou começava com a mensagem a nulo (Message.none)
     // ou pediamos input ao utilizador e punhamos na mensagem (new Message(value, from, to))

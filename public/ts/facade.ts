@@ -61,7 +61,7 @@ export class Facade {
     public addNode(taskType: string) {
         this.nodeIdCount++;
         const m: Module = this.modulesRegistry.getModule(taskType);
-        const t:Task = m.factory.createTask();
+        const t: Task = m.factory.createTask();
         return this.currentRecipe.addNode(this.nodeIdCount, t, taskType);
     }
 
@@ -100,6 +100,16 @@ export class Facade {
             this.currentRecipe.edges.push({ from: e.from + this.nodeIdCount, to: e.to + this.nodeIdCount})
         });
         this.nodeIdCount += recipe.nodes.length;
+    }
+
+    /**
+     * 
+     * @param nodeId The node ID whose state will be changed.
+     */
+    public changeNodeState(nodeId: number) {
+        const node = this.currentRecipe.getNode(nodeId);
+        node.changeState();
+        console.log('Changed state!');
     }
 
     public execute(text: string) {
