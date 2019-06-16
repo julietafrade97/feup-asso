@@ -64,6 +64,17 @@ export class Facade {
         return this.currentRecipe.addNode(this.nodeIdCount, t, taskType);
     }
 
+    public deleteNode(id: number) {
+        // Establish missing connections.
+        this.currentRecipe.addMissingEdges(id);
+
+        // Delete edges that are connected to the node.
+        this.currentRecipe.deleteEdgesConnectedTo(id);
+
+        // Actually delete the node.
+        this.currentRecipe.deleteNode(id);
+    }
+
     public connectNodes(node1: number, node2: number) {
         this.currentRecipe.connectNodes(node1, node2);
     }
@@ -72,10 +83,6 @@ export class Facade {
         this.currentRecipe.nodes.forEach(node => this.deleteNode(node.id));
     }
 
-    //[TODO]
-    public deleteNode(id: number) {
-
-    }
 
     /**
      * Put the currentRecipe in the storedRecipes array
@@ -83,6 +90,15 @@ export class Facade {
     public saveRecipe(name: string) {
         const copy: Recipe = <Recipe>this.currentRecipe.clone();
         copy.name = name;
+
+        const isDuplicate = this.storedRecipes.findIndex(recipe => recipe.name === name);
+
+        if (isDuplicate !== -1) {
+            console.log('Found duplicate.');
+            this.storedRecipes.splice(isDuplicate, 1);
+            console.log(this.storedRecipes);
+        }
+
         this.storedRecipes.push(copy);
     }
 
