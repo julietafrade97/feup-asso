@@ -189,22 +189,18 @@ Usado para alterar o comportamento de uma task com a alteração do seu estado: 
 **Solution:** Lorem
 
 ### 4.3.8 Null Object
-Representa o comportamento neutro de uma mensagem, ou seja, uma mensagem sem conteudo.
+**Context:** Messages sent through the network may sometimes be empty and the network should adapt to these occurrences. When a task decorator is initialized, its content message is empty just to be later assigned by child decorators such as the debug mode decorator.
 
-**Context:** Lorem
+**Problem:** Sending undefined messages may result in unexpected behaviour.
 
-**Problem:** Lorem
-
-**Solution:** Lorem
+**Solution:** A Null Object always knows exactly what needs to be done without interacting with any other objects. This way neutral messages may be correctly handled.
 
 ### 4.3.9 Singleton
-Usado para termos uma instancia única de cada fábrica e da classe central (Main).
+**Context:** Factories are required in varying places in the codebase like on the node addition portion.  
 
-**Context:** Lorem
+**Problem:** There isn’t an uncomplicated way to access factories which create tasks.  
 
-**Problem:** Lorem
-
-**Solution:** Lorem
+**Solution:** Singleton is a creational design pattern that lets you ensure that a class has only one instance, while providing a global access point to this instance. This way, there’s a global access point to factories.
 
 ### 4.4 Sequence Diagrams
 Lorem
