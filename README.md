@@ -39,6 +39,27 @@ Text - Uppercase, Lowercase, Encoding, Read file, Write to a file
 
 •	It stops when all the taks are completed.
 
+## The struggles of adding web to the mix
+Resorting to web interfacing presents a handful of challenges which technically don't fit on ASSO's scope.
+
+### Bundling
+Since the visualization library *vis.js* is based on Node, regular browser Javascript was no longer possible. Naturally, browsers don't have a require method like Node.js does so a Javascript module bundler was mandatory. We also didn't intend to do any server-side business at the expense of a couple of drawbacks and subsequent workarounds we'll discuss later on.  
+We ended up using **webpack** to bundle our dependencies.
+
+#### Arbitrary dynamic requires
+Imagine a user wants to code its own plugin into the software. In a perfect world, you'd just place it into a folder and a portion of pre-programmed code would handle importing it to the logic.  
+
+We actually begun bundling with Browserify, yet the scenery is as messy with webpack. Arbitrary dynamic requires are a dead end. Browserify can only do static string analysis for requirement rebinding so requirements must be hardcoded.  
+
+The general consensus is sticking to static requirements either way because of the unpredictable nature of dynamic requires for production deployment.
+
+**Workaround:** A require list file which contains the paths to every plugin must be edited beforehand.
+
+### Everything client-side
+No real server communication renders any state preservation pretty much useless so recipes are saved and can be loaded as long as the user doesn't refresh the page. Obviously this isn't the optimal case, yet it's enough for this project. 
+
+**Workaround:** Simply storing in client-side memory.
+
 ## Design Patterns
 
 ### Factory Method

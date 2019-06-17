@@ -116,18 +116,13 @@ const isDebugModeCheckbox = new mdc.checkbox.MDCCheckbox(document.querySelector(
 
 // Floating label listeners on text fields.
 document.querySelectorAll('.mdc-text-field').forEach((elem) => {
-  const label = new mdc.textField.MDCTextField(elem);
-  const floatingLabel = new mdc.floatingLabel.MDCFloatingLabel(document.querySelector('.mdc-floating-label'));
-  label.listen('click', () => floatingLabel.float());
+  new mdc.textField.MDCTextField(elem);
 });
 
 // Floating label listeners on text fields.
 document.querySelectorAll('.mdc-select').forEach((elem) => {
-  const label = new mdc.select.MDCSelect(elem);
-  const floatingLabel = new mdc.floatingLabel.MDCFloatingLabel(document.querySelector('.mdc-floating-label'));
-  label.listen('click', () => floatingLabel.float());
+  new mdc.select.MDCSelect(elem);
 });
-
 
 addNodeDialog.listen('MDCDialog:closing', (evt) => {
   if (evt.detail.action === 'yes') {
@@ -317,18 +312,27 @@ graph.network.on('click', (properties) => {
       graph.nodes.update({ id: node1, font: { size: 14 } });
       node1 = node2;
       [node2] = properties.nodes;
-      graph.nodes.update({ id: node1, font: { size: 18 } });
-      graph.nodes.update({ id: node2, font: { size: 18 } });
+      graph.nodes.update({ id: node1, font: { size: 16 } });
+      graph.nodes.update({ id: node2, font: { size: 16 } });
     }
 
     if (node1 && !node2) {
       [node2] = properties.nodes;
-      graph.nodes.update({ id: node2, font: { size: 18 } });
+      graph.nodes.update({ id: node2, font: { size: 16 } });
     }
 
     if (!node1 && !node2) {
       [node1] = properties.nodes;
-      graph.nodes.update({ id: node1, font: { size: 18 } });
+      graph.nodes.update({ id: node1, font: { size: 16 } });
+    }
+  } else {
+    if (node1) {
+      graph.nodes.update({ id: node1, font: { size: 14 } });
+      node1 = undefined;
+    }
+    if (node2) {
+      graph.nodes.update({ id: node2, font: { size: 14 } });
+      node2 = undefined;
     }
   }
 });
