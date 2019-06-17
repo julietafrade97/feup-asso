@@ -40,6 +40,7 @@ export class Task implements Prototype {
     file_input: boolean = false;
     user_input: boolean = false;
     output: boolean = false;
+    trace: string = 'Nothing to show.';
 
     constructor(prototype: Task) {
         if(prototype !== null) {
@@ -173,6 +174,10 @@ export class Node {
         }
 
         this.debugMode = false;
+    }
+
+    public getTraceLog(): string {
+        return this.task.trace;
     }
 }
 

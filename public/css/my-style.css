@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Major+Mono+Display&display=swap');
+
 #user-input {
     margin-top: 10px;
 }
@@ -11,9 +13,12 @@
     height: 200px;
 }
 
+#user-input input {
+    border: 1px solid lightgray;
+}
+
 #result-output div {
-    border-style: groove;
-    width: 550px;
+    border: 1px solid lightgray;
     height: 150px;
     overflow: auto;
 }
@@ -24,4 +29,26 @@
 
 .mdc-select {
     margin: 1em;
+}
+
+#header {
+    font-family: 'Major Mono Display', monospace;  
+    text-align: center;
+    font-size: 2em;
+    margin: 2em;
+}
+
+.container {
+    text-align: center;
+}
+
+.container2 {
+    margin: 1em 8em 1em 8em;
+}
+
+
+#mynetwork {
+    margin: 1em 8em 1em 8em;
+    height: 400px;
+    border: 1px solid lightgray;
 }

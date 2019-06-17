@@ -10,7 +10,9 @@
 </head>
 
 <body>
-    <div>
+    <div id="header">Info.Sec.C00k3r</div>
+
+    <div class="container">
     <div id="add-node-dialog" class="mdc-dialog" role="alertdialog" aria-modal="true"
         aria-labelledby="my-dialog-title-add-node" aria-describedby="my-dialog-content">
         <div class="mdc-dialog__container">
@@ -104,8 +106,8 @@
                     <label class="mdc-floating-label" for="my-text-field">Output Text</label>
                     <div class="mdc-line-ripple"></div>
                 </div>
-                <div id="disabled-checkbox" class="mdc-checkbox" style="margin-bottom: 0.5em; margin-left: 0.5em;">
-                    <div class="mdc-typography--overline" id="my-dialog-title" style="margin-left: 3em; margin-top: -0.55em;">Disabled</div>
+                <div id="disabled-checkbox" class="mdc-checkbox" style="margin-bottom: -0.5em; margin-left: 0.5em;">
+                    <div class="mdc-typography--body1" id="my-dialog-title" style="margin-left: 2.5em; margin-top: -0.1em;">Disabled</div>
                     <input type="checkbox" class="mdc-checkbox__native-control" id="checkbox-1"/>
                     <div class="mdc-checkbox__background">
                         <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
@@ -116,7 +118,7 @@
                     </div>
                 </div>
                 <div id="debug-checkbox" class="mdc-checkbox" style="margin-left: 0.5em;">
-                    <div class="mdc-typography--overline" id="my-dialog-title" style="margin-left: 3em; margin-top: -0.55em;">Debug mode</div>
+                    <div class="mdc-typography--body1" id="my-dialog-title" style="margin-left: 2.5em; margin-top: -0.1em;">Debug mode</div>
                     <input type="checkbox" class="mdc-checkbox__native-control" id="checkbox-1" />
                     <div class="mdc-checkbox__background">
                         <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
@@ -125,6 +127,10 @@
                         </svg>
                         <div class="mdc-checkbox__mixedmark"></div>
                     </div>
+                </div>
+                <div id="debug-mode-window" style="display: none">
+                    <div class="mdc-typography--body1" id="my-dialog-title" style="margin-top: 1em; margin-left: 1.2em;">Trace log</div>
+                    <div class="mdc-typography--overline" id="trace-log-message" style="margin-left: 1.65em;">Something goes here.</div>
                 </div>
                 <footer class="mdc-dialog__actions">
                     <button type="button" class="mdc-button mdc-dialog__button" data-mdc-dialog-action="delete">
@@ -202,7 +208,9 @@
             <button id="file-read-button" class="foo-button mdc-button">Load File</button>
             <input type="file" id="file-read-input" style="display:none">
         </div>
-
+    </div>
+    </div>
+    <div class="container2">
         <div id="user-input">
             <h2 class="vis-title">Input</h2>
             <input type="text" value="">
@@ -212,6 +220,7 @@
             <!-- <input type="text" value="result..." readonly> -->
             <div></div>
         </div>
+    </div>
         
     </div>
 </div>
