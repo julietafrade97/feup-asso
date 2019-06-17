@@ -184,7 +184,16 @@ nodeInfoDialog.listen('MDCDialog:opening', () => {
     document.getElementById('debug-mode-window').style.display = 'block';
 
     const log = graph.facade.getTraceLog(nodeShowingInfo);
-    document.getElementById('trace-log-message').innerHTML = log;
+    const div = document.getElementById('trace-log-message');
+    div.innerHTML = '';
+    console.log(log);
+    log.split('!!br!!').forEach((s) => {
+      const line = document.createElement('p');
+      line.innerHTML = s;
+      console.log(s);
+      div.appendChild(line);
+      // div.appendChild(document.createElement('br'));
+    });
   } else {
     document.getElementById('debug-mode-window').style.display = 'none';
   }
@@ -288,7 +297,6 @@ isDisabledCheckbox.listen('change', () => {
 isDebugModeCheckbox.listen('change', () => {
   if (isDebugModeCheckbox.checked) {
     graph.facade.enableDebug();
-    console.log("debug mode on");
   } else {
     graph.facade.disableDebug();
   }

@@ -349,8 +349,7 @@ export class DebugDecorator extends TaskDecorator {
     execute(data: Message): Message {
         let trace: string = "Task has received << " + data.value + " >> and is going to send ";
         const receivedMsg: Message = super.execute(data);
-        trace += "<< " + receivedMsg.value + " >>";
-        console.log("trace ready: " + trace + '. \n');
+        trace += "<< " + receivedMsg.value + " >> !!br!! ";
         this.trace += trace;
         this.content = receivedMsg;
         return this.content;
