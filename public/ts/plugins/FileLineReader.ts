@@ -47,12 +47,11 @@ export class FileLineReader  extends Task {
         this.lines = data.value.split('\n');
         
         const result = this.lines;
-        console.log(result);
         while(this.lines.length > 0) {
             super.execute(data);
         }
 
-        return new Message(result);
+        return new Message(data.value);
     }
 }
 

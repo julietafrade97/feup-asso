@@ -180,19 +180,6 @@ export class Node {
         return this.task.trace;
     }
 
-    public clearTrace(): void {
-        if(this.debugMode) {
-            if(this.changeOutputMode) { // Debug -> ChangeOutput -> Task
-                (<TaskDecorator>(<TaskDecorator>this.task).wrappee).wrappee.trace = '';
-            } else { // ChangeOutput -> Task
-                (<TaskDecorator>this.task).wrappee.trace = '';
-            }
-        } else if(this.changeOutputMode) { // ChangeOutput -> Task
-            (<TaskDecorator>this.task).wrappee.trace = '';
-        } else { // Task
-            this.task.trace = '';
-        }
-    }
 }
 
 export class Recipe implements Prototype {
@@ -263,13 +250,15 @@ export class Recipe implements Prototype {
         if(this.hasCycle()) {
             return "[Error] Recipe with cycle.";
         }
-        this.nodes.forEach(node => node.clearTrace());
+        this.nodes.forEach(node => node.task.trace = '');
         let result: string = "";
-
+        console.log("run recipe");
         let startingNodes: Node[] = this.nodes.filter(node => node.task.file_input);
+        console.log(startingNodes);
         startingNodes.forEach(node => node.task.execute(new Message(fileInput)));
 
         startingNodes = this.nodes.filter(node => node.task.user_input);
+        console.log(startingNodes);
         startingNodes.forEach(node => node.task.execute(new Message(userInput)));
         
         this.nodes.filter(node => node.task.output).forEach(node => {
@@ -343,7 +332,7 @@ export class TaskDecorator extends Task {
     setWrappee(wrappee: Task) {
         this.wrappee = wrappee;
         this.file_input = wrappee.file_input;
-        this.user_input = wrappee.file_input;
+        this.user_input = wrappee.user_input;
         this.output = wrappee.output;
     }
 
