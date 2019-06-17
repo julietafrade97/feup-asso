@@ -2,7 +2,7 @@
 * [1. How to Run](https://github.com/julietafrade97/feup-asso/blob/master/README.md#1-how-to-run)
 * [2. Goals](https://github.com/julietafrade97/feup-asso/blob/master/README.md#2-goals)
 * [3. Features](https://github.com/julietafrade97/feup-asso/blob/master/README.md#3-features)
-  * [3.1 Available Tasks]()
+  * [3.1 Available Tasks](https://github.com/julietafrade97/feup-asso/blob/master/README.md#31-available-tasks)
   * [3.2 Install Task and Create Node](https://github.com/julietafrade97/feup-asso/blob/master/README.md#32-install-task-and-create-node)
   * [3.3 Add Edge and Delete Edge](https://github.com/julietafrade97/feup-asso/blob/master/README.md#33-add-edge-and-delete-edge)
   * [3.4 Load File and Execute](https://github.com/julietafrade97/feup-asso/blob/master/README.md#34-load-file-and-execute)
