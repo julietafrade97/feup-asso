@@ -1,9 +1,38 @@
-# Development steps
+# Index
+1. How to Run
+2. Goals
+3. Features
+   1. Install Task and Create Node
+   2. Add Edge and Delete Edge
+   3. Load File and Execute
+   4. Debug Mode
+   5. Change Input
+   6. Disable Node
+   7. Save and Load Recipe
+4. Architecture
+   1. UML
+   2. Pipes & Filters
+   3. Design Patterns
+      1. Factory Method
+      2. Module
+      3. Strategy
+      4. State
+      5. Decorator
+      6. Null Object
+      7. Singleton
+5. Vis.js
+6. The struggles of adding web to the mix
+   1. Bundling
+   2. Arbitrary dynamic requires
+   3. Everything client-side
+
+
+# 1. How to Run
 1. `npm install`
 2. `npm run dev`
 3. `Open http://localhost:3000/`
 
-# Goals
+# 2. Goals
 To develop an application that supports the creation and execution of Information Security Recipes. The base unit of computation in this application is a Task. 
 Tasks are comprised of:
 
@@ -15,7 +44,7 @@ Tasks are comprised of:
 
 One can composse tasks by arbitrarily connecting their inputs and outputs to form a Recipe. There's a standard collection of tasks that we can already foresee, but the application should be extensible enough to support new tasks via plugins without altering the base code. Recipes can be saved and reused as tasks in other recipes.
 
-# Functionalities
+# 3. Features
 ### Sources
 Open File and runtime input.
 ### Sinks
@@ -23,30 +52,125 @@ Send to file or none. User can always see the current state of a task and so the
 ### Handlers
 Text - Uppercase, Lowercase, Encoding, Read file, Write to a file
 
-# Architecture Details
+## 3.1 Install Task and Create Node
+Lorem
 
+## 3.2 Add Edge and Delete Edge
+Lorem
+
+## 3.3 Load File and Execute
+Lorem
+
+## 3.4 Debug Mode
+Lorem
+
+## 3.5 Change Input
+Lorem
+
+## 3.6 Disable Node
+Lorem
+
+## 3.7 Save and Load Recipe
+Lorem
+
+# 4. Architecture
+
+## 4.1 UML
 [UML Architecture](https://i.imgur.com/t1iefWu.jpg)
 
-•	The senders initiate the flow.
+## 4.2 Pipes & Filters
+Os filters são task e os pipes mensagens. Uma task tem a(s) próxima(s) task(s) a quem passam a mensagem alterada para que possam executar a sua ação com essa mesma mensagem e dar prosseguimento à cadeia de tasks.
 
-•	The tempopary information lives in the queues while waiting to be processed.
+## 4.3 Design Patterns
 
-•	We can execute tasks in parallel.
+### 4.3.1 Factory Method
+Usado para as "fábricas" de tasks, sendo que cada uma "produz"/cria task de um tipo específico.
 
-•	We handle errors throwing exceptions and logging error details.
+**Context:** Lorem
 
-•	Input element by element.
+**Problem:** Lorem
 
-•	It stops when all the taks are completed.
+**Solution:** Lorem
 
-## The struggles of adding web to the mix
+**Rationale:** Lorem
+
+### 4.3.2 Module
+Usado para a instalar, desinstalar e carregar plugins, isto é, tipos de tasks.
+
+**Context:** Lorem
+
+**Problem:** Lorem
+
+**Solution:** Lorem
+
+**Rationale:** Lorem
+
+### 4.3.3 Strategy
+Usado para implementar diferentes algoritmos para os diferentes comportamentos de um nó. Um nó é um ponto no grafo da interface gráfica podendo ser configurado de formas diferentes e mostrar informação distinta consoante o tipo de task que representa (baseando-se na origem do input e destino do output). A estratégia de um nó pode ser alterada com o decorrer do programa com as ligações que são feitas a esse nó.
+
+**Context:** Lorem
+
+**Problem:** Lorem
+
+**Solution:** Lorem
+
+**Rationale:** Lorem
+
+### 4.3.4 State
+Usado para alterar o comportamento de uma task com a alteração do seu estado: se está ativa ou se está em pausa.
+
+**Context:** Lorem
+
+**Problem:** Lorem
+
+**Solution:** Lorem
+
+**Rationale:** Lorem
+
+### 4.3.5 Decorator
+Usado para acrescentar ações extra a uma task. No caso de "debug", após a execução normal da task, será apresentado o estado da task. Já no caso de "change output", será possível alterar o conteudo da mensagem dessa task e depois prosseguir com a sua execução normal.
+
+**Context:** Lorem
+
+**Problem:** Lorem
+
+**Solution:** Lorem
+
+**Rationale:** Lorem
+
+### 4.3.6 Null Object
+Representa o comportamento neutro de uma mensagem, ou seja, uma mensagem sem conteudo.
+
+**Context:** Lorem
+
+**Problem:** Lorem
+
+**Solution:** Lorem
+
+**Rationale:** Lorem
+
+### 4.3.7 Singleton
+Usado para termos uma instancia única de cada fábrica e da classe central (Main).
+
+**Context:** Lorem
+
+**Problem:** Lorem
+
+**Solution:** Lorem
+
+**Rationale:** Lorem
+
+## 5. Vis.js
+Lorem
+
+## 6. The struggles of adding web to the mix
 Resorting to web interfacing presents a handful of challenges which technically don't fit on ASSO's scope.
 
-### Bundling
+### 6.1 Bundling
 Since the visualization library *vis.js* is based on Node, regular browser Javascript was no longer possible. Naturally, browsers don't have a require method like Node.js does so a Javascript module bundler was mandatory. We also didn't intend to do any server-side business at the expense of a couple of drawbacks and subsequent workarounds we'll discuss later on.  
 We ended up using **webpack** to bundle our dependencies.
 
-#### Arbitrary dynamic requires
+### 6.2 Arbitrary dynamic requires
 Imagine a user wants to code its own plugin into the software. In a perfect world, you'd just place it into a folder and a portion of pre-programmed code would handle importing it to the logic.  
 
 We actually begun bundling with Browserify, yet the scenery is as messy with webpack. Arbitrary dynamic requires are a dead end. Browserify can only do static string analysis for requirement rebinding so requirements must be hardcoded.  
@@ -55,33 +179,7 @@ The general consensus is sticking to static requirements either way because of t
 
 **Workaround:** A require list file which contains the paths to every plugin must be edited beforehand.
 
-### Everything client-side
+### 6.3 Everything client-side
 No real server communication renders any state preservation pretty much useless so recipes are saved and can be loaded as long as the user doesn't refresh the page. Obviously this isn't the optimal case, yet it's enough for this project. 
 
 **Workaround:** Simply storing in client-side memory.
-
-## Design Patterns
-
-### Factory Method
-Usado para as "fábricas" de tasks, sendo que cada uma "produz"/cria task de um tipo específico.
-
-### Module
-Usado para a instalar, desinstalar e carregar plugins, isto é, tipos de tasks.
-
-### Strategy
-Usado para implementar diferentes algoritmos para os diferentes comportamentos de um nó. Um nó é um ponto no grafo da interface gráfica podendo ser configurado de formas diferentes e mostrar informação distinta consoante o tipo de task que representa (baseando-se na origem do input e destino do output). A estratégia de um nó pode ser alterada com o decorrer do programa com as ligações que são feitas a esse nó.
-
-### State
-Usado para alterar o comportamento de uma task com a alteração do seu estado: se está ativa ou se está em pausa.
-
-### Decorator
-Usado para acrescentar ações extra a uma task. No caso de "debug", após a execução normal da task, será apresentado o estado da task. Já no caso de "change output", será possível alterar o conteudo da mensagem dessa task e depois prosseguir com a sua execução normal.
-
-### Pipes & Filters
-Os filters são task e os pipes mensagens. Uma task tem a(s) próxima(s) task(s) a quem passam a mensagem alterada para que possam executar a sua ação com essa mesma mensagem e dar prosseguimento à cadeia de tasks.
-
-### Null Object
-Representa o comportamento neutro de uma mensagem, ou seja, uma mensagem sem conteudo.
-
-### Singleton
-Usado para termos uma instancia única de cada fábrica e da classe central (Main).
