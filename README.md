@@ -16,14 +16,16 @@
   * [4.1 UML](https://github.com/julietafrade97/feup-asso/blob/master/README.md#41-uml)
   * [4.2 Pipes and Filters](https://github.com/julietafrade97/feup-asso/blob/master/README.md#42-pipes--filters)
   * [4.3 Design Patterns](https://github.com/julietafrade97/feup-asso/blob/master/README.md#43-design-patterns)
-  * [4.3.1 Factory Method](https://github.com/julietafrade97/feup-asso/blob/master/README.md#431-factory-method)
-    * [4.3.2 Module](https://github.com/julietafrade97/feup-asso/blob/master/README.md#432-module)
-    * [4.3.3 Strategy](https://github.com/julietafrade97/feup-asso/blob/master/README.md#433-strategy)
-    * [4.3.4 State](https://github.com/julietafrade97/feup-asso/blob/master/README.md#434-state)
-    * [4.3.5 Decorator](https://github.com/julietafrade97/feup-asso/blob/master/README.md#435-decorator)
-    * [4.3.6 Null Object](https://github.com/julietafrade97/feup-asso/blob/master/README.md#436-null-object)
-    * [4.3.7 Singleton](https://github.com/julietafrade97/feup-asso/blob/master/README.md#437-singleton)
-  * [4.4 Sequence Diagrams](https://github.com/julietafrade97/feup-asso/blob/master/README.md#44-sequence-diagrams)
+    * [4.3.1 Facade]
+    * [4.3.2 Factory Method] Baldaia
+    * [4.3.3 Module] Baldaia
+    * [4.3.4 Registry]
+    * [4.3.5 State] Baldaia
+    * [4.3.6 Decorator]
+    * [4.3.7 Prototype]
+    * [4.3.8 Null Object]
+    * [4.3.9 Singleton]
+  * [4.4 Sequence Diagrams](https://github.com/julietafrade97/feup-asso/blob/master/README.md#44-sequence-diagrams) Baldaia
 * [5. Vis.js](https://github.com/julietafrade97/feup-asso/blob/master/README.md#5-visjs)
 * [6. The struggles of adding web to the mix](https://github.com/julietafrade97/feup-asso/blob/master/README.md#6-the-struggles-of-adding-web-to-the-mix)
   * [6.1 Bundling](https://github.com/julietafrade97/feup-asso/blob/master/README.md#61-bundling)
