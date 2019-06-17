@@ -123,7 +123,7 @@ Error detection in case of cycle in recipe.
 ![UML](https://github.com/julietafrade97/feup-asso/blob/master/assets/uml.png)
 
 ## 4.2 Pipes & Filters
-Os filters são task e os pipes mensagens. Uma task tem a(s) próxima(s) task(s) a quem passam a mensagem alterada para que possam executar a sua ação com essa mesma mensagem e dar prosseguimento à cadeia de tasks.
+On this project, tasks are filters and messages are the pipes. A single task delivers its modified message to the next node in this graph-based structure. The latter continues the task chain by applying its own logic to the message and providing the next node with it. This cycle repeats until every node's exhausted and a final output is provided.
 
 ## 4.3 Design Patterns
 
