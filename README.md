@@ -16,14 +16,16 @@
   * [4.1 UML](https://github.com/julietafrade97/feup-asso/blob/master/README.md#41-uml)
   * [4.2 Pipes and Filters](https://github.com/julietafrade97/feup-asso/blob/master/README.md#42-pipes--filters)
   * [4.3 Design Patterns](https://github.com/julietafrade97/feup-asso/blob/master/README.md#43-design-patterns)
-  * [4.3.1 Factory Method](https://github.com/julietafrade97/feup-asso/blob/master/README.md#431-factory-method)
-    * [4.3.2 Module](https://github.com/julietafrade97/feup-asso/blob/master/README.md#432-module)
-    * [4.3.3 Strategy](https://github.com/julietafrade97/feup-asso/blob/master/README.md#433-strategy)
-    * [4.3.4 State](https://github.com/julietafrade97/feup-asso/blob/master/README.md#434-state)
-    * [4.3.5 Decorator](https://github.com/julietafrade97/feup-asso/blob/master/README.md#435-decorator)
-    * [4.3.6 Null Object](https://github.com/julietafrade97/feup-asso/blob/master/README.md#436-null-object)
-    * [4.3.7 Singleton](https://github.com/julietafrade97/feup-asso/blob/master/README.md#437-singleton)
-  * [4.4 Sequence Diagrams](https://github.com/julietafrade97/feup-asso/blob/master/README.md#44-sequence-diagrams)
+    * [4.3.1 Facade](https://github.com/julietafrade97/feup-asso#431-facade)
+    * [4.3.2 Factory Method Baldaia](https://github.com/julietafrade97/feup-asso#432-factory-method)
+    * [4.3.3 Module Baldaia](https://github.com/julietafrade97/feup-asso#433-module)
+    * [4.3.4 Registry](https://github.com/julietafrade97/feup-asso#434-registry)
+    * [4.3.5 State Baldaia](https://github.com/julietafrade97/feup-asso#435-state)
+    * [4.3.6 Decorator](https://github.com/julietafrade97/feup-asso#436-decorator)
+    * [4.3.7 Prototype](https://github.com/julietafrade97/feup-asso#437-prototype)
+    * [4.3.8 Null Object](https://github.com/julietafrade97/feup-asso#438-null-object)
+    * [4.3.9 Singleton](https://github.com/julietafrade97/feup-asso#439-singleton)
+  * [4.4 Sequence Diagrams](https://github.com/julietafrade97/feup-asso/blob/master/README.md#44-sequence-diagrams) Baldaia
 * [5. Vis.js](https://github.com/julietafrade97/feup-asso/blob/master/README.md#5-visjs)
 * [6. The struggles of adding web to the mix](https://github.com/julietafrade97/feup-asso/blob/master/README.md#6-the-struggles-of-adding-web-to-the-mix)
   * [6.1 Bundling](https://github.com/julietafrade97/feup-asso/blob/master/README.md#61-bundling)
@@ -112,6 +114,8 @@ Uppercase and Lowercase
 **Load Recipe:** Click on *Load Recipe* and choose the desired recipe.
 
 ## 3.10 Detection of Cycles
+Error detection in case of cycle in recipe.
+![Detection of Cycles](https://github.com/julietafrade97/feup-asso/blob/master/assets/9-cycle.gif)
 
 # 4. Architecture
 
@@ -123,7 +127,16 @@ Os filters são task e os pipes mensagens. Uma task tem a(s) próxima(s) task(s)
 
 ## 4.3 Design Patterns
 
-### 4.3.1 Factory Method
+### 4.3.1 Facade
+**Context:** Lorem
+
+**Problem:** Lorem
+
+**Solution:** Lorem
+
+**Rationale:** Lorem
+
+### 4.3.2 Factory Method
 Usado para as "fábricas" de tasks, sendo que cada uma "produz"/cria task de um tipo específico.
 
 **Context:** Lorem
@@ -134,7 +147,7 @@ Usado para as "fábricas" de tasks, sendo que cada uma "produz"/cria task de um 
 
 **Rationale:** Lorem
 
-### 4.3.2 Module
+### 4.3.3 Module
 Usado para a instalar, desinstalar e carregar plugins, isto é, tipos de tasks.
 
 **Context:** Lorem
@@ -145,8 +158,8 @@ Usado para a instalar, desinstalar e carregar plugins, isto é, tipos de tasks.
 
 **Rationale:** Lorem
 
-### 4.3.3 Strategy
-Usado para implementar diferentes algoritmos para os diferentes comportamentos de um nó. Um nó é um ponto no grafo da interface gráfica podendo ser configurado de formas diferentes e mostrar informação distinta consoante o tipo de task que representa (baseando-se na origem do input e destino do output). A estratégia de um nó pode ser alterada com o decorrer do programa com as ligações que são feitas a esse nó.
+### 4.3.4 Registry
+Usado para a instalar, desinstalar e carregar plugins, isto é, tipos de tasks.
 
 **Context:** Lorem
 
@@ -156,7 +169,7 @@ Usado para implementar diferentes algoritmos para os diferentes comportamentos d
 
 **Rationale:** Lorem
 
-### 4.3.4 State
+### 4.3.5 State
 Usado para alterar o comportamento de uma task com a alteração do seu estado: se está ativa ou se está em pausa.
 
 **Context:** Lorem
@@ -167,7 +180,7 @@ Usado para alterar o comportamento de uma task com a alteração do seu estado: 
 
 **Rationale:** Lorem
 
-### 4.3.5 Decorator
+### 4.3.6 Decorator
 Usado para acrescentar ações extra a uma task. No caso de "debug", após a execução normal da task, será apresentado o estado da task. Já no caso de "change output", será possível alterar o conteudo da mensagem dessa task e depois prosseguir com a sua execução normal.
 
 **Context:** Lorem
@@ -178,7 +191,16 @@ Usado para acrescentar ações extra a uma task. No caso de "debug", após a exe
 
 **Rationale:** Lorem
 
-### 4.3.6 Null Object
+### 4.3.7 Prototype
+**Context:** Lorem
+
+**Problem:** Lorem
+
+**Solution:** Lorem
+
+**Rationale:** Lorem
+
+### 4.3.8 Null Object
 Representa o comportamento neutro de uma mensagem, ou seja, uma mensagem sem conteudo.
 
 **Context:** Lorem
@@ -189,7 +211,7 @@ Representa o comportamento neutro de uma mensagem, ou seja, uma mensagem sem con
 
 **Rationale:** Lorem
 
-### 4.3.7 Singleton
+### 4.3.9 Singleton
 Usado para termos uma instancia única de cada fábrica e da classe central (Main).
 
 **Context:** Lorem
