@@ -66,10 +66,10 @@ export class Facade {
 
     public deleteNode(id: number) {
         // Establish missing connections.
-        this.currentRecipe.addMissingEdges(id);
+        const deleteEdges = this.currentRecipe.addMissingEdges(id);
 
         // Delete edges that are connected to the node.
-        this.currentRecipe.deleteEdgesConnectedTo(id);
+        deleteEdges.forEach(edge => this.deleteEdge(edge.from, edge.to));
 
         // Actually delete the node.
         this.currentRecipe.deleteNode(id);

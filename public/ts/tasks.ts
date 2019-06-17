@@ -224,21 +224,25 @@ export class Recipe implements Prototype {
         return node;
     }
 
-    public addMissingEdges(id: number) {
-        const leftEdges = this.edges.filter(edge => edge.to === id);
-        const rightEdges = this.edges.filter(edge => edge.from === id);
+    /**
+     * Add edges to replace the missing edges due to node deletion 
+     * @param id node that will be deleted
+     */
+    public addMissingEdges(id: number): {from: number, to: number}[] {
+        const inEdges = this.edges.filter(edge => edge.to === id);
+        const outEdges = this.edges.filter(edge => edge.from === id);
 
-        leftEdges.forEach(leftEdge => rightEdges.forEach(rightEdge => {
-            this.connectNodes(leftEdge.from, rightEdge.to);
+        inEdges.forEach(inEdge => outEdges.forEach(outEdge => {
+            this.connectNodes(inEdge.from, outEdge.to);
         }));
-    }
 
-    public deleteEdgesConnectedTo(id: number) {
-        this.edges = this.edges.filter(edge => edge.from !== id && edge.to !== id);
+        return inEdges.concat(outEdges);
     }
 
     public deleteEdge(from: number, to: number) {
         this.edges = this.edges.filter(edge => edge.from !== from || edge.to !== to);
+        const fromNode: Node = this.nodes.find(node => node.id === from);
+        fromNode.task.filters = fromNode.task.filters.filter(filter => filter.id !== to);
     }
 
     public deleteNode(id: number) {
