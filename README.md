@@ -120,7 +120,7 @@ Error detection in case of cycle in recipe.
 # 4. Architecture
 
 ## 4.1 UML
-![UML](https://github.com/julietafrade97/feup-asso/blob/master/assets/uml.jpg)
+![UML](https://github.com/julietafrade97/feup-asso/blob/master/assets/uml.png)
 
 ## 4.2 Pipes & Filters
 Os filters são task e os pipes mensagens. Uma task tem a(s) próxima(s) task(s) a quem passam a mensagem alterada para que possam executar a sua ação com essa mesma mensagem e dar prosseguimento à cadeia de tasks.
