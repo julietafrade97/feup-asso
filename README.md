@@ -11,6 +11,7 @@
   * [3.7 Change Input](https://github.com/julietafrade97/feup-asso/blob/master/README.md#37-change-input)
   * [3.8 Disable Node](https://github.com/julietafrade97/feup-asso/blob/master/README.md#38-disable-node)
   * [3.9 Save and Load Recipe](https://github.com/julietafrade97/feup-asso/blob/master/README.md#39-save-and-load-recipe)
+  * [3.10 Detection of Cycles](https://github.com/julietafrade97/feup-asso/blob/master/README.md#310-detection-of-cycles)
 * [4. Architecture](https://github.com/julietafrade97/feup-asso/blob/master/README.md#4-architecture)
   * [4.1 UML](https://github.com/julietafrade97/feup-asso/blob/master/README.md#41-uml)
   * [4.2 Pipes and Filters](https://github.com/julietafrade97/feup-asso/blob/master/README.md#42-pipes--filters)
@@ -22,7 +23,7 @@
     * [4.3.5 Decorator](https://github.com/julietafrade97/feup-asso/blob/master/README.md#435-decorator)
     * [4.3.6 Null Object](https://github.com/julietafrade97/feup-asso/blob/master/README.md#436-null-object)
     * [4.3.7 Singleton](https://github.com/julietafrade97/feup-asso/blob/master/README.md#437-singleton)
-  * [4.4 Sequence Diagrams]()
+  * [4.4 Sequence Diagrams](https://github.com/julietafrade97/feup-asso/blob/master/README.md#44-sequence-diagrams)
 * [5. Vis.js](https://github.com/julietafrade97/feup-asso/blob/master/README.md#5-visjs)
 * [6. The struggles of adding web to the mix](https://github.com/julietafrade97/feup-asso/blob/master/README.md#6-the-struggles-of-adding-web-to-the-mix)
   * [6.1 Bundling](https://github.com/julietafrade97/feup-asso/blob/master/README.md#61-bundling)
@@ -110,7 +111,7 @@ Uppercase and Lowercase
 
 **Load Recipe:** Click on *Load Recipe* and choose the desired recipe.
 
-## 3.9 Detection of Cycles
+## 3.10 Detection of Cycles
 
 # 4. Architecture
 
