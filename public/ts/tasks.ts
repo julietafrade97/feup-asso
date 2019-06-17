@@ -106,6 +106,21 @@ export class Node {
         this.label = label;
     }
 
+    public resetTask() {
+        this.task.trace = '';
+        if(this.debugMode) {
+            if(this.changeOutputMode) { // Debug -> ChangeOutput -> Task
+                (<TaskDecorator>(<TaskDecorator>this.task).wrappee).wrappee.content.value = '';
+            } else { // Debug -> Task
+                (<TaskDecorator>this.task).wrappee.content.value = '';
+            }
+        } else if(this.changeOutputMode) { // ChangeOutput -> Task
+            (<TaskDecorator>this.task).wrappee.content.value = '';
+        } else {
+            this.task.content.value = '';
+        }
+    }
+
     public changeState() {
         this.task.changeState();
         this.isActive = this.isActive === 1 ? 0 : 1;
@@ -250,7 +265,7 @@ export class Recipe implements Prototype {
         if(this.hasCycle()) {
             return "[Error] Recipe with cycle.";
         }
-        this.nodes.forEach(node => node.task.trace = '');
+        this.nodes.forEach(node => node.resetTask());
         let result: string = "";
         console.log("run recipe");
         let startingNodes: Node[] = this.nodes.filter(node => node.task.file_input);
