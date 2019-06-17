@@ -52,3 +52,8 @@
     height: 400px;
     border: 1px solid lightgray;
 }
+
+#debug-mode-window {
+    word-wrap: break-word;
+    text-align: left;
+}
