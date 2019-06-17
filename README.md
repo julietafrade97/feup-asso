@@ -149,7 +149,6 @@ If at the beginning we were only thinking about the currently available types, m
 We didn't choose this approach since our tasks don't have any kind of relationship.
 
 ### 4.3.3 Module
-Usado para a instalar, desinstalar e carregar plugins, isto é, tipos de tasks.
 
 **Context:** The user can only add tasks of types that have already installed. 
 
