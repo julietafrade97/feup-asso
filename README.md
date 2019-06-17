@@ -135,13 +135,18 @@ Os filters são task e os pipes mensagens. Uma task tem a(s) próxima(s) task(s)
 **Solution:** Lorem
 
 ### 4.3.2 Factory Method
-Usado para as "fábricas" de tasks, sendo que cada uma "produz"/cria task de um tipo específico.
 
-**Context:** Lorem
+**Context:** One Recipe can have more than one task, so it is expected to have more than one task instance in our programme.
 
-**Problem:** Lorem
+**Problem:** Initially the user can only add FileLineReader tasks, but there are other different types of tasks that we can load.
 
-**Solution:** Lorem
+If at the beginning we were only thinking about the currently available types, most of our code would be coupled to those tasks classes. Adding a new type of task would require making changes to the entire codebase. As a result, we would end up with pretty nasty code, riddled with conditionals that switch the app's behaviour depending on the class of task object.
+
+**Solution:** The Factory Method pattern suggests that you replace direct object construction calls (using the new operator) with calls to a special factory method. Therefore, we have a base class called Creator and one derived class from this one for each task type we have. These Creator classes have a method, createTask(),  that returns a new object of Task class.
+
+**Rationale:** Abstract Factory provides an interface for creating families of related or dependent objects without specifying their concrete classes.
+
+We didn't choose this approach since our tasks don't have any kind of relationship.
 
 ### 4.3.3 Module
 Usado para a instalar, desinstalar e carregar plugins, isto é, tipos de tasks.
