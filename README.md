@@ -1,30 +1,30 @@
 # Index
-1. How to Run
-2. Goals
-3. Features
-   1. Install Task and Create Node
-   2. Add Edge and Delete Edge
-   3. Load File and Execute
-   4. Debug Mode
-   5. Change Input
-   6. Disable Node
-   7. Save and Load Recipe
-4. Architecture
-   1. UML
-   2. Pipes & Filters
-   3. Design Patterns
-      1. Factory Method
-      2. Module
-      3. Strategy
-      4. State
-      5. Decorator
-      6. Null Object
-      7. Singleton
-5. Vis.js
-6. The struggles of adding web to the mix
-   1. Bundling
-   2. Arbitrary dynamic requires
-   3. Everything client-side
+* [1. How to Run](https://github.com/julietafrade97/feup-asso/blob/master/README.md#1-how-to-run)
+* [2. Goals](https://github.com/julietafrade97/feup-asso/blob/master/README.md#2-goals)
+* [3. Features](https://github.com/julietafrade97/feup-asso/blob/master/README.md#3-features)
+  * [3.1 Install Task and Create Node](https://github.com/julietafrade97/feup-asso/blob/master/README.md#31-install-task-and-create-node)
+  * [3.2 Add Edge and Delete Edge](https://github.com/julietafrade97/feup-asso/blob/master/README.md#32-add-edge-and-delete-edge)
+  * [3.3 Load File and Execute](https://github.com/julietafrade97/feup-asso/blob/master/README.md#33-load-file-and-execute)
+  * [3.4 Debug Mode](https://github.com/julietafrade97/feup-asso/blob/master/README.md#34-debug-mode)
+  * [3.5 Change Input](https://github.com/julietafrade97/feup-asso/blob/master/README.md#35-change-input)
+  * [3.6 Disable Node](https://github.com/julietafrade97/feup-asso/blob/master/README.md#36-disable-node)
+  * [3.7 Save and Load Recipe](https://github.com/julietafrade97/feup-asso/blob/master/README.md#37-save-and-load-recipe)
+* [4. Architecture](https://github.com/julietafrade97/feup-asso/blob/master/README.md#4-architecture)
+  * [4.1 UML](https://github.com/julietafrade97/feup-asso/blob/master/README.md#41-uml)
+  * [4.2 Pipes and Filters](https://github.com/julietafrade97/feup-asso/blob/master/README.md#42-pipes--filters)
+  * [4.3 Design Patterns](https://github.com/julietafrade97/feup-asso/blob/master/README.md#43-design-patterns)
+  * [4.3.1 Factory Method](https://github.com/julietafrade97/feup-asso/blob/master/README.md#431-factory-method)
+    * [4.3.2 Module](https://github.com/julietafrade97/feup-asso/blob/master/README.md#432-module)
+    * [4.3.3 Strategy](https://github.com/julietafrade97/feup-asso/blob/master/README.md#433-strategy)
+    * [4.3.4 State](https://github.com/julietafrade97/feup-asso/blob/master/README.md#434-state)
+    * [4.3.5 Decorator](https://github.com/julietafrade97/feup-asso/blob/master/README.md#435-decorator)
+    * [4.3.6 Null Object](https://github.com/julietafrade97/feup-asso/blob/master/README.md#436-null-object)
+    * [4.3.7 Singleton](https://github.com/julietafrade97/feup-asso/blob/master/README.md#437-singleton)
+* [5. Vis.js](https://github.com/julietafrade97/feup-asso/blob/master/README.md#5-visjs)
+* [6. The struggles of adding web to the mix](https://github.com/julietafrade97/feup-asso/blob/master/README.md#6-the-struggles-of-adding-web-to-the-mix)
+  * [6.1 Bundling](https://github.com/julietafrade97/feup-asso/blob/master/README.md#61-bundling)
+  * [6.2 Arbitrary dynamic requires](https://github.com/julietafrade97/feup-asso/blob/master/README.md#62-arbitrary-dynamic-requires)
+  * [6.3 Everything client-side](https://github.com/julietafrade97/feup-asso/blob/master/README.md#63-everything-client-side)
 
 
 # 1. How to Run
