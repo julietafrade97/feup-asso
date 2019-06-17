@@ -71,7 +71,7 @@ Text - Uppercase, Lowercase, Encoding, Read file, Write to a file
 **Load File:** Click on *Load File* and choose the desired input file.
 **Execute:** Click on *Execute* and check the output on the *Output* text area.
 
-## 3.4 Write Input and Execute *********
+## 3.4 Write Input and Execute
 (Enabled when using the InputReader)
 ![Write Input and Execute](https://github.com/julietafrade97/feup-asso/blob/master/assets/8-writeInput_execute.gif)
 
