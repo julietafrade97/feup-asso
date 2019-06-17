@@ -5,10 +5,11 @@
   * [3.1 Install Task and Create Node](https://github.com/julietafrade97/feup-asso/blob/master/README.md#31-install-task-and-create-node)
   * [3.2 Add Edge and Delete Edge](https://github.com/julietafrade97/feup-asso/blob/master/README.md#32-add-edge-and-delete-edge)
   * [3.3 Load File and Execute](https://github.com/julietafrade97/feup-asso/blob/master/README.md#33-load-file-and-execute)
-  * [3.4 Debug Mode](https://github.com/julietafrade97/feup-asso/blob/master/README.md#34-debug-mode)
-  * [3.5 Change Input](https://github.com/julietafrade97/feup-asso/blob/master/README.md#35-change-input)
-  * [3.6 Disable Node](https://github.com/julietafrade97/feup-asso/blob/master/README.md#36-disable-node)
-  * [3.7 Save and Load Recipe](https://github.com/julietafrade97/feup-asso/blob/master/README.md#37-save-and-load-recipe)
+  * [3.4 Write Input and Execute](https://github.com/julietafrade97/feup-asso/blob/master/README.md#34-debug-mode)
+  * [3.5 Debug Mode](https://github.com/julietafrade97/feup-asso/blob/master/README.md#35-debug-mode)
+  * [3.6 Change Input](https://github.com/julietafrade97/feup-asso/blob/master/README.md#36-change-input)
+  * [3.7 Disable Node](https://github.com/julietafrade97/feup-asso/blob/master/README.md#37-disable-node)
+  * [3.8 Save and Load Recipe](https://github.com/julietafrade97/feup-asso/blob/master/README.md#38-save-and-load-recipe)
 * [4. Architecture](https://github.com/julietafrade97/feup-asso/blob/master/README.md#4-architecture)
   * [4.1 UML](https://github.com/julietafrade97/feup-asso/blob/master/README.md#41-uml)
   * [4.2 Pipes and Filters](https://github.com/julietafrade97/feup-asso/blob/master/README.md#42-pipes--filters)
@@ -65,35 +66,39 @@ Text - Uppercase, Lowercase, Encoding, Read file, Write to a file
 **Delete Edge:** Double click on the disered edge.
 
 ## 3.3 Load File and Execute
-(Enabled when using the FileLineReader)
 ![Load File and Execute](https://github.com/julietafrade97/feup-asso/blob/master/assets/3-loadFile_execute.gif)
 
-**Load File:** Click on *Load File* and choose the desired input file.
-**Execute:** Click on *Execute* and check the output on the *Output* text area.
+**Load File (Enabled when using the task *FileLineReader*):** Click on *Load File* and choose the desired input file.
+**Execute  (Enabled when using the task *Writer*):** Click on *Execute* and check the output on the *Output* text area.
 
 ## 3.4 Write Input and Execute
-(Enabled when using the InputReader)
 ![Write Input and Execute](https://github.com/julietafrade97/feup-asso/blob/master/assets/8-writeInput_execute.gif)
+
+**Write Input (Enabled when using the task *InputReader*):** Write the disered string on the *Input* text area.
+**Execute (Enabled when using the task *Writer*):** Click on *Execute* and check the output on the *Output* text area.
 
 ## 3.5 Debug Mode
 ![Debug Mode](https://github.com/julietafrade97/feup-asso/blob/master/assets/4-debugMode.gif)
 
-Lorem
+**Activate Debug Mode:** Double click on any node and select the *Debug Mode* checkbox.
+**Debug Information:** Double click on the desired node and see its input and output in the last execution.
 
-## 3.6 Change Input
+## 3.6 Change Node Input
 ![Change Input](https://github.com/julietafrade97/feup-asso/blob/master/assets/5-changeInput.gif)
 
-Lorem
+**Change the Node Input:** Double click on the node and insert the desired input on the *New Input Text* text field.
+**Execute (Enabled when using the task *Writer*):** Click on *Execute* and check the output on the *Output* text area.
 
 ## 3.7 Disable Node
 ![Disable Node](https://github.com/julietafrade97/feup-asso/blob/master/assets/6-disableNode.gif)
 
-Lorem
+**Disable Node:** Double click on the desired node and select the *Disabled* checkbox.
 
 ## 3.8 Save and Load Recipe
 ![Save and Load Recipe](https://github.com/julietafrade97/feup-asso/blob/master/assets/7-loadRecipe.gif)
 
-Lorem
+**Save Recipe:** Click on *Save Recipe* and insert the desired name on the *Recipe Name* text field.
+**Load Recipe:** Click on *Load Recipe* and choose the desired recipe.
 
 # 4. Architecture
 
