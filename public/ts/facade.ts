@@ -162,7 +162,7 @@ export class Facade {
     public getTraceLog(nodeId: number): string {
         return this.currentRecipe.getNode(nodeId).getTraceLog();
     }
-    
+
     /**
      * Add to all the nodes a decorator to enable debug mode
      */

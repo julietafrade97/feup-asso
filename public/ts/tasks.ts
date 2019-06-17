@@ -236,7 +236,7 @@ export class Recipe implements Prototype {
     }
 
     public deleteEdge(from: number, to: number) {
-        this.edges = this.edges.filter(edge => edge.from !== from && edge.to !== to);
+        this.edges = this.edges.filter(edge => edge.from !== from || edge.to !== to);
     }
 
     public deleteNode(id: number) {
