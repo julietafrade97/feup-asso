@@ -184,7 +184,7 @@ nodeInfoDialog.listen('MDCDialog:opening', () => {
 
 nodeInfoDialog.listen('MDCDialog:closing', (evt) => {
   if (evt.detail.action === 'yes') {
-    const input = document.querySelectorAll('#change-output-tet-field input')[0];
+    const input = document.querySelectorAll('#change-output-text-field input')[0];
     if (graph.facade.isNodeIdle(nodeShowingInfo)) {
       input.value = '';
       return;

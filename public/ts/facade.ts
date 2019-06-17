@@ -162,7 +162,7 @@ export class Facade {
     public getTraceLog(nodeId: number): string {
         return this.currentRecipe.getNode(nodeId).getTraceLog();
     }
-    
+
     /**
      * Add decorator to node to enable debug mode
      * @param nodeId The node to which we will add decorator
