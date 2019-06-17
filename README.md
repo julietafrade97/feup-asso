@@ -182,11 +182,11 @@ Usado para alterar o comportamento de uma task com a alteração do seu estado: 
 **Solution:** Decorator is a structural design pattern that lets you attach new behaviors to objects by placing these objects inside special wrapper objects that contain the behaviors. Therefore, if we turn on “debug” mode, we just wrap the normal object inside of a new object with the “debug” behaviour and if we turn on “change input” mode afterwards, we would do the same thing but with a wrapper with the “output input” behavior, and, in the end, we would have to work with just one object that has three different behaviours. 
 
 ### 4.3.7 Prototype
-**Context:** Lorem
+**Context:** When a recipe is saved, it is necessary to make a copy of the tasks it contains, otherwise, when we loaded that recipe, we would be working with the same instance of the task we used before.
 
-**Problem:** Lorem
+**Problem:** The basic solution would be the class Facade (the one in charge of saving the recipe) duplicate the recipe tasks, but that would make facade code dependent on the class task.
 
-**Solution:** Lorem
+**Solution:** Prototype is a creational design pattern that lets you copy existing objects without making your code dependent on their classes. The Prototype pattern delegates the cloning process to the actual objects that are being cloned. The pattern declares a common interface for all objects that support cloning. The Prototype interface declares the cloning methods. In most cases, it’s a single clone method. The Task class implements the cloning method and the Facade can produce a copy of a Task.
 
 ### 4.3.8 Null Object
 **Context:** Messages sent through the network may sometimes be empty and the network should adapt to these occurrences. When a task decorator is initialized, its content message is empty just to be later assigned by child decorators such as the debug mode decorator.
