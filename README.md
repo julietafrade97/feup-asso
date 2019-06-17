@@ -55,34 +55,42 @@ Text - Uppercase, Lowercase, Encoding, Read file, Write to a file
 ## 3.1 Install Task and Create Node
 ![Install Task and Create Node](https://github.com/julietafrade97/feup-asso/blob/master/assets/1-installTask_CreateNode.gif)
 
-Lorem
+**Install Task:** Click on *Install Task* and choose the desired task.
+**Create Node:** Click on *New Node* and choose the desired task from the list of already installed tasks.
 
 ## 3.2 Add Edge and Delete Edge
 ![Add Edge and Delete Edge](https://github.com/julietafrade97/feup-asso/blob/master/assets/2-addEdge_deleteEdge.gif)
 
-Lorem
+**Add Edge:** Click on the starting node and click on the ending node.
+**Delete Edge:** Double click on the disered edge.
 
 ## 3.3 Load File and Execute
+(Enabled when using the FileLineReader)
 ![Load File and Execute](https://github.com/julietafrade97/feup-asso/blob/master/assets/3-loadFile_execute.gif)
 
-Lorem
+**Load File:** Click on *Load File* and choose the desired input file.
+**Execute:** Click on *Execute* and check the output on the *Output* text area.
 
-## 3.4 Debug Mode
+## 3.4 Write Input and Execute *********
+(Enabled when using the InputReader)
+![Write Input and Execute](https://github.com/julietafrade97/feup-asso/blob/master/assets/8-writeInput_execute.gif)
+
+## 3.5 Debug Mode
 ![Debug Mode](https://github.com/julietafrade97/feup-asso/blob/master/assets/4-debugMode.gif)
 
 Lorem
 
-## 3.5 Change Input
+## 3.6 Change Input
 ![Change Input](https://github.com/julietafrade97/feup-asso/blob/master/assets/5-changeInput.gif)
 
 Lorem
 
-## 3.6 Disable Node
+## 3.7 Disable Node
 ![Disable Node](https://github.com/julietafrade97/feup-asso/blob/master/assets/6-disableNode.gif)
 
 Lorem
 
-## 3.7 Save and Load Recipe
+## 3.8 Save and Load Recipe
 ![Save and Load Recipe](https://github.com/julietafrade97/feup-asso/blob/master/assets/7-loadRecipe.gif)
 
 Lorem
@@ -91,7 +99,6 @@ Lorem
 
 ## 4.1 UML
 ![UML](https://github.com/julietafrade97/feup-asso/blob/master/assets/uml.jpg)
-
 
 ## 4.2 Pipes & Filters
 Os filters são task e os pipes mensagens. Uma task tem a(s) próxima(s) task(s) a quem passam a mensagem alterada para que possam executar a sua ação com essa mesma mensagem e dar prosseguimento à cadeia de tasks.
