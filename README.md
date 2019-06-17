@@ -158,13 +158,11 @@ Usado para a instalar, desinstalar e carregar plugins, isto é, tipos de tasks.
 **Solution:** Lorem
 
 ### 4.3.4 Registry
-Usado para a instalar, desinstalar e carregar plugins, isto é, tipos de tasks.
+**Context:**  It is required to install, uninstall and load plugins - that is - task types by name.
 
-**Context:** Lorem
+**Problem:** There isn’t a way to easily find installed plugins and execute them, since they can technically be dynamically added and are hosted on unique directories.
 
-**Problem:** Lorem
-
-**Solution:** Lorem
+**Solution:** Service Locator encapsulates the processes involved in obtaining a service with a strong abstraction layer, by using a central registry known as the service locator, which on request returns the information necessary to perform a certain task. This way we may quickly get modules and subsequently perform operations.
 
 ### 4.3.5 State
 Usado para alterar o comportamento de uma task com a alteração do seu estado: se está ativa ou se está em pausa.
@@ -176,13 +174,11 @@ Usado para alterar o comportamento de uma task com a alteração do seu estado: 
 **Solution:** Lorem
 
 ### 4.3.6 Decorator
-Usado para acrescentar ações extra a uma task. No caso de "debug", após a execução normal da task, será apresentado o estado da task. Já no caso de "change output", será possível alterar o conteudo da mensagem dessa task e depois prosseguir com a sua execução normal.
+**Context:** A task has its inherent behaviour, a task should also have the “debug” mode and the “change input” mode. When the task is in “debug” mode, after the normal execution, it will be shown the input and output of the task. With the “change input” mode it will be possible to insert the data that the task will consider its input on the next execution.
 
-**Context:** Lorem
+**Problem:** We considered adding subclasses to the main class task with the different modes. The problem is because the modes are not exclusive we would have three subclasses: “debugTask”, “changeOutputTask”, “debugChangeOutputTask”. If in the future wanted to add more modes this list would extend exponentially.
 
-**Problem:** Lorem
-
-**Solution:** Lorem
+**Solution:** Decorator is a structural design pattern that lets you attach new behaviors to objects by placing these objects inside special wrapper objects that contain the behaviors. Therefore, if we turn on “debug” mode, we just wrap the normal object inside of a new object with the “debug” behaviour and if we turn on “change input” mode afterwards, we would do the same thing but with a wrapper with the “output input” behavior, and, in the end, we would have to work with just one object that has three different behaviours. 
 
 ### 4.3.7 Prototype
 **Context:** Lorem
