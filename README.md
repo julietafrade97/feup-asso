@@ -151,11 +151,13 @@ We didn't choose this approach since our tasks don't have any kind of relationsh
 ### 4.3.3 Module
 Usado para a instalar, desinstalar e carregar plugins, isto é, tipos de tasks.
 
-**Context:** Lorem
+**Context:** The user can only add tasks of types that have already installed. 
 
-**Problem:** Lorem
+**Problem:** What could we do to in run time make new task types available or make the other no longer available?
 
-**Solution:** Lorem
+**Solution:** Following the software development principle that source code can be organized into components that accomplish a particular function or contain everything necessary to accomplish a particular task, we use the Module pattern to represent one task type as a module. Here a module is an object of Module class and has one library (property "lib"), which is an import, from a specific path, of two derived classes exported as Creator and Task. It also has one factory that is a singleton instance of the derived class Creator obtained through lib. Module has three methods: install() to initialize properties lib and factory; execute() to use module's factory and thus create a task; uninstall() to set properties to null.
+
+For each task type that we want to make available, we create a new module and every time we want a new instance of a specific task we use its correspondent module. If we want to make a type no longer available, we just have to uninstall the module.
 
 ### 4.3.4 Registry
 **Context:**  It is required to install, uninstall and load plugins - that is - task types by name.
