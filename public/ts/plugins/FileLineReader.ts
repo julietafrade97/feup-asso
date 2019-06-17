@@ -42,16 +42,20 @@ export class FileLineReader  extends Task {
         return new Message(this.lines.shift());
     }
 
+    passData(data: Message): Message {
+        this.lines = [];
+        return new Message('');
+    }
+
     execute(data: Message): Message {
         
         this.lines = data.value.split('\n');
-        
-        const result = this.lines;
+        let result: string = "";
         while(this.lines.length > 0) {
-            super.execute(data);
+            result += super.execute(data).value + " ";
         }
-
-        return new Message(data.value);
+        result.trim();
+        return new Message(result);
     }
 }
 

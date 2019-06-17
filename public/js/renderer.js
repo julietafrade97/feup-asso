@@ -188,11 +188,9 @@ nodeInfoDialog.listen('MDCDialog:opening', () => {
     const log = graph.facade.getTraceLog(nodeShowingInfo);
     const div = document.getElementById('trace-log-message');
     div.innerHTML = '';
-    console.log(log);
     log.split('!!br!!').forEach((s) => {
       const line = document.createElement('p');
       line.innerHTML = s;
-      console.log(s);
       div.appendChild(line);
       // div.appendChild(document.createElement('br'));
     });

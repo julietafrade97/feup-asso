@@ -26,10 +26,10 @@ class Active extends State {
 
 class Idle extends State {
     public execute(data: Message): Message {
-        const send: Message = new Message(data.value);
-
+        const unchanged: Message = this.task.passData(data);
+        const send: Message = new Message(unchanged.value);
         this.task.next(send);
-        return data;
+        return unchanged;
     }
 }
 
@@ -70,13 +70,14 @@ export class Task implements Prototype {
         return Message.none;
     }
 
+    passData(data: Message): Message {
+        return new Message(data.value);
+    }
+
     next(data: Message) {
         this.filters.forEach(filter => {
             filter.task.execute(data);
         });
-
-        console.log("fim da recipe. Data = " + data.value);
-        console.log(this);
     }
     /**
      * Method directly called for each task
@@ -135,7 +136,6 @@ export class Node {
     }
 
     public changeOutput(newData: string) {
-        console.log("no change output");
         if (this.changeOutputMode) {
             if(this.debugMode) { // DebugDecorator wrapping ChangeOutputDecorator
                 (<ChangeOutputDecorator>(<DebugDecorator>this.task).wrappee).setNewData(newData);
@@ -158,7 +158,6 @@ export class Node {
             
             this.changeOutputMode = true;
         }
-        console.log(this.task);
     }
 
     public enableDebug() {
@@ -271,13 +270,10 @@ export class Recipe implements Prototype {
         }
         this.nodes.forEach(node => node.resetTask());
         let result: string = "";
-        console.log("run recipe");
         let startingNodes: Node[] = this.nodes.filter(node => node.task.file_input);
-        console.log(startingNodes);
         startingNodes.forEach(node => node.task.execute(new Message(fileInput)));
 
         startingNodes = this.nodes.filter(node => node.task.user_input);
-        console.log(startingNodes);
         startingNodes.forEach(node => node.task.execute(new Message(userInput)));
         
         this.nodes.filter(node => node.task.output).forEach(node => {
@@ -357,6 +353,10 @@ export class TaskDecorator extends Task {
 
     addFilter(filter: Node): void {
         this.wrappee.addFilter(filter);
+    }
+
+    changeState() {
+        this.wrappee.changeState();
     }
 
     execute(data: Message): Message {

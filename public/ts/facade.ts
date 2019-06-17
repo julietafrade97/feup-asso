@@ -73,10 +73,13 @@ export class Facade {
 
         // Actually delete the node.
         this.currentRecipe.deleteNode(id);
+
+        console.log(this.currentRecipe);
     }
 
     public deleteEdge(from: number, to: number) {
         this.currentRecipe.deleteEdge(from, to);
+        console.log(this.currentRecipe);
     }
 
     public connectNodes(node1: number, node2: number) {
@@ -98,9 +101,7 @@ export class Facade {
         const isDuplicate = this.storedRecipes.findIndex(recipe => recipe.name === name);
 
         if (isDuplicate !== -1) {
-            console.log('Found duplicate.');
             this.storedRecipes.splice(isDuplicate, 1);
-            console.log(this.storedRecipes);
         }
 
         this.storedRecipes.push(copy);
@@ -127,8 +128,8 @@ export class Facade {
      */
     public changeNodeState(nodeId: number) {
         const node = this.currentRecipe.getNode(nodeId);
+        console.log("is going to change state of node " + nodeId);
         node.changeState();
-        console.log('Changed state!');
     }
 
     public isNodeIdle(nodeId: number) {

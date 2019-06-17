@@ -45,6 +45,10 @@ class Writer extends Task {
         return new Message(value);
     }
 
+    passData(data: Message): Message {
+        return new Message('');
+    }
+
    
 }
 
