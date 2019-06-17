@@ -53,30 +53,45 @@ Send to file or none. User can always see the current state of a task and so the
 Text - Uppercase, Lowercase, Encoding, Read file, Write to a file
 
 ## 3.1 Install Task and Create Node
+![Install Task and Create Node](https://github.com/julietafrade97/feup-asso/blob/master/assets/1-installTask_CreateNode.gif)
+
 Lorem
 
 ## 3.2 Add Edge and Delete Edge
+![Add Edge and Delete Edge](https://github.com/julietafrade97/feup-asso/blob/master/assets/2-addEdge_deleteEdge.gif)
+
 Lorem
 
 ## 3.3 Load File and Execute
+![Load File and Execute](https://github.com/julietafrade97/feup-asso/blob/master/assets/3-loadFile_execute.gif)
+
 Lorem
 
 ## 3.4 Debug Mode
+![Debug Mode](https://github.com/julietafrade97/feup-asso/blob/master/assets/4-debugMode.gif)
+
 Lorem
 
 ## 3.5 Change Input
+![Change Input](https://github.com/julietafrade97/feup-asso/blob/master/assets/5-changeInput.gif)
+
 Lorem
 
 ## 3.6 Disable Node
+![Disable Node](https://github.com/julietafrade97/feup-asso/blob/master/assets/6-disableNode.gif)
+
 Lorem
 
 ## 3.7 Save and Load Recipe
+![Save and Load Recipe](https://github.com/julietafrade97/feup-asso/blob/master/assets/7-loadRecipe.gif)
+
 Lorem
 
 # 4. Architecture
 
 ## 4.1 UML
-[UML Architecture](https://i.imgur.com/t1iefWu.jpg)
+![UML](https://github.com/julietafrade97/feup-asso/blob/master/assets/uml.jpg)
+
 
 ## 4.2 Pipes & Filters
 Os filters são task e os pipes mensagens. Uma task tem a(s) próxima(s) task(s) a quem passam a mensagem alterada para que possam executar a sua ação com essa mesma mensagem e dar prosseguimento à cadeia de tasks.
