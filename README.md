@@ -166,13 +166,16 @@ For each task type that we want to make available, we create a new module and ev
 **Solution:** Service Locator encapsulates the processes involved in obtaining a service with a strong abstraction layer, by using a central registry known as the service locator, which on request returns the information necessary to perform a certain task. This way we may quickly get modules and subsequently perform operations.
 
 ### 4.3.5 State
-Usado para alterar o comportamento de uma task com a alteração do seu estado: se está ativa ou se está em pausa.
 
-**Context:** Lorem
+**Context:** One recipe is displayed as a graph where each node is one task and the edges define the flow (tasks outputs as input to other tasks). A task has a specific behaviour and so produces different modifications on the inputs. The manipulated data is then passed to the next task.
 
-**Problem:** Lorem
+**Problem:** Our programme should implement a feature that allows the user to disable nodes so whenever those receive an input they will perform no changes on the data, forwarding that to the next node.
 
-**Solution:** Lorem
+**Solution:** The State pattern is closely related to the concept of a Finite-State Machine. The main idea is that, at any given moment, there’s a finite number of states which a program can be in. Within any unique state, the program behaves differently, and the program can be switched from one state to another instantaneously.
+For all possible states, we create a new class that includes the state-specific behaviour. Here we have two states: Active and Idle. When a task changes its state, it turns Idle if it was Active, and Active otherwise. In the Active state the task has an impact on the received data and in the Idle the task simple forward that data.
+We call the state execute inside the task execute method.
+
+**Rationale:** Even though this structure may look similar to the Strategy pattern, in the State pattern states may be aware of each other and initiate transitions from one state to another, whereas strategies are independent in that sense. 
 
 ### 4.3.6 Decorator
 **Context:** A task has its inherent behaviour, a task should also have the “debug” mode and the “change input” mode. When the task is in “debug” mode, after the normal execution, it will be shown the input and output of the task. With the “change input” mode it will be possible to insert the data that the task will consider its input on the next execution.
