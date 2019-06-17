@@ -14,9 +14,18 @@ const container = document.getElementById('mynetwork');
 // provide the data in the vis format
 const data = { nodes, edges };
 const options = {
+  nodes: {
+    borderWidth: 0.5,
+    font: {
+      face: 'Roboto',
+    },
+  },
   edges: {
     arrows: {
       to: { enabled: true, scaleFactor: 1, type: 'arrow' },
+    },
+    color: {
+      color: 'black',
     },
   },
 };

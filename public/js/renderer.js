@@ -124,7 +124,6 @@ document.querySelectorAll('.mdc-select').forEach((elem) => {
   new mdc.select.MDCSelect(elem);
 });
 
-
 addNodeDialog.listen('MDCDialog:closing', (evt) => {
   if (evt.detail.action === 'yes') {
     const newNodeTitle = document.querySelectorAll('#add-node-dialog option:checked')[0].innerText;
@@ -305,18 +304,27 @@ graph.network.on('click', (properties) => {
       graph.nodes.update({ id: node1, font: { size: 14 } });
       node1 = node2;
       [node2] = properties.nodes;
-      graph.nodes.update({ id: node1, font: { size: 18 } });
-      graph.nodes.update({ id: node2, font: { size: 18 } });
+      graph.nodes.update({ id: node1, font: { size: 16 } });
+      graph.nodes.update({ id: node2, font: { size: 16 } });
     }
 
     if (node1 && !node2) {
       [node2] = properties.nodes;
-      graph.nodes.update({ id: node2, font: { size: 18 } });
+      graph.nodes.update({ id: node2, font: { size: 16 } });
     }
 
     if (!node1 && !node2) {
       [node1] = properties.nodes;
-      graph.nodes.update({ id: node1, font: { size: 18 } });
+      graph.nodes.update({ id: node1, font: { size: 16 } });
+    }
+  } else {
+    if (node1) {
+      graph.nodes.update({ id: node1, font: { size: 14 } });
+      node1 = undefined;
+    }
+    if (node2) {
+      graph.nodes.update({ id: node2, font: { size: 14 } });
+      node2 = undefined;
     }
   }
 });
