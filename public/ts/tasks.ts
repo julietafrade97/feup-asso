@@ -245,10 +245,10 @@ export class Recipe implements Prototype {
         return this.nodes.find(node => node.id === id);
     }
 
-    //[TODO]: se calhar podiamos usar strategy aqui para o run poder ter dois comportamentos diferentes:
-    // ou começava com a mensagem a nulo (Message.none)
-    // ou pediamos input ao utilizador e punhamos na mensagem (new Message(value, from, to))
     public run(fileInput: string, userInput: string): string {
+        if(this.hasCycle()) {
+            return "[Error] Recipe with cycle.";
+        }
         let result: string = "";
 
         let startingNodes: Node[] = this.nodes.filter(node => node.task.file_input);
@@ -262,6 +262,45 @@ export class Recipe implements Prototype {
             node.task.content.value = "";
         });
         return result;
+    }
+
+    /**
+     * Verify if the graph has cycles
+     */
+    public hasCycle() {
+        let startingNodes: Node[] = this.nodes.filter(node => node.task.file_input || node.task.user_input);
+        
+        for (let index = 0; index < startingNodes.length; index++) {
+            let currNode: number = startingNodes[index].id;
+            if(this.visitNextNode(currNode, [])) {
+                return true;
+            }            
+        }
+        return false;
+    }
+
+    /**
+     * Recursive function
+     * @param currNode 
+     * @param visited 
+     */
+    public visitNextNode(currNode: number, visited: number[]) : boolean {
+        if(visited.includes(currNode)) {
+            return true;
+        }
+        const pairs = this.edges.filter(pair => pair.from === currNode);
+        if(pairs.length === 0) {
+            return false;
+        }
+
+        for (let index = 0; index < pairs.length; index++) {
+            const newVisited: number[] = visited.slice(0);
+            newVisited.push(currNode);
+            if(this.visitNextNode(pairs[index].to, newVisited)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
 
