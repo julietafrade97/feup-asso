@@ -172,6 +172,7 @@ For each task type that we want to make available, we create a new module and ev
 **Problem:** Our programme should implement a feature that allows the user to disable nodes so whenever those receive an input they will perform no changes on the data, forwarding that to the next node.
 
 **Solution:** The State pattern is closely related to the concept of a Finite-State Machine. The main idea is that, at any given moment, there’s a finite number of states which a program can be in. Within any unique state, the program behaves differently, and the program can be switched from one state to another instantaneously.
+
 For all possible states, we create a new class that includes the state-specific behaviour. Here we have two states: Active and Idle. When a task changes its state, it turns Idle if it was Active, and Active otherwise. In the Active state the task has an impact on the received data and in the Idle the task simple forward that data.
 We call the state execute inside the task execute method.
 
