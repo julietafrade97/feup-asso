@@ -112,6 +112,8 @@ Uppercase and Lowercase
 **Load Recipe:** Click on *Load Recipe* and choose the desired recipe.
 
 ## 3.10 Detection of Cycles
+Error detection in case of cycle in recipe.
+![Detection of Cycles](https://github.com/julietafrade97/feup-asso/blob/master/assets/9-cycle.gif)
 
 # 4. Architecture
 
