@@ -129,6 +129,10 @@ addNodeDialog.listen('MDCDialog:closing', (evt) => {
     const newNodeTitle = document.querySelectorAll('#add-node-dialog option:checked')[0].innerText;
     graph.facade.addNode(newNodeTitle);
     graph.update();
+
+    if (isDebugModeCheckbox.checked) {
+      graph.facade.enableDebug();
+    }
   }
 });
 
@@ -172,6 +176,9 @@ nodeInfoDialog.listen('MDCDialog:closing', (evt) => {
 });
 
 nodeInfoDialog.listen('MDCDialog:opening', () => {
+  document.getElementById('node-info-dialog-title').innerHTML = graph.nodes.get(nodeShowingInfo).label;
+  document.getElementById('node-info-dialog-subtitle').innerHTML = `ID ${graph.nodes.get(nodeShowingInfo).id}`;
+
   if (nodeShowingInfo) {
     isDisabledCheckbox.checked = graph.facade.isNodeIdle(nodeShowingInfo);
   }

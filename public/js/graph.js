@@ -16,8 +16,21 @@ const data = { nodes, edges };
 const options = {
   nodes: {
     borderWidth: 0.5,
+    color: {
+      border: '#6200ee',
+      background: '#6200ee',
+      highlight: {
+        border: '#6200ee',
+        background: '#6200ee',
+      },
+      hover: {
+        border: '#6200ee',
+        background: '#6200ee',
+      },
+    },
     font: {
       face: 'Roboto',
+      color: 'white',
     },
   },
   edges: {

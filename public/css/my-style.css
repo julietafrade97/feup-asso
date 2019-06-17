@@ -35,7 +35,7 @@
     font-family: 'Major Mono Display', monospace;  
     text-align: center;
     font-size: 2em;
-    margin: 2em;
+    margin: 1.5em;
 }
 
 .container {
@@ -43,12 +43,15 @@
 }
 
 .container2 {
-    margin: 1em 8em 1em 8em;
+    margin: 1em 25em 1em 25em;
 }
 
+.container-buttons {
+    margin-left: 25em;
+}
 
 #mynetwork {
-    margin: 1em 8em 1em 8em;
+    margin: 1em 25em 1em 25em;
     height: 400px;
     border: 1px solid lightgray;
 }
@@ -56,4 +59,9 @@
 #debug-mode-window {
     word-wrap: break-word;
     text-align: left;
+}
+
+#toggle-execution-button {
+    float: right;
+    margin-right: 28.5em;
 }

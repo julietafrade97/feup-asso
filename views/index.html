@@ -99,7 +99,8 @@
         <div class="mdc-dialog__container">
             <div class="mdc-dialog__surface">
                 <!-- Title cannot contain leading whitespace due to mdc-typography-baseline-top() -->
-                <h2 class="mdc-dialog__title" id="my-dialog-title">Node Information</h2>
+                <h2 class="mdc-dialog__title" id="node-info-dialog-title">Node Information</h2>
+                <div class="mdc-typography--overline" id="node-info-dialog-subtitle" style="margin-top: -1.5em">Node Subtitle</div>
                 <!-- <div class="mdc-dialog__content" id="my-dialog-content">Fill the required parameters below.</div> -->
                 <div id="change-output-text-field" class="mdc-text-field">
                     <input type="text" id="my-text-field" class="mdc-text-field__input" value="">
@@ -193,30 +194,33 @@
         </div>
         <div class="mdc-dialog__scrim"></div>
     </div>
-    <div>
-        <div>
-            <button class="foo-button mdc-button" id="add-node">New Node</button>
-            <button class="foo-button mdc-button" id="add-edge">New Edge</button>
-            <button id="toggle-execution-button" class="foo-button mdc-button">Execute</button>
-            <button id="toggle-new-recipe-button" class="foo-button mdc-button">New Recipe</button>
-            <div id="mynetwork"></div>
-            <button id="install-task" class="foo-button mdc-button">Install Task</button>
-            <button id="uninstall-task" class="foo-button mdc-button">Uninstall Task</button>
-            <button id="save-recipe" class="foo-button mdc-button">Save Recipe</button>
-            <button id="load-recipe" class="foo-button mdc-button">Load Recipe</button>
+    </div>
 
-            <button id="file-read-button" class="foo-button mdc-button">Load File</button>
-            <input type="file" id="file-read-input" style="display:none">
-        </div>
+    <div class="container-buttons">
+        <button class="foo-button mdc-button mdc-button--outlined" id="add-node">New Node</button>
+        <button class="foo-button mdc-button mdc-button--outlined" id="add-edge">New Edge</button>
+        <button id="toggle-new-recipe-button" class="foo-button mdc-button mdc-button--outlined">New Recipe</button>
+        <button id="save-recipe" class="foo-button mdc-button mdc-button--outlined">Save Recipe</button>
+        <button id="load-recipe" class="foo-button mdc-button mdc-button--outlined">Load Recipe</button>
+        <button id="toggle-execution-button" class="foo-button mdc-button mdc-button--raised">Execute</button>
+        <input type="file" id="file-read-input" style="display:none">
     </div>
+    
+    <div id="mynetwork"></div>
+    
+    <div class="container-buttons">
+        <button id="install-task" class="foo-button mdc-button mdc-button--outlined">Install Task</button>
+        <button id="uninstall-task" class="foo-button mdc-button mdc-button--outlined">Uninstall Task</button>
+        <button id="file-read-button" class="foo-button mdc-button mdc-button--outlined">Load File</button>
     </div>
+    
     <div class="container2">
         <div id="user-input">
-            <h2 class="vis-title">Input</h2>
+            <p class="mdc-typography--overline">Input</p>
             <input type="text" value="">
         </div>
         <div id="result-output">
-            <h2 class="vis-title">Output</h2>
+            <p class="mdc-typography--overline">Output</p>
             <!-- <input type="text" value="result..." readonly> -->
             <div></div>
         </div>
