@@ -16,15 +16,15 @@
   * [4.1 UML](https://github.com/julietafrade97/feup-asso/blob/master/README.md#41-uml)
   * [4.2 Pipes and Filters](https://github.com/julietafrade97/feup-asso/blob/master/README.md#42-pipes--filters)
   * [4.3 Design Patterns](https://github.com/julietafrade97/feup-asso/blob/master/README.md#43-design-patterns)
-    * [4.3.1 Facade](https://github.com/julietafrade97/feup-asso#431-facade)
-    * [4.3.2 Factory Method Baldaia](https://github.com/julietafrade97/feup-asso#432-factory-method)
-    * [4.3.3 Module Baldaia](https://github.com/julietafrade97/feup-asso#433-module)
-    * [4.3.4 Registry](https://github.com/julietafrade97/feup-asso#434-registry)
-    * [4.3.5 State Baldaia](https://github.com/julietafrade97/feup-asso#435-state)
-    * [4.3.6 Decorator](https://github.com/julietafrade97/feup-asso#436-decorator)
-    * [4.3.7 Prototype](https://github.com/julietafrade97/feup-asso#437-prototype)
-    * [4.3.8 Null Object](https://github.com/julietafrade97/feup-asso#438-null-object)
-    * [4.3.9 Singleton](https://github.com/julietafrade97/feup-asso#439-singleton)
+    * [4.3.1 Facade]
+    * [4.3.2 Factory Method] Baldaia
+    * [4.3.3 Module] Baldaia
+    * [4.3.4 Registry]
+    * [4.3.5 State] Baldaia
+    * [4.3.6 Decorator]
+    * [4.3.7 Prototype]
+    * [4.3.8 Null Object]
+    * [4.3.9 Singleton]
   * [4.4 Sequence Diagrams](https://github.com/julietafrade97/feup-asso/blob/master/README.md#44-sequence-diagrams) Baldaia
 * [5. Vis.js](https://github.com/julietafrade97/feup-asso/blob/master/README.md#5-visjs)
 * [6. The struggles of adding web to the mix](https://github.com/julietafrade97/feup-asso/blob/master/README.md#6-the-struggles-of-adding-web-to-the-mix)
@@ -48,7 +48,7 @@ Tasks are comprised of:
 
 •	an inherent behaviour
 
-One can composse tasks by arbitrarily connecting their inputs and outputs to form a Recipe. There's a standard collection of tasks that we can already foresee, but the application should be extensible enough to support new tasks via plugins without altering the base code. Recipes can be saved and reused as tasks in other recipes.
+One can compose tasks by arbitrarily connecting their inputs and outputs to form a Recipe. There's a standard collection of tasks that we can already foresee, but the application should be extensible enough to support new tasks via plugins without altering the base code. Recipes can be saved and reused as tasks in other recipes.
 
 # 3. Features
 ## 3.1 Available Tasks
@@ -71,7 +71,7 @@ Uppercase and Lowercase
 
 **Add Edge:** Click on the starting node and click on the ending node.
 
-**Delete Edge:** Double click on the disered edge.
+**Delete Edge:** Double click on the desired edge.
 
 ## 3.4 Load File and Execute
 ![Load File and Execute](https://github.com/julietafrade97/feup-asso/blob/master/assets/3-loadFile_execute.gif)
@@ -83,7 +83,7 @@ Uppercase and Lowercase
 ## 3.5 Write Input and Execute
 ![Write Input and Execute](https://github.com/julietafrade97/feup-asso/blob/master/assets/8-writeInput_execute.gif)
 
-**Write Input (Enabled when using the task *InputReader*):** Write the disered string on the *Input* text area.
+**Write Input (Enabled when using the task *InputReader*):** Write the desired string on the *Input* text area.
 
 **Execute (Enabled when using the task *Writer*):** Click on *Execute* and check the output on the *Output* text area.
 
@@ -120,7 +120,7 @@ Error detection in case of cycle in recipe.
 # 4. Architecture
 
 ## 4.1 UML
-![UML](https://github.com/julietafrade97/feup-asso/blob/master/assets/uml.png)
+![UML](https://github.com/julietafrade97/feup-asso/blob/master/assets/uml.jpg)
 
 ## 4.2 Pipes & Filters
 Os filters são task e os pipes mensagens. Uma task tem a(s) próxima(s) task(s) a quem passam a mensagem alterada para que possam executar a sua ação com essa mesma mensagem e dar prosseguimento à cadeia de tasks.
@@ -226,7 +226,7 @@ Usado para termos uma instancia única de cada fábrica e da classe central (Mai
 Lorem
 
 ## 5. Vis.js
-Lorem
+**Vis.js** is a dynamic browser based visualization library with intuitive network components consisting of nodes and edges. The tool is well documented so manipulating these components proved itself fairly straightforward.
 
 ## 6. The struggles of adding web to the mix
 Resorting to web interfacing presents a handful of challenges which technically don't fit on ASSO's scope.
