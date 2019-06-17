@@ -15,22 +15,22 @@ const container = document.getElementById('mynetwork');
 const data = { nodes, edges };
 const options = {
   nodes: {
-    borderWidth: 0.5,
+    borderWidth: 2,
     color: {
       border: '#6200ee',
-      background: '#6200ee',
+      background: '#ffffff',
       highlight: {
         border: '#6200ee',
-        background: '#6200ee',
+        background: '#ffffff',
       },
       hover: {
         border: '#6200ee',
-        background: '#6200ee',
+        background: '#ffffff',
       },
     },
     font: {
       face: 'Roboto',
-      color: 'white',
+      color: 'black',
     },
   },
   edges: {

@@ -225,6 +225,8 @@ function execute(fileInput) {
   div.innerHTML = '';
   output.split(' ').forEach((s) => {
     const line = document.createElement('p');
+    line.className = 'mdc-typography--body1';
+    line.style.margin = 0;
     line.innerHTML = s;
     div.appendChild(line);
   });
