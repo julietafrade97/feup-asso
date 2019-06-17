@@ -2,14 +2,15 @@
 * [1. How to Run](https://github.com/julietafrade97/feup-asso/blob/master/README.md#1-how-to-run)
 * [2. Goals](https://github.com/julietafrade97/feup-asso/blob/master/README.md#2-goals)
 * [3. Features](https://github.com/julietafrade97/feup-asso/blob/master/README.md#3-features)
-  * [3.1 Install Task and Create Node](https://github.com/julietafrade97/feup-asso/blob/master/README.md#31-install-task-and-create-node)
-  * [3.2 Add Edge and Delete Edge](https://github.com/julietafrade97/feup-asso/blob/master/README.md#32-add-edge-and-delete-edge)
-  * [3.3 Load File and Execute](https://github.com/julietafrade97/feup-asso/blob/master/README.md#33-load-file-and-execute)
-  * [3.4 Write Input and Execute](https://github.com/julietafrade97/feup-asso/blob/master/README.md#34-debug-mode)
-  * [3.5 Debug Mode](https://github.com/julietafrade97/feup-asso/blob/master/README.md#35-debug-mode)
-  * [3.6 Change Input](https://github.com/julietafrade97/feup-asso/blob/master/README.md#36-change-input)
-  * [3.7 Disable Node](https://github.com/julietafrade97/feup-asso/blob/master/README.md#37-disable-node)
-  * [3.8 Save and Load Recipe](https://github.com/julietafrade97/feup-asso/blob/master/README.md#38-save-and-load-recipe)
+  * [3.1 Available Tasks]()
+  * [3.2 Install Task and Create Node](https://github.com/julietafrade97/feup-asso/blob/master/README.md#32-install-task-and-create-node)
+  * [3.3 Add Edge and Delete Edge](https://github.com/julietafrade97/feup-asso/blob/master/README.md#33-add-edge-and-delete-edge)
+  * [3.4 Load File and Execute](https://github.com/julietafrade97/feup-asso/blob/master/README.md#34-load-file-and-execute)
+  * [3.5 Write Input and Execute](https://github.com/julietafrade97/feup-asso/blob/master/README.md#35-debug-mode)
+  * [3.6 Debug Mode](https://github.com/julietafrade97/feup-asso/blob/master/README.md#36-debug-mode)
+  * [3.7 Change Input](https://github.com/julietafrade97/feup-asso/blob/master/README.md#37-change-input)
+  * [3.8 Disable Node](https://github.com/julietafrade97/feup-asso/blob/master/README.md#38-disable-node)
+  * [3.9 Save and Load Recipe](https://github.com/julietafrade97/feup-asso/blob/master/README.md#39-save-and-load-recipe)
 * [4. Architecture](https://github.com/julietafrade97/feup-asso/blob/master/README.md#4-architecture)
   * [4.1 UML](https://github.com/julietafrade97/feup-asso/blob/master/README.md#41-uml)
   * [4.2 Pipes and Filters](https://github.com/julietafrade97/feup-asso/blob/master/README.md#42-pipes--filters)
@@ -46,61 +47,62 @@ Tasks are comprised of:
 One can composse tasks by arbitrarily connecting their inputs and outputs to form a Recipe. There's a standard collection of tasks that we can already foresee, but the application should be extensible enough to support new tasks via plugins without altering the base code. Recipes can be saved and reused as tasks in other recipes.
 
 # 3. Features
+## 3.1 Available Tasks
 ### Sources
-Open File and runtime input.
+FileLineReader and InputReader
 ### Sinks
-Send to file or none. User can always see the current state of a task and so the message it bears
+Write
 ### Handlers
-Text - Uppercase, Lowercase, Encoding, Read file, Write to a file
+Uppercase and Lowercase
 
-## 3.1 Install Task and Create Node
+## 3.2 Install Task and Create Node
 ![Install Task and Create Node](https://github.com/julietafrade97/feup-asso/blob/master/assets/1-installTask_CreateNode.gif)
 
 **Install Task:** Click on *Install Task* and choose the desired task.
 
 **Create Node:** Click on *New Node* and choose the desired task from the list of already installed tasks.
 
-## 3.2 Add Edge and Delete Edge
+## 3.3 Add Edge and Delete Edge
 ![Add Edge and Delete Edge](https://github.com/julietafrade97/feup-asso/blob/master/assets/2-addEdge_deleteEdge.gif)
 
 **Add Edge:** Click on the starting node and click on the ending node.
 
 **Delete Edge:** Double click on the disered edge.
 
-## 3.3 Load File and Execute
+## 3.4 Load File and Execute
 ![Load File and Execute](https://github.com/julietafrade97/feup-asso/blob/master/assets/3-loadFile_execute.gif)
 
 **Load File (Enabled when using the task *FileLineReader*):** Click on *Load File* and choose the desired input file.
 
 **Execute  (Enabled when using the task *Writer*):** Click on *Execute* and check the output on the *Output* text area.
 
-## 3.4 Write Input and Execute
+## 3.5 Write Input and Execute
 ![Write Input and Execute](https://github.com/julietafrade97/feup-asso/blob/master/assets/8-writeInput_execute.gif)
 
 **Write Input (Enabled when using the task *InputReader*):** Write the disered string on the *Input* text area.
 
 **Execute (Enabled when using the task *Writer*):** Click on *Execute* and check the output on the *Output* text area.
 
-## 3.5 Debug Mode
+## 3.6 Debug Mode
 ![Debug Mode](https://github.com/julietafrade97/feup-asso/blob/master/assets/4-debugMode.gif)
 
 **Activate Debug Mode:** Double click on any node and select the *Debug Mode* checkbox.
 
 **Debug Information:** Double click on the desired node and see its input and output in the last execution.
 
-## 3.6 Change Node Input
+## 3.7 Change Node Input
 ![Change Input](https://github.com/julietafrade97/feup-asso/blob/master/assets/5-changeInput.gif)
 
 **Change the Node Input:** Double click on the node and insert the desired input on the *New Input Text* text field.
 
 **Execute (Enabled when using the task *Writer*):** Click on *Execute* and check the output on the *Output* text area.
 
-## 3.7 Disable Node
+## 3.8 Disable Node
 ![Disable Node](https://github.com/julietafrade97/feup-asso/blob/master/assets/6-disableNode.gif)
 
 **Disable Node:** Double click on the desired node and select the *Disabled* checkbox.
 
-## 3.8 Save and Load Recipe
+## 3.9 Save and Load Recipe
 ![Save and Load Recipe](https://github.com/julietafrade97/feup-asso/blob/master/assets/7-loadRecipe.gif)
 
 **Save Recipe:** Click on *Save Recipe* and insert the desired name on the *Recipe Name* text field.
