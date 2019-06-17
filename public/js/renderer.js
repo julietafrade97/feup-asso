@@ -116,16 +116,12 @@ const isDebugModeCheckbox = new mdc.checkbox.MDCCheckbox(document.querySelector(
 
 // Floating label listeners on text fields.
 document.querySelectorAll('.mdc-text-field').forEach((elem) => {
-  const label = new mdc.textField.MDCTextField(elem);
-  const floatingLabel = new mdc.floatingLabel.MDCFloatingLabel(document.querySelector('.mdc-floating-label'));
-  label.listen('click', () => floatingLabel.float());
+  new mdc.textField.MDCTextField(elem);
 });
 
 // Floating label listeners on text fields.
 document.querySelectorAll('.mdc-select').forEach((elem) => {
-  const label = new mdc.select.MDCSelect(elem);
-  const floatingLabel = new mdc.floatingLabel.MDCFloatingLabel(document.querySelector('.mdc-floating-label'));
-  label.listen('click', () => floatingLabel.float());
+  new mdc.select.MDCSelect(elem);
 });
 
 
