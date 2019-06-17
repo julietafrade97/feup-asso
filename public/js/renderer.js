@@ -180,18 +180,26 @@ nodeInfoDialog.listen('MDCDialog:opening', () => {
   if (nodeShowingInfo) {
     isDisabledCheckbox.checked = graph.facade.isNodeIdle(nodeShowingInfo);
   }
+  if (isDebugModeCheckbox.checked) {
+    document.getElementById('debug-mode-window').style.display = 'block';
+
+    const log = graph.facade.getTraceLog(nodeShowingInfo);
+    document.getElementById('trace-log-message').innerHTML = log;
+  } else {
+    document.getElementById('debug-mode-window').style.display = 'none';
+  }
 });
 
 nodeInfoDialog.listen('MDCDialog:closing', (evt) => {
   if (evt.detail.action === 'yes') {
-    const input = document.querySelectorAll('#change-output-tet-field input')[0];
+    const input = document.querySelectorAll('#change-output-text-field input')[0];
     if (graph.facade.isNodeIdle(nodeShowingInfo)) {
       input.value = '';
       return;
     }
-    const newOutput = input.value;
-    if (newOutput !== '') {
-      graph.facade.changeNodeOutput(nodeShowingInfo, newOutput);
+    const newInput = input.value;
+    if (newInput !== '') {
+      graph.facade.changeNodeOutput(nodeShowingInfo, newInput);
     } else {
       graph.facade.disableChangeNodeOutput(nodeShowingInfo);
     }
@@ -279,12 +287,10 @@ isDisabledCheckbox.listen('change', () => {
 
 isDebugModeCheckbox.listen('change', () => {
   if (isDebugModeCheckbox.checked) {
-    document.getElementById('debug-mode-window').style.display = 'block';
-
-    const log = graph.facade.getTraceLog(nodeShowingInfo);
-    document.getElementById('trace-log-message').innerHTML = log;
+    graph.facade.enableDebug();
+    console.log("debug mode on");
   } else {
-    document.getElementById('debug-mode-window').style.display = 'none';
+    graph.facade.disableDebug();
   }
 });
 

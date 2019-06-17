@@ -164,12 +164,17 @@ export class Facade {
     }
     
     /**
-     * Add decorator to node to enable debug mode
-     * @param nodeId The node to which we will add decorator
+     * Add to all the nodes a decorator to enable debug mode
      */
-    public enableDebug(nodeId: number) {
-        const node = this.currentRecipe.getNode(nodeId);
-        node.enableDebug();
+    public enableDebug() {
+        this.currentRecipe.nodes.forEach(node => node.enableDebug());
+    }
+
+    /**
+     * Removes from all the nodes the decorates that sets debug mode
+     */
+    public disableDebug() {
+        this.currentRecipe.nodes.forEach(node => node.disableDebug());
     }
 
     public execute(fileInput: string, userInput: string): string {

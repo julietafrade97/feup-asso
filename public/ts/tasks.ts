@@ -40,7 +40,7 @@ export class Task implements Prototype {
     file_input: boolean = false;
     user_input: boolean = false;
     output: boolean = false;
-    trace: string = 'Nothing to show.';
+    trace: string = '';
 
     constructor(prototype: Task) {
         if(prototype !== null) {
@@ -179,6 +179,20 @@ export class Node {
     public getTraceLog(): string {
         return this.task.trace;
     }
+
+    public clearTrace(): void {
+        if(this.debugMode) {
+            if(this.changeOutputMode) { // Debug -> ChangeOutput -> Task
+                (<TaskDecorator>(<TaskDecorator>this.task).wrappee).wrappee.trace = '';
+            } else { // ChangeOutput -> Task
+                (<TaskDecorator>this.task).wrappee.trace = '';
+            }
+        } else if(this.changeOutputMode) { // ChangeOutput -> Task
+            (<TaskDecorator>this.task).wrappee.trace = '';
+        } else { // Task
+            this.task.trace = '';
+        }
+    }
 }
 
 export class Recipe implements Prototype {
@@ -249,6 +263,7 @@ export class Recipe implements Prototype {
         if(this.hasCycle()) {
             return "[Error] Recipe with cycle.";
         }
+        this.nodes.forEach(node => node.clearTrace());
         let result: string = "";
 
         let startingNodes: Node[] = this.nodes.filter(node => node.task.file_input);
@@ -327,6 +342,9 @@ export class TaskDecorator extends Task {
 
     setWrappee(wrappee: Task) {
         this.wrappee = wrappee;
+        this.file_input = wrappee.file_input;
+        this.user_input = wrappee.file_input;
+        this.output = wrappee.output;
     }
 
     addFilter(filter: Node): void {
@@ -343,8 +361,9 @@ export class DebugDecorator extends TaskDecorator {
         let trace: string = "Task has received << " + data.value + " >> and is going to send ";
         const receivedMsg: Message = super.execute(data);
         trace += "<< " + receivedMsg.value + " >>";
-        this.content = new Message(receivedMsg.value);
-        // [TODO]: dar set a propriedade trace
+        console.log("trace ready: " + trace + '. \n');
+        this.trace += trace;
+        this.content = receivedMsg;
         return this.content;
     }
 }
@@ -359,8 +378,6 @@ export class ChangeOutputDecorator extends TaskDecorator {
     execute(data: Message): Message {
         // change data
         data.value = this.newData;
-        console.log("no execute do decorator");
-        console.log(this);
         this.content = super.execute(data);
         return this.content;
     }

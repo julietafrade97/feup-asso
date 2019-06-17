@@ -42,7 +42,7 @@ class Writer extends Task {
         }
         const value: string = this.content.value + data.value + " ";
         this.content = new Message(value);
-        return data;
+        return new Message(value);
     }
 
    
