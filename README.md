@@ -200,7 +200,8 @@ Usado para termos uma instancia única de cada fábrica e da classe central (Mai
 
 **Rationale:** Lorem
 
-## 4.4 Sequence Diagrams
+### 4.4 Sequence Diagrams
+Lorem
 
 ## 5. Vis.js
 Lorem
