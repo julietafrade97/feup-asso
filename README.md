@@ -128,11 +128,11 @@ Os filters são task e os pipes mensagens. Uma task tem a(s) próxima(s) task(s)
 ## 4.3 Design Patterns
 
 ### 4.3.1 Facade
-**Context:** Lorem
+**Context:** The program logic is really complex since it has a lot of functionalities, classes and modules.
 
-**Problem:** Lorem
+**Problem:** It is necessary to make the logic look simple from the user interface side.
 
-**Solution:** Lorem
+**Solution:**  Facade is a structural design pattern that provides a simplified interface to a library, a framework, or any other complex set of classes. In our case, the facade will have the registry object, the current recipe object and stored recipes array and only the methods extremely necessary for the user interface to work with the program logic
 
 ### 4.3.2 Factory Method
 
