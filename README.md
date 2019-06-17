@@ -22,6 +22,7 @@
     * [4.3.5 Decorator](https://github.com/julietafrade97/feup-asso/blob/master/README.md#435-decorator)
     * [4.3.6 Null Object](https://github.com/julietafrade97/feup-asso/blob/master/README.md#436-null-object)
     * [4.3.7 Singleton](https://github.com/julietafrade97/feup-asso/blob/master/README.md#437-singleton)
+  * [4.4 Sequence Diagrams]()
 * [5. Vis.js](https://github.com/julietafrade97/feup-asso/blob/master/README.md#5-visjs)
 * [6. The struggles of adding web to the mix](https://github.com/julietafrade97/feup-asso/blob/master/README.md#6-the-struggles-of-adding-web-to-the-mix)
   * [6.1 Bundling](https://github.com/julietafrade97/feup-asso/blob/master/README.md#61-bundling)
@@ -109,6 +110,8 @@ Uppercase and Lowercase
 
 **Load Recipe:** Click on *Load Recipe* and choose the desired recipe.
 
+## 3.9 Detection of Cycles
+
 # 4. Architecture
 
 ## 4.1 UML
@@ -195,6 +198,8 @@ Usado para termos uma instancia única de cada fábrica e da classe central (Mai
 **Solution:** Lorem
 
 **Rationale:** Lorem
+
+## 4.4 Sequence Diagrams
 
 ## 5. Vis.js
 Lorem
