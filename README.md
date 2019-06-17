@@ -57,36 +57,42 @@ Text - Uppercase, Lowercase, Encoding, Read file, Write to a file
 ![Install Task and Create Node](https://github.com/julietafrade97/feup-asso/blob/master/assets/1-installTask_CreateNode.gif)
 
 **Install Task:** Click on *Install Task* and choose the desired task.
+
 **Create Node:** Click on *New Node* and choose the desired task from the list of already installed tasks.
 
 ## 3.2 Add Edge and Delete Edge
 ![Add Edge and Delete Edge](https://github.com/julietafrade97/feup-asso/blob/master/assets/2-addEdge_deleteEdge.gif)
 
 **Add Edge:** Click on the starting node and click on the ending node.
+
 **Delete Edge:** Double click on the disered edge.
 
 ## 3.3 Load File and Execute
 ![Load File and Execute](https://github.com/julietafrade97/feup-asso/blob/master/assets/3-loadFile_execute.gif)
 
 **Load File (Enabled when using the task *FileLineReader*):** Click on *Load File* and choose the desired input file.
+
 **Execute  (Enabled when using the task *Writer*):** Click on *Execute* and check the output on the *Output* text area.
 
 ## 3.4 Write Input and Execute
 ![Write Input and Execute](https://github.com/julietafrade97/feup-asso/blob/master/assets/8-writeInput_execute.gif)
 
 **Write Input (Enabled when using the task *InputReader*):** Write the disered string on the *Input* text area.
+
 **Execute (Enabled when using the task *Writer*):** Click on *Execute* and check the output on the *Output* text area.
 
 ## 3.5 Debug Mode
 ![Debug Mode](https://github.com/julietafrade97/feup-asso/blob/master/assets/4-debugMode.gif)
 
 **Activate Debug Mode:** Double click on any node and select the *Debug Mode* checkbox.
+
 **Debug Information:** Double click on the desired node and see its input and output in the last execution.
 
 ## 3.6 Change Node Input
 ![Change Input](https://github.com/julietafrade97/feup-asso/blob/master/assets/5-changeInput.gif)
 
 **Change the Node Input:** Double click on the node and insert the desired input on the *New Input Text* text field.
+
 **Execute (Enabled when using the task *Writer*):** Click on *Execute* and check the output on the *Output* text area.
 
 ## 3.7 Disable Node
@@ -98,6 +104,7 @@ Text - Uppercase, Lowercase, Encoding, Read file, Write to a file
 ![Save and Load Recipe](https://github.com/julietafrade97/feup-asso/blob/master/assets/7-loadRecipe.gif)
 
 **Save Recipe:** Click on *Save Recipe* and insert the desired name on the *Recipe Name* text field.
+
 **Load Recipe:** Click on *Load Recipe* and choose the desired recipe.
 
 # 4. Architecture
