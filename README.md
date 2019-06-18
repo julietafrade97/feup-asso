@@ -42,22 +42,22 @@
 To develop an application that supports the creation and execution of Information Security Recipes. The base unit of computation in this application is a Task. 
 Tasks are comprised of:
 
-•	a set of inputs
+* A set of inputs;
+*	A set of outputs;
+*	An inherent behaviour.
 
-•	a set of outputs
-
-•	an inherent behaviour
-
-One can compose tasks by arbitrarily connecting their inputs and outputs to form a Recipe. There's a standard collection of tasks that we can already foresee, but the application should be extensible enough to support new tasks via plugins without altering the base code. Recipes can be saved and reused as tasks in other recipes.
+One can compose tasks by arbitrarily connecting their inputs and outputs to form a Recipe. There's a standard collection of tasks that we may already foresee, yet the application should be extensible enough to support new tasks via plugins without altering the base code. Recipes can be saved and reused as tasks in other recipes.
 
 # 3. Features
 ## 3.1 Available Tasks
 ### Sources
-FileLineReader and InputReader
+* FileLineReader
+* InputReader
 ### Sinks
-Write
+* Write
 ### Handlers
-Uppercase and Lowercase
+* Uppercase
+* Lowercase
 
 ## 3.2 Install Task and Create Node
 ![Install Task and Create Node](https://github.com/julietafrade97/feup-asso/blob/master/assets/1-installTask_CreateNode.gif)
