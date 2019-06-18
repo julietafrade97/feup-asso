@@ -207,7 +207,9 @@ We call the state execute inside the task execute method.
 **Solution:** Singleton is a creational design pattern that lets you ensure that a class has only one instance, while providing a global access point to this instance. This way, there’s a global access point to factories.
 
 ### 4.4 Sequence Diagrams
-Lorem
+
+**Install Task and Create Node**
+[Install Task and Create Node](https://github.com/julietafrade97/feup-asso/blob/master/assets/3.2.png)
 
 ## 5. Vis.js
 **Vis.js** is a dynamic browser based visualization library with intuitive network components consisting of nodes and edges. The tool is well documented so manipulating these components proved itself fairly straightforward.
