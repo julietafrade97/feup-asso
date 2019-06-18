@@ -212,6 +212,20 @@ We call the state execute inside the task execute method.
 
 ![Install Task and Create Node](https://github.com/julietafrade97/feup-asso/blob/master/assets/3.2.png)
 
+**Add Edge and Delete Edge** Miguel
+
+**Write Input and Execute** Julieta
+
+**Debug Mode** Baldaia
+
+**Change Input** Baldaia
+
+**Disable Node** Julieta
+
+**Save and Load Recipe** Miguel
+
+**Detection of Cycles** Julieta
+
 ## 5. Vis.js
 **Vis.js** is a dynamic browser based visualization library with intuitive network components consisting of nodes and edges. The tool is well documented so manipulating these components proved itself fairly straightforward.
 
