@@ -220,9 +220,13 @@ We call the state execute inside the task execute method.
 
 ![Execute](https://github.com/julietafrade97/feup-asso/blob/master/assets/sd-execute.png)
 
-**Debug Mode** Baldaia
+**Debug Mode** 
 
-**Change Input** Baldaia
+![Debug Mode](https://github.com/julietafrade97/feup-asso/blob/master/assets/3.6.png)
+
+**Change Input**
+
+![Change Input](https://github.com/julietafrade97/feup-asso/blob/master/assets/3.7.png)
 
 **Disable Node**
 
