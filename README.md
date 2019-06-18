@@ -222,7 +222,9 @@ We call the state execute inside the task execute method.
 
 **Disable Node** Julieta
 
-**Save and Load Recipe** Miguel
+**Save and Load Recipe**
+
+![Install Task and Create Node](https://github.com/julietafrade97/feup-asso/blob/master/assets/save-load-recipe-diagram.png)
 
 **Detection of Cycles** Julieta
 
