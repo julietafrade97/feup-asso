@@ -217,6 +217,7 @@ We call the state execute inside the task execute method.
 ![Add edge and delete edge](https://github.com/julietafrade97/feup-asso/blob/master/assets/add-delete-edge-diagram.png)
 
 **Execute**
+
 ![Execute](https://github.com/julietafrade97/feup-asso/blob/master/assets/sd-execute.png)
 
 **Debug Mode** Baldaia
@@ -224,12 +225,15 @@ We call the state execute inside the task execute method.
 **Change Input** Baldaia
 
 **Disable Node**
+
 ![Disable](https://github.com/julietafrade97/feup-asso/blob/master/assets/sd-changeState.png)
 
 **Save and Load Recipe**
+
 ![Save and load recipe](https://github.com/julietafrade97/feup-asso/blob/master/assets/save-load-recipe-diagram.png)
 
 **Detection of Cycles**
+
 ![Cycles](https://github.com/julietafrade97/feup-asso/blob/master/assets/sd-cyclesDetection.png)
 
 ## 5. Vis.js
