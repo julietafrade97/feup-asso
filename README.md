@@ -212,7 +212,9 @@ We call the state execute inside the task execute method.
 
 ![Install Task and Create Node](https://github.com/julietafrade97/feup-asso/blob/master/assets/3.2.png)
 
-**Add Edge and Delete Edge** Miguel
+**Add Edge and Delete Edge**
+
+![Add edge and delete edge](https://github.com/julietafrade97/feup-asso/blob/master/assets/add-delete-edge-diagram.png)
 
 **Write Input and Execute** Julieta
 
@@ -224,7 +226,7 @@ We call the state execute inside the task execute method.
 
 **Save and Load Recipe**
 
-![Install Task and Create Node](https://github.com/julietafrade97/feup-asso/blob/master/assets/save-load-recipe-diagram.png)
+![Save and load recipe](https://github.com/julietafrade97/feup-asso/blob/master/assets/save-load-recipe-diagram.png)
 
 **Detection of Cycles** Julieta
 
