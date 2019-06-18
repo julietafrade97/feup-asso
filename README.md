@@ -209,7 +209,8 @@ We call the state execute inside the task execute method.
 ### 4.4 Sequence Diagrams
 
 **Install Task and Create Node**
-[Install Task and Create Node](https://github.com/julietafrade97/feup-asso/blob/master/assets/3.2.png)
+
+![Install Task and Create Node](https://github.com/julietafrade97/feup-asso/blob/master/assets/3.2.png)
 
 ## 5. Vis.js
 **Vis.js** is a dynamic browser based visualization library with intuitive network components consisting of nodes and edges. The tool is well documented so manipulating these components proved itself fairly straightforward.
