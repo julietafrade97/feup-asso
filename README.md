@@ -216,7 +216,7 @@ We call the state execute inside the task execute method.
 
 ![Add edge and delete edge](https://github.com/julietafrade97/feup-asso/blob/master/assets/add-delete-edge-diagram.png)
 
-**Execute**
+**Execute and Detection of Cycles**
 
 ![Execute](https://github.com/julietafrade97/feup-asso/blob/master/assets/sd-execute.png)
 
@@ -235,10 +235,6 @@ We call the state execute inside the task execute method.
 **Save and Load Recipe**
 
 ![Save and load recipe](https://github.com/julietafrade97/feup-asso/blob/master/assets/save-load-recipe-diagram.png)
-
-**Detection of Cycles**
-
-![Cycles](https://github.com/julietafrade97/feup-asso/blob/master/assets/sd-cyclesDetection.png)
 
 ## 5. Vis.js
 **Vis.js** is a dynamic browser based visualization library with intuitive network components consisting of nodes and edges. The tool is well documented so manipulating these components proved itself fairly straightforward.
